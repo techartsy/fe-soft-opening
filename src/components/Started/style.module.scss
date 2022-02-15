@@ -1,0 +1,49 @@
+@import "../../styles/base";
+
+.container {
+  @include body;
+  background-color: $color-black;
+  height: 100vh;
+  overflow-y: hidden;
+  @include apply-at-sm-md-size {
+  }
+  .wraper {
+    @include directionY;
+    align-items: center;
+    img {
+      width: 100%;
+    }
+  }
+  .toWraper {
+    font-size: 20px;
+    @include directionY;
+    align-items: center;
+    margin-top: -74px;
+    justify-content: center;
+    @include apply-at-sm-md-size {
+      margin-top: -7%;
+      font-size: 16px;
+    }
+    .to {
+      margin: -14px 0;
+    }
+  }
+  .btn {
+    width: 180px;
+    height: 40px;
+    font-size: 18px;
+    @include content-center;
+    @include directionX;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: $color-gold;
+    color: $color-black;
+    cursor: pointer;
+    @include apply-at-sm-md-size {
+      font-size: 14px;
+      min-width: 110px;
+      margin-top: 2%;
+    }
+  }
+}
