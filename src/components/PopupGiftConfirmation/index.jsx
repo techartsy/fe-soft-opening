@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
-import Rose from '../../static/images/rosegift.png';
+import Ribbon from '../../static/images/ribbon-sm.png';
 import whatsapp from '../../static/icons/whatsapp.png';
 import classes from "./style.module.scss";
 import windowDimension from '../../utils/useWindowDimensions';
@@ -78,7 +78,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
             &#10006;
           </div>
           <div className={classes.popupTitleWrapper} onClose={handleClose}>
-            <img className={classes.headerImg} src={Rose} alt="Rose" />
+            <img className={classes.headerImg} src={Ribbon} alt="Rose" />
             <p>Konfirmasi Hadiah</p>
           </div>
           <div className={classes.subtitle}>

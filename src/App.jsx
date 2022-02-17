@@ -3,10 +3,9 @@ import InvitationPage from './containers/InvitationPage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import './App.module.scss';
+// import './App.module.scss';
 
 const App = () => {
-
   return (
     <Provider store={store}>
       <Router>

@@ -32,9 +32,9 @@ import topevent from '../../static/images/topevent.png';
 import gunungan from '../../static/images/gunungan.png';
 import MessageImg from '../../static/images/message-img.png';
 import ClosingWing from '../../static/images/closing-wing.png';
-import wingribbon from '../../static/images/wingribbon.png';
+import wingribbon from '../../static/images/ribbon.png';
 import rosegift from '../../static/images/rosegift.png';
-import creditcard from '../../static/images/creditcard.png';
+import creditcard from '../../static/images/creditcard.svg';
 import numbercopy from '../../static/images/numbercopy.png';
 import logoGold from '../../static/images/logoGold.png';
 import logoSm from '../../static/images/logo-sm.png';
@@ -48,6 +48,22 @@ import Mail from '../../static/icons/mail.png';
 import whatsapp from '../../static/icons/whatsapp.png';
 import Story from '../../static/images/story.png';
 import ThirdImageSM from '../../static/images/thirdimage-sm.png';
+import bioMale from '../../static/images/bio-male.png';
+import bioFemale from '../../static/images/bio-female.png';
+import invocation from '../../static/images/invocation.png';
+import frameMale from '../../static/images/frame-male.png';
+import frameFemale from '../../static/images/frame-female.png';
+import gallery1 from '../../static/images/gallery/1.png';
+import gallery2 from '../../static/images/gallery/2.png';
+import gallery3 from '../../static/images/gallery/3.png';
+import gallery4 from '../../static/images/gallery/4.png';
+import gallery5 from '../../static/images/gallery/5.png';
+import gallery6 from '../../static/images/gallery/6.png';
+import gallery7 from '../../static/images/gallery/7.png';
+import gallery8 from '../../static/images/gallery/8.png';
+import gallery9 from '../../static/images/gallery/9.png';
+import Icon from '../../static/images/icon.png';
+import EventIcon from '../../static/images/event-icon.png';
 import classes from './style.module.scss';
 
 const InvitationPage = () => {
@@ -224,7 +240,7 @@ const InvitationPage = () => {
     let difference;
     if (isIOS) {
       nextYear = year;
-      let fullDate = "2022-01-09 09:00:00";
+      let fullDate = "2022-03-12 09:00:00";
       let date = new Date(fullDate);
       // In case its IOS, parse the fulldate parts and re-create the date object.
       if(Number.isNaN(date.getMonth())) {
@@ -234,7 +250,7 @@ const InvitationPage = () => {
       difference = +date - +new Date();
     } else {
       nextYear = year;
-      difference = +new Date(`01/09/${nextYear}/09:00`) - +new Date();
+      difference = +new Date(`03/12/${nextYear}/09:00`) - +new Date();
     }
     let timeLeft = {};
     if (difference > 0) {
@@ -360,7 +376,7 @@ const InvitationPage = () => {
         <div className={classes.countdown}>
           {timerComponents.length && timerComponents}
         </div>
-        <button onClick={addEvent}>Add Event Google Calendar</button>
+        {/* <button onClick={addEvent}>Add Event Google Calendar</button> */}
       </div >
     );
   };
@@ -399,6 +415,144 @@ const InvitationPage = () => {
             <Fade when={!showPopupProkes} right duration={3000}>
               <p className={classes.quoteAuthor}>~ Dee Lestari ~</p>
             </Fade>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const generateBiography = () => {
+    return (
+      <div className={classes.biographyContainer}>
+        <div className={classes.bioMaleWrapper}>
+          <img src={bioMale} alt="male" className={classes.maleImage} />
+          <div className={classes.contentWrapper}>
+            <div className={classes.bioTitle}>
+              <p>Biografi</p>
+              <p>Adgy Irawan</p>
+            </div>
+            <div className={classes.bioDesc}>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi mattis sagittis aliquet volutpat arcu lorem amet. Nibh pellentesque feugiat est, sed augue sit et. Diam mi, nisi, neque senectus et. Mauris, imperdiet sodales magna nibh odio scelerisque dapibus purus tellus. Velit mi pellentesque diam cursus nam varius. Ornare sagittis, amet, non ultricies. A</p>
+            </div>
+          </div>
+        </div>
+        <div className={classes.biofemaleWrapper}>
+          <img src={bioFemale} alt="male" className={classes.maleImage} />
+          <div className={classes.contentWrapper}>
+            <div className={classes.bioTitle}>
+              <p>Biografi</p>
+              <p>Yenny</p>
+            </div>
+            <div className={classes.bioDesc}>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi mattis sagittis aliquet volutpat arcu lorem amet. Nibh pellentesque feugiat est, sed augue sit et. Diam mi, nisi, neque senectus et. Mauris, imperdiet sodales magna nibh odio scelerisque dapibus purus tellus. Velit mi pellentesque diam cursus nam varius. Ornare sagittis, amet, non ultricies. A</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const generateInvocation = () => {
+    return (
+      <div className={classes.invocationContainer}>
+        <img src={invocation} alt="invocation" />
+      </div>
+    );
+  };
+
+  const generatePoemSection = () => {
+    return (
+      <div className={classes.poemContainer}>
+        <div className={classes.poemTitle}>
+          <p>Puisi</p>
+        </div>
+        <div className={classes.poemWrapper}>
+          <div className={classes.top}>
+            <p>Hanya suara burung yang kau dengar
+              dan tak pernah kaulihat burung itu
+              tapi tahu burung itu ada di sana
+            </p>
+          </div>
+          <div className={classes.mid}>
+            <p>
+              Hanya desir angin yang kaurasa
+              dan tak pernah kaulihat angin itu
+              tapi percaya angin itu di sekitarmu
+            </p>
+          </div>
+          <div className={classes.bottom}>
+            <p>
+              Hanya doaku yang bergetar malam ini
+              dan tak pernah kaulihat siapa aku
+              tapi yakin aku ada dalam dirimu
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const generateBrides = () => {
+    return (
+      <div className={classes.bridesContainer}>
+        <div className={classes.left}>
+          <div className={classes.desc}>
+            <p>Adhy Irawan</p>
+            <p>Putra Ketiga Bapak H. Padma Sujatma (Alm)</p>
+            <p>&</p>
+            <p>Ibu Hj. Ihat Suprihatin</p>
+          </div>
+          <img src={frameMale} alt="brides" />
+        </div>
+        <div className={classes.right}>
+          <img src={frameFemale} alt="brides" />
+          <div className={classes.desc}>
+            <p>Yenny Tsara Azizah</p>
+            <p>Putri Bungsu Bapak Muhammad Syarif (Alm)</p>
+            <p>&</p>
+            <p>Ibu Tetty Herawati</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const generateGallery = () => {
+    return (
+      <div className={classes.galleryContainer}>
+        <div className={classes.topContent}>
+          <div className={classes.upper}>
+            <img src={gallery1} alt="gallery" />
+            <img src={gallery2} alt="gallery" />
+          </div>
+          <div className={classes.lower}>
+            <img src={gallery3} alt="gallery" />
+            <img src={gallery4} alt="gallery" />
+          </div>
+        </div>
+        <div className={classes.bottomContent}>
+          <div className={classes.left}>
+            <div className={classes.top}>
+              <img src={gallery5} alt="gallery" />
+              <img src={gallery6} alt="gallery" />
+            </div>
+            <img src={gallery7} alt="gallery" />
+          </div>
+          <div className={classes.right}>
+            <div className={classes.top}>
+              <img src={gallery8} alt="gallery" />
+            </div>
+            <img src={gallery9} alt="gallery" />
+          </div>
+        </div>
+        <div className={classes.topContent}>
+          <div className={classes.upper}>
+            <img src={gallery1} alt="gallery" />
+            <img src={gallery2} alt="gallery" />
+          </div>
+          <div className={classes.lower}>
+            <img src={gallery3} alt="gallery" />
+            <img src={gallery4} alt="gallery" />
           </div>
         </div>
       </div>
@@ -495,7 +649,7 @@ const InvitationPage = () => {
     return (
       <div className={classes.event}>
         <Fade delay={1000} duration={4000}>
-          <img className={classes.topEvent} src={topevent} alt='top' />
+          <img className={classes.topEvent} src={EventIcon} alt='top' />
           <div className={classes.greeting}>
             <p>
               Assalamu'alaikum Warahmatullahi Wabarakatuh<br />
@@ -515,6 +669,9 @@ const InvitationPage = () => {
                 MINGGU, 09 JANUARI 2022
               </p>
             </div>
+            <div className={classes.btnCalendarWrapper}>
+              <p>Tambahkan ke Kalender</p>
+            </div>
             <div className={classes.timesWraper}>
               {width === 'lg' ? (
                 <>
@@ -533,9 +690,15 @@ const InvitationPage = () => {
                 <>
                   <div className={classes.timeMobileWrapper}>
                     <img src={time} alt='time' />
-                    <p>AKAD 09.00 WIB</p>
+                    <p>AKAD</p>
                     <div className={classes.separator} />
-                    <p>RESEPSI 10.00 WIB - SELESAI</p>
+                    <p>10.00 WIB - SELESAI</p>
+                  </div>
+                  <div className={classes.timeMobileWrapper}>
+                    <img src={time} alt='time' />
+                    <p>RESEPSI</p>
+                    <div className={classes.separator} />
+                    <p>10.00 WIB - SELESAI</p>
                   </div>
                 </>
               )}
@@ -578,44 +741,44 @@ const InvitationPage = () => {
     );
   };
 
-  const generatePoemSection = () => {
-    return (
-      <div className={classes.poemSectionContainer}>
-        <div className={classes.poemContainer}>
-          <div className={classes.bg}>
-            <img src={Frame} alt="frame" />
-          </div>
-          <div className={classes.poemWrapper}>
-            <Fade duration={4000}>
-              <div className={classes.poemTop}>
-                <p>Mama yang tercinta</p>
-                <p>Akhirnya kutemukan juga jodohku</p>
-                <p>Seseorang bagai kau</p>
-                <p>Sederhana dalam tingkah dan bicara</p>
-                <p>Serta sangat menyayangiku</p>
-              </div>
-              <div className={classes.poemMid}>
-                <p>Mama</p>
-                <p>Burung dara jantan nakal yang sejak dulu kau pelihara</p>
-                <p>Kini terbang dan menemui jodohnya</p>
-              </div>
-              <div className={classes.poemBottom}>
-                <p>Mama</p>
-                <p>Aku telah menemukan jodohku</p>
-                <p>Janganlah engkau cemburu</p>
-                <p>Hendaklah hatimu yang baik itu mengerti</p>
-                <p>Pada waktunya</p>
-                <p>Aku mesti kau lepas pergi</p>
-              </div>
-            </Fade>
-            <Fade bottom duration={3000}>
-              <p className={classes.author}>W.S. Rendra</p>
-            </Fade>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // const generatePoemSection = () => {
+  //   return (
+  //     <div className={classes.poemSectionContainer}>
+  //       <div className={classes.poemContainer}>
+  //         <div className={classes.bg}>
+  //           <img src={Frame} alt="frame" />
+  //         </div>
+  //         <div className={classes.poemWrapper}>
+  //           <Fade duration={4000}>
+  //             <div className={classes.poemTop}>
+  //               <p>Mama yang tercinta</p>
+  //               <p>Akhirnya kutemukan juga jodohku</p>
+  //               <p>Seseorang bagai kau</p>
+  //               <p>Sederhana dalam tingkah dan bicara</p>
+  //               <p>Serta sangat menyayangiku</p>
+  //             </div>
+  //             <div className={classes.poemMid}>
+  //               <p>Mama</p>
+  //               <p>Burung dara jantan nakal yang sejak dulu kau pelihara</p>
+  //               <p>Kini terbang dan menemui jodohnya</p>
+  //             </div>
+  //             <div className={classes.poemBottom}>
+  //               <p>Mama</p>
+  //               <p>Aku telah menemukan jodohku</p>
+  //               <p>Janganlah engkau cemburu</p>
+  //               <p>Hendaklah hatimu yang baik itu mengerti</p>
+  //               <p>Pada waktunya</p>
+  //               <p>Aku mesti kau lepas pergi</p>
+  //             </div>
+  //           </Fade>
+  //           <Fade bottom duration={3000}>
+  //             <p className={classes.author}>W.S. Rendra</p>
+  //           </Fade>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const attendingSection = () => {
     return (
@@ -657,11 +820,7 @@ const InvitationPage = () => {
           </div>
           <Fade duration={3000}>
             <div className={classes.expressionSection}>
-              <img src={gunungan} alt="gunungan" />
-              <p className={classes.expression}>
-                Ungkapan terima kasih yang tulus dari kami apabila<br />
-                Bapak/Ibu/Teman-teman berkenan hadir dan memberikan do'a restu
-              </p>
+              <img src={Icon} alt="gunungan" />
             </div>
           </Fade>
         </div>
@@ -732,7 +891,6 @@ const InvitationPage = () => {
           </div>
           <div className={`${classes.giftInfoWraper} ${isShowGift ? classes.showGift : classes.hideGift} ${closeGift ? classes.closeGift : ''}`}>
             <div className={classes.imageDetail}>
-              <img className={classes.rose} src={rosegift} alt="rose" />
               <img className={classes.card} src={creditcard} alt="credit-card" />
               <div className={classes.copyWraper}>
                 <img className={classes.copy} src={numbercopy} onClick={copyText} alt="copy-text" />
@@ -740,7 +898,7 @@ const InvitationPage = () => {
               </div>
             </div>
             <div className={classes.infoWrapper}>
-              <p className={classes.infoTitle}><strong>Alamat Pengiriman Hadiah Fisik</strong></p>
+              <p className={classes.infoTitle}>Alamat Pengiriman Hadiah Fisik</p>
               <p className={classes.infoDetail}>
                 Nama : Ridwan Krisdiansyah <br />
                 Alamat : Kp. Babakan RT.001/002 Ds. Cisungsang Kec. Cibeber,<br />Kab. Lebak, Banten. 42394
@@ -766,12 +924,12 @@ const InvitationPage = () => {
         <Fade duration={3000}>
           <div className={classes.closingSentenceWrapper}>
             <p>
-              Bagi Kami Kehadiran & doa Anda<br /> merupakan keberkahan, kehormatan serta kebahagiaan.<br />
-              Dari hati yang terdalam, kami ucapkan terima kasih
+              Kehadiran & doa Anda<br/> adalah berkah, kehormatan & kebahagiaan bagi kami.<br/>
+              Kami mengatakan dari hati kami yang terdalam, atas perhatian Anda<br/>
+              Terima kasih
             </p>
           </div>
         </Fade>
-        <img src={ClosingWing} alt="wing" className={classes.image} />
       </div>
     );
   };
@@ -795,17 +953,23 @@ const InvitationPage = () => {
     return (
       <div className={classes.invitationContainer}>
         {generateHeader()}
-        {generateStory()}
-        {generateSecondStory()}
-        {!isIOS ? secondImageSection() : iosSecondImageSection()}
-        {summarySection()}
-        {generateBridesProfile()}
-        {eventDetail()}
-        {!isIOS ? thirdImageSeparator() : iosThirdImageSeparator()}
+        {generateBiography()}
+        {generateInvocation()}
         {generatePoemSection()}
+        {generateBrides()}
+        {generateGallery()}
+        {/* {generateStory()}
+        {generateSecondStory()} */}
+        {/* {!isIOS ? secondImageSection() : iosSecondImageSection()} */}
+        {/* {summarySection()} */}
+        {/* {generateBridesProfile()} */}
+        {eventDetail()}
+        {/* {!isIOS ? thirdImageSeparator() : iosThirdImageSeparator()} */}
+        {/* {generatePoemSection()} */}
         {attendingSection()}
-        {generateMessageSection()}
         {giftSection()}
+
+        {generateMessageSection()}
         {closingSection()}
         {footerSection()}
         {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
@@ -823,7 +987,7 @@ const InvitationPage = () => {
     <div className={classes.container}>
       {!isInvitationOpen ? <StartedComponent openInvitation={openInvitation} name={name} /> : generateInvitation()}
     </div>
-  )
-}
+  );
+};
 
 export default InvitationPage;

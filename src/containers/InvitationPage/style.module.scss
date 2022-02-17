@@ -114,6 +114,196 @@
         }
       }
     }
+    .biographyContainer {
+      // background-image: url()
+      background-image: url("../../static/images/profile-bg.png");
+      background-size: contain;
+      // height: 1000px;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      .biofemaleWrapper,
+      .bioMaleWrapper {
+        @include directionY;
+        // border: 1px solid yellow;
+        align-items: center;
+        img {
+          // display: flex;
+          // @include content-center;
+          // border: 1px solid red;
+          // width: 170px;
+          width: 70%;
+        }
+        .contentWrapper {
+          background-image: url("../../static/images/bg-bio.png");
+          // background-size: contain;
+          // object-fit: center;
+          background-position: center center;
+
+          background-repeat: no-repeat;
+          .bioTitle {
+            text-align: center;
+            font-size: 16px;
+          }
+          .bioDesc {
+            @include content-center;
+            border-radius: 23px;
+            text-align: center;
+            font-size: 16px;
+            // border: 1px solid yellow;
+            width: 70%;
+            background: rgba(207, 183, 132, 0.2);
+            padding: 1rem;
+            margin-bottom: 26px;
+            // opacity: 0.25;
+          }
+        }
+      }
+    }
+    .invocationContainer {
+      img {
+        width: 100%;
+      }
+    }
+    .poemContainer {
+      background-image: url("../../static/images/bg-poem.png");
+      // background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      // object-fit: center;
+      background-position: center bottom;
+      // background-position: center;
+      // height: 270px;
+      // height: 400px;
+      .poemTitle {
+        @include content-center;
+        width: 10%;
+        text-align: center;
+        text-decoration-line: underline;
+        text-underline-offset: 12px;
+        text-decoration-color: $color-gold;
+      }
+      .poemWrapper {
+        // border: 1px solid red;
+        width: 50%;
+        @include directionY;
+        @include content-center;
+        // align-items: center;
+        text-align: center;
+        font-size: 16px;
+        padding-bottom: 2rem;
+        .top {
+          // border: 1px solid yellow;
+          // width: 30%;
+          // font-size: 11px;
+          // text-align: center;
+          // margin-right: 20px;
+          // margin-left: -40%;
+          // float: left;
+          // margin-right: 20%;
+        }
+        .mid {
+          // @include content-center;
+          // width: 30%;
+          // font-size: 11px;
+          // text-align: center;
+        }
+        .bottom {
+          // float: right;
+          // width: 30%;
+          // font-size: 11px;
+          // margin-left: 20%;
+          // margin-right: -40%;
+          text-align: center;
+        }
+      }
+    }
+    .bridesContainer {
+      @include directionY;
+      align-items: center;
+      justify-content: space-around;
+      // border: 1px solid red;
+      background-image: url("../../static/images/brides-bg.png");
+      background-size: cover;
+      background-position: center;
+      // background-size: contain;
+      background-repeat: no-repeat;
+      text-align: center;
+      padding: 2rem 0;
+      .left {
+        // @include directionY;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50%;
+        width: 70%;
+        img {
+          width: 80%;
+          align-self: flex-end;
+        }
+        .desc {
+          align-self: flex-start;
+          width: 50%;
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column-reverse;
+        // @include directionY;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+
+        // border: 1px solid yellow;
+        img {
+          width: 80%;
+          align-self: flex-start;
+        }
+        .desc {
+          align-self: flex-end;
+          width: 50%;
+        }
+      }
+    }
+    .galleryContainer {
+      background-image: url("../../static/images/gallery-bg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 2rem 0;
+      .topContent {
+        @include directionY;
+        @include content-center;
+        width: 90%;
+        .upper {
+          @include directionX;
+          justify-content: space-evenly;
+          margin-bottom: 12px;
+        }
+        .lower {
+          @include directionX;
+          justify-content: space-evenly;
+        }
+      }
+      .bottomContent {
+        @include directionX;
+        @include content-center;
+        justify-content: space-around;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 90%;
+        .left {
+          @include directionY;
+          justify-content: space-around;
+          align-items: center;
+          .top {
+            @include directionX;
+            justify-content: space-around;
+            width: 90%;
+          }
+        }
+      }
+    }
     .storySection {
       @include section-spacing;
       @include directionX;
@@ -363,9 +553,9 @@
       }
     }
     .event {
-      @include section-spacing;
-      @include parallax;
-      background-image: url("../../static/images/batik-bg.png");
+      // @include section-spacing;
+      // @include parallax;
+      background-image: url("../../static/images/event-bg.png");
       height: 100%;
       width: 100%;
       background-repeat: no-repeat;
@@ -425,7 +615,6 @@
           align-items: center;
           width: 20%;
           margin-bottom: 3%;
-          border-bottom: 1px solid $color-gold;
           @include apply-at-sm-md-size {
             margin-top: 8%;
             font-size: 12px;
@@ -445,10 +634,19 @@
             }
           }
         }
+        .btnCalendarWrapper {
+          @include content-center;
+          border: 1px solid #cfb784;
+          padding: 0 10px;
+          width: 120px;
+          font-size: 12px;
+          text-align: center;
+          border-radius: 8px;
+        }
         .timesWraper {
           @include directionX;
           @include content-center;
-          width: 80%;
+          width: 100%;
           justify-content: space-between;
           margin-bottom: 3%;
           .time {
@@ -569,86 +767,86 @@
         height: 100vh;
       }
     }
-    .poemSectionContainer {
-      border-bottom: 1px solid $color-gold;
-      border-top: 1px solid $color-gold;
-      font-size: 28px;
-      .poemContainer {
-        @include directionY;
-        align-items: center;
-        justify-content: center;
-        background-image: url("../../static/images/thirdimage.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        object-fit: cover;
-        @include parallax;
-        @include apply-at-sm-md-size {
-          background-position: center;
-          background-image: url("../../static/images/thirdimage-sm.png");
-        }
-        .bg {
-          width: 100%;
-          background-color: $color-black;
-          opacity: 0.82;
-          padding: 2% 0;
-          @include apply-at-sm-md-size {
-            min-height: 680px;
-            padding: 0;
-          }
-          img {
-            @include directionX;
-            @include content-center;
-            height: 100%;
-            width: 50%;
-            min-height: 900px;
-            background-color: $color-black;
-            position: relative;
-            @include apply-at-sm-md-size {
-              min-height: 680px;
-              width: 100%;
-            }
-          }
-        }
-        .poemWrapper {
-          position: absolute;
-          z-index: 1;
-          padding-left: 15%;
-          margin-top: 4%;
-          @include apply-at-sm-md-size {
-            margin-top: 0;
-          }
-          p {
-            margin-top: -30px;
-            @include apply-at-sm-md-size {
-              margin: 0;
-              font-size: 14px;
-            }
-          }
-          .poemMid {
-            width: 66%;
-            margin-left: 9%;
-            margin-top: 10%;
-            margin-bottom: 10%;
-            @include apply-at-sm-md-size {
-              margin-bottom: 10px;
-              margin-top: 10px;
-            }
-          }
-          .author {
-            margin-top: 4%;
-            text-align: right;
-            width: 75%;
-            margin-bottom: 5%;
-          }
-        }
-      }
-    }
+    // .poemSectionContainer {
+    //   border-bottom: 1px solid $color-gold;
+    //   border-top: 1px solid $color-gold;
+    //   font-size: 28px;
+    //   .poemContainer {
+    //     @include directionY;
+    //     align-items: center;
+    //     justify-content: center;
+    //     background-image: url("../../static/images/thirdimage.png");
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     object-fit: cover;
+    //     @include parallax;
+    //     @include apply-at-sm-md-size {
+    //       background-position: center;
+    //       background-image: url("../../static/images/thirdimage-sm.png");
+    //     }
+    //     .bg {
+    //       width: 100%;
+    //       background-color: $color-black;
+    //       opacity: 0.82;
+    //       padding: 2% 0;
+    //       @include apply-at-sm-md-size {
+    //         min-height: 680px;
+    //         padding: 0;
+    //       }
+    //       img {
+    //         @include directionX;
+    //         @include content-center;
+    //         height: 100%;
+    //         width: 50%;
+    //         min-height: 900px;
+    //         background-color: $color-black;
+    //         position: relative;
+    //         @include apply-at-sm-md-size {
+    //           min-height: 680px;
+    //           width: 100%;
+    //         }
+    //       }
+    //     }
+    //     .poemWrapper {
+    //       position: absolute;
+    //       z-index: 1;
+    //       padding-left: 15%;
+    //       margin-top: 4%;
+    //       @include apply-at-sm-md-size {
+    //         margin-top: 0;
+    //       }
+    //       p {
+    //         margin-top: -30px;
+    //         @include apply-at-sm-md-size {
+    //           margin: 0;
+    //           font-size: 14px;
+    //         }
+    //       }
+    //       .poemMid {
+    //         width: 66%;
+    //         margin-left: 9%;
+    //         margin-top: 10%;
+    //         margin-bottom: 10%;
+    //         @include apply-at-sm-md-size {
+    //           margin-bottom: 10px;
+    //           margin-top: 10px;
+    //         }
+    //       }
+    //       .author {
+    //         margin-top: 4%;
+    //         text-align: right;
+    //         width: 75%;
+    //         margin-bottom: 5%;
+    //       }
+    //     }
+    //   }
+    // }
     .attendingContainer {
-      @include section-spacing;
-      @include parallax;
       background-image: url("../../static/images/message-bg.png");
       background-repeat: no-repeat;
       background-size: cover;
+      border-top: 1px solid $color-dark-brown;
+      border-bottom: 1px solid $color-dark-brown;
 
       .title {
         @include body;
@@ -661,6 +859,7 @@
           text-align: center;
           text-decoration-line: underline;
           text-underline-offset: 12px;
+          text-decoration-color: $color-dark-brown;
           margin-bottom: 5%;
           width: 90%;
         }
@@ -838,6 +1037,7 @@
             @include apply-at-sm-md-size {
               width: 155px;
             }
+            margin-bottom: 30px;
           }
           .expression {
             text-align: center;
@@ -846,9 +1046,9 @@
       }
     }
     .messageSectionContainer {
-      @include section-spacing;
-      @include parallax;
-      background-image: url("../../static/images/message-bg.png");
+      // @include section-spacing;
+      // @include parallax;
+      // background-image: url("../../static/images/message-bg.png");
       background-repeat: no-repeat;
       background-size: cover;
       padding-bottom: 2%;
@@ -1011,7 +1211,12 @@
       }
     }
     .giftContainer {
-      @include section-spacing;
+      padding: 2rem 0;
+      // padding-top: 97px;
+      // padding-bottom: 72px;
+      background-image: url("../../static/images/giftbg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
       .giftWraper {
         width: 60%;
         @include apply-at-sm-md-size {
@@ -1035,9 +1240,11 @@
           }
           .ribbon {
             display: flex;
+            margin-top: 8%;
+            margin-bottom: 8%;
             @include content-center;
             @include apply-at-sm-md-size {
-              width: 89px;
+              // width: 89px;
             }
           }
         }
@@ -1073,11 +1280,8 @@
           }
         }
         .giftInfoWraper {
-          background-image: url("../../static/images/giftbg.png");
-          background-repeat: no-repeat;
-          background-size: cover;
-          margin-bottom: 10%;
-          padding-bottom: 5%;
+          // margin-bottom: 10%;
+          // padding-bottom: 5%;
           @include directionY;
           .imageDetail {
             @include directionY;
@@ -1093,18 +1297,18 @@
             .card {
               display: flex;
               @include content-center;
-              width: 449px;
+              // width: 449px;
               margin-bottom: 10%;
               @include apply-at-sm-md-size {
-                width: 180px;
+                width: 270px;
+                // width: 80%;
               }
             }
           }
           .infoWrapper {
-            border-top: 1px dotted $color-gold;
-            border-bottom: 1px dotted $color-gold;
             margin: 20px 0;
             padding-bottom: 40px;
+            @include useMerienda;
             text-align: center;
             @include apply-at-sm-md-size {
               @include content-center;
@@ -1116,8 +1320,9 @@
               display: flex;
               @include content-center;
               justify-content: center;
+
               @include apply-at-sm-md-size {
-                font-size: 14px;
+                font-size: 16px;
                 text-align: center;
               }
             }
@@ -1142,7 +1347,7 @@
                 width: 115px;
                 cursor: pointer;
                 @include apply-at-sm-md-size {
-                  width: 70px;
+                  width: 100px;
                   top: 5px;
                 }
               }
@@ -1168,7 +1373,8 @@
             @include content-center;
             .copy {
               @include apply-at-sm-md-size {
-                width: 70px;
+                // width: 70px;
+                width: 100px;
               }
               position: absolute;
               width: 115px;
@@ -1186,6 +1392,7 @@
           }
 
           .closingStatement {
+            @include useMerienda;
             font-size: 18px;
             @include content-center;
             @include apply-at-sm-md-size {
@@ -1224,49 +1431,43 @@
     }
     .closingSectionContainer {
       @include directionY;
+      @include useForum;
       justify-content: center;
       align-items: center;
       background-image: url("../../static/images/closing-bg.png");
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
-      border-bottom: 1px solid $color-gold;
       .closingSentenceWrapper {
         @include content-center;
         font-size: 30px;
         width: 100%;
         margin-bottom: -25px;
         @include apply-at-sm-md-size {
-          font-size: 14px;
+          font-size: 12px;
           width: 100%;
-          padding-top: 5%;
           margin-bottom: 0;
-        }
-      }
-      .image {
-        @include apply-at-sm-md-size {
-          width: 147px;
-          margin-bottom: 5%;
         }
       }
     }
     .footerContainer {
       @include useMulish;
-      margin-top: 22px;
       @include directionY;
       justify-content: center;
       align-items: center;
-      margin-bottom: 6%;
-      border-top: 1px solid $color-gold;
+      margin-bottom: 2%;
+      border-top: 1px solid $color-dark-brown;
       .colaboration {
         font-size: 38px;
+        color: $color-dark-brown;
         @include apply-at-sm-md-size {
           font-size: 14px;
         }
       }
       .brand {
-        margin-top: -1%;
-        margin-bottom: 4%;
+        margin-top: -2%;
+        margin-left: -2%;
+        margin-bottom: 2%;
         @include apply-at-sm-md-size {
           width: 80px;
         }
@@ -1278,7 +1479,7 @@
         @include apply-at-sm-md-size {
           width: 20px;
           height: 20px;
-          margin-bottom: 5%;
+          // margin-bottom: 5%;
         }
       }
     }
