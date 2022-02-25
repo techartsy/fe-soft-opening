@@ -1,19 +1,22 @@
 @import "../../styles/base";
 
 .popupWrapper {
+  @include apply-at-md-lg-size {
+    width: 360px;
+  }
   .prokesTitle {
     @include body;
     color: $color-gold;
-    font-size: 24px;
+    // font-size: 24px;
     text-align: center;
-    margin-bottom: 8%;
+    // margin-bottom: 8%;
     text-decoration-line: underline;
     text-underline-offset: 10px;
     margin-top: -3%;
-    @include apply-at-sm-md-size {
-      font-size: 16px;
-      margin-bottom: 20%;
-    }
+    // @include apply-at-sm-md-size {
+    font-size: 16px;
+    margin-bottom: 20%;
+    // }
     p {
       color: $color-gold;
     }
@@ -30,18 +33,18 @@
     .iconWrapperPopup {
       @include directionY;
       align-items: center;
-      width: 25%;
-      @include apply-at-sm-md-size {
-        width: 40%;
-      }
+      // width: 25%;
+      // @include apply-at-sm-md-size {
+      width: 40%;
+      // }
       img {
         @include content-center;
-        width: 60px;
-        height: 60px;
-        @include apply-at-sm-md-size {
-          width: 50px;
-          height: 40px;
-        }
+        // width: 60px;
+        // height: 60px;
+        // @include apply-at-sm-md-size {
+        width: 50px;
+        height: 40px;
+        // }
       }
     }
   }
@@ -55,19 +58,19 @@
     text-align: center;
     .iconWrapperPopup {
       @include directionY;
-      width: 25%;
+      // width: 25%;
       align-items: center;
-      @include apply-at-sm-md-size {
-        width: 40%;
-      }
+      // @include apply-at-sm-md-size {
+      width: 40%;
+      // }
       img {
         @include content-center;
-        width: 60px;
-        height: 60px;
-        @include apply-at-sm-md-size {
-          width: 50px;
-          height: 40px;
-        }
+        // width: 60px;
+        // height: 60px;
+        // @include apply-at-sm-md-size {
+        width: 50px;
+        height: 40px;
+        // }
       }
     }
   }
@@ -75,12 +78,12 @@
     margin-top: 5%;
     margin-bottom: 5%;
     color: $color-gold;
-    font-size: 11px;
+    // font-size: 11px;
     text-align: center;
     line-height: 23.05px;
-    @include apply-at-sm-md-size {
-      font-size: 10px;
-    }
+    // @include apply-at-sm-md-size {
+    font-size: 10px;
+    // }
   }
   .closePopupBtn {
     @include body;
@@ -92,16 +95,16 @@
     color: $color-gold;
     border: 1px solid $color-gold;
     border-radius: 53px;
-    width: 159px;
+    // width: 159px;
     max-height: 53px;
-    font-size: 23px;
+    // font-size: 23px;
     text-align: center;
     cursor: pointer;
     margin-bottom: 4%;
-    @include apply-at-sm-md-size {
-      width: 74px;
-      font-size: 12px;
-      height: 26px;
-    }
+    // @include apply-at-sm-md-size {
+    width: 74px;
+    font-size: 12px;
+    height: 26px;
+    // }
   }
 }

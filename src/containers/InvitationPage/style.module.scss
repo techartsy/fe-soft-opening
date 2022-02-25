@@ -3,6 +3,18 @@
   @include body;
   background-color: $color-black;
   overflow-x: hidden;
+  @include apply-at-md-lg-size {
+    width: 360px;
+    @include content-center;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $color-gold;
+      border-radius: 20px;
+    }
+  }
   .invitationContainer {
     .header {
       @include directionY;
@@ -13,132 +25,83 @@
       border: none;
       object-fit: cover;
       background-repeat: no-repeat;
-      background-size: cover;
-      margin-bottom: 22px;
       border-bottom: 1px solid $color-gold;
-      @include apply-at-lg-size {
-        background-image: url("../../static/images/mainimage.png");
-        height: 100vh;
-      }
+      background-image: url("../../static/images/mainimage-sm.png");
+      height: 240px;
+      justify-content: flex-end;
       @include apply-at-sm-md-size {
-        background-image: url("../../static/images/mainimage-sm.png");
         background-size: contain;
-        height: 320px;
-        justify-content: space-between;
-      }
-      .headerAnimation {
-        @include apply-at-sm-size {
-          @include directionX;
-        }
-        .headerTitle {
-          float: left;
-          width: 38%;
-          font-size: 90px;
-          margin-left: 5%;
-          margin-bottom: 5%;
-          align-self: flex-end;
-          .titleTop {
-            max-height: 20px;
-            text-align: center;
-            @include apply-at-sm-md-size {
-              text-align: left;
-            }
-          }
-          .titleMid {
-            max-height: 40px;
-            color: $color-white;
-            text-align: center;
-            @include apply-at-sm-md-size {
-              margin-left: 22%;
-              max-height: 10px;
-              margin-top: -5%;
-            }
-          }
-          .titleBottom {
-            max-height: 40px;
-            margin-top: -5%;
-            text-align: center;
-            @include apply-at-sm-md-size {
-              margin-right: 12%;
-              text-align: right;
-              height: 100%;
-              margin-top: -2%;
-            }
-          }
-          @include apply-at-sm-md-size {
-            font-size: 30px;
-            width: 75%;
-            margin: 0 auto;
-            padding-left: 5%;
-          }
-        }
       }
       .countdown {
         @include directionX;
         @include content-center;
-        border-top: 1px solid $color-white;
-        border-bottom: 1px solid $color-white;
+        border: 1.93103px solid $color-dark-brown;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 28.5491px 28.5491px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(30px);
         width: 30%;
-        padding-top: 2px;
-        padding-bottom: 5px;
+        // padding-top: 2px;
+        // padding-bottom: 5px;
         justify-content: space-around;
         color: $color-white;
         margin-bottom: 3%;
-        @include apply-at-sm-md-size {
-          padding: 0;
-          width: 55%;
-          text-align: center;
-          margin-bottom: 5%;
-        }
+
+        // @include apply-at-sm-md-size {
+        padding: 8px;
+        width: 55%;
+        text-align: center;
+        margin-bottom: 5%;
+        // }
         .countdownItem {
           border-radius: 20px;
-          @include apply-at-sm-md-size {
-            font-size: 9px;
-            width: 42px;
-            heigth: 40px;
-          }
+          // @include apply-at-sm-md-size {
+          font-size: 9px;
+          width: 42px;
+          height: 40px;
+          // }
           .countdownTime {
-            font-size: 35px;
+            // font-size: 35px;
             text-align: center;
-            @include apply-at-sm-md-size {
-              font-size: 15px;
-            }
+            // @include apply-at-sm-md-size {
+            font-size: 15px;
+            @include useForum;
+            line-height: 21.16px;
+            margin-bottom: 4%;
+            // }
           }
           .countdownInterval {
-            font-size: 26px;
-            @include apply-at-sm-md-size {
-              margin: 0;
-              font-size: 15px;
-            }
+            // font-size: 26px;
+            // @include apply-at-sm-md-size {
+            // border: 1px solid yellow;
+            // letter-spacing: 0.1em;
+
+            margin: 0;
+            font-size: 15px;
+            @include useForum;
+            line-height: 21.16px;
+            // @include useMerienda;
+            // font-weight: 100;
+            // }
           }
         }
       }
     }
     .biographyContainer {
-      // background-image: url()
       background-image: url("../../static/images/profile-bg.png");
       background-size: contain;
-      // height: 1000px;
       padding-top: 2rem;
       padding-bottom: 2rem;
       .biofemaleWrapper,
       .bioMaleWrapper {
         @include directionY;
-        // border: 1px solid yellow;
         align-items: center;
         img {
-          // display: flex;
-          // @include content-center;
-          // border: 1px solid red;
-          // width: 170px;
           width: 70%;
         }
         .contentWrapper {
           background-image: url("../../static/images/bg-bio.png");
-          // background-size: contain;
-          // object-fit: center;
           background-position: center center;
-
           background-repeat: no-repeat;
           .bioTitle {
             text-align: center;
@@ -149,119 +112,92 @@
             border-radius: 23px;
             text-align: center;
             font-size: 16px;
-            // border: 1px solid yellow;
             width: 70%;
             background: rgba(207, 183, 132, 0.2);
             padding: 1rem;
             margin-bottom: 26px;
-            // opacity: 0.25;
           }
         }
       }
     }
     .invocationContainer {
       img {
+        border-top: 1px solid $color-dark-brown;
+        border-bottom: 1px solid $color-dark-brown;
         width: 100%;
-      }
-    }
-    .poemContainer {
-      background-image: url("../../static/images/bg-poem.png");
-      // background-size: cover;
-      background-size: contain;
-      background-repeat: no-repeat;
-      // object-fit: center;
-      background-position: center bottom;
-      // background-position: center;
-      // height: 270px;
-      // height: 400px;
-      .poemTitle {
-        @include content-center;
-        width: 10%;
-        text-align: center;
-        text-decoration-line: underline;
-        text-underline-offset: 12px;
-        text-decoration-color: $color-gold;
-      }
-      .poemWrapper {
-        // border: 1px solid red;
-        width: 50%;
-        @include directionY;
-        @include content-center;
-        // align-items: center;
-        text-align: center;
-        font-size: 16px;
-        padding-bottom: 2rem;
-        .top {
-          // border: 1px solid yellow;
-          // width: 30%;
-          // font-size: 11px;
-          // text-align: center;
-          // margin-right: 20px;
-          // margin-left: -40%;
-          // float: left;
-          // margin-right: 20%;
-        }
-        .mid {
-          // @include content-center;
-          // width: 30%;
-          // font-size: 11px;
-          // text-align: center;
-        }
-        .bottom {
-          // float: right;
-          // width: 30%;
-          // font-size: 11px;
-          // margin-left: 20%;
-          // margin-right: -40%;
-          text-align: center;
-        }
+        min-height: 281px;
       }
     }
     .bridesContainer {
       @include directionY;
       align-items: center;
       justify-content: space-around;
-      // border: 1px solid red;
       background-image: url("../../static/images/brides-bg.png");
       background-size: cover;
       background-position: center;
-      // background-size: contain;
       background-repeat: no-repeat;
       text-align: center;
       padding: 2rem 0;
+      margin-top: -1.5%;
+
       .left {
-        // @include directionY;
         display: flex;
         flex-direction: column-reverse;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 50%;
-        width: 70%;
+        margin-bottom: 25%;
+        width: 90%;
         img {
-          width: 80%;
+          // width: 80%;
+          // @include apply-at-md-lg-size {
+          width: 203px;
+          // }
           align-self: flex-end;
         }
         .desc {
           align-self: flex-start;
-          width: 50%;
+          width: 80%;
+          text-align: left;
+          .first {
+            padding-left: 26%;
+          }
+          .second {
+            margin-top: -2%;
+            margin-bottom: -4%;
+          }
+          .third {
+            padding-left: 13%;
+          }
         }
       }
       .right {
         display: flex;
         flex-direction: column-reverse;
-        // @include directionY;
         justify-content: space-between;
         align-items: center;
-        width: 70%;
-
-        // border: 1px solid yellow;
+        width: 90%;
         img {
-          width: 80%;
+          // width: 80%;
+          // @include apply-at-md-lg-size {
+          width: 203px;
+          // }
+
           align-self: flex-start;
         }
         .desc {
           align-self: flex-end;
-          width: 50%;
+          width: 80%;
+          text-align: right;
+          .first {
+            padding-right: 20%;
+          }
+          .second {
+            margin-top: -2%;
+            margin-bottom: -4%;
+          }
+          .third {
+            padding-right: 13%;
+          }
         }
       }
     }
@@ -270,297 +206,281 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      padding: 2rem 0;
+      padding: 2rem 0 2.5rem 0;
+
       .topContent {
+        @include directionY;
+        @include content-center;
+        width: 90%;
+        margin-bottom: 10px;
+        gap: 10px;
+
+        .upper {
+          @include directionX;
+          justify-content: space-between;
+          margin-bottom: 4px;
+          gap: 10px;
+          .imageUpperLeft {
+            width: 35%;
+          }
+          .imageUpperRight {
+            width: 65%;
+          }
+        }
+        .lower {
+          @include directionX;
+          justify-content: space-between;
+          // justify-content: space-around;
+          gap: 10px;
+          .imageLowerLeft {
+            width: 50%;
+          }
+          .imageLowerRight {
+            width: 50%;
+          }
+        }
+      }
+      .midContent {
+        @include directionX;
+        @include content-center;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        width: 90%;
+        gap: 10px;
+        .left {
+          @include directionY;
+          justify-content: space-between;
+          width: 60%;
+          padding: 0;
+          .top {
+            width: 100%;
+            .imageMidLeftTop {
+              width: 100%;
+            }
+          }
+          .imageMidLeftBottom {
+            width: 100%;
+          }
+        }
+        .right {
+          width: 40%;
+          gap: 10px;
+          @include directionY;
+          justify-content: space-between;
+          .top {
+            width: 100%;
+            .imageMidRightTop {
+              width: 100%;
+            }
+          }
+          .imageMidRightBottom {
+            width: 100%;
+          }
+        }
+      }
+      .bottomContent {
         @include directionY;
         @include content-center;
         width: 90%;
         .upper {
           @include directionX;
-          justify-content: space-evenly;
+          justify-content: space-between;
           margin-bottom: 12px;
-        }
-        .lower {
-          @include directionX;
-          justify-content: space-evenly;
-        }
-      }
-      .bottomContent {
-        @include directionX;
-        @include content-center;
-        justify-content: space-around;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 90%;
-        .left {
-          @include directionY;
-          justify-content: space-around;
-          align-items: center;
-          .top {
-            @include directionX;
-            justify-content: space-around;
-            width: 90%;
+          gap: 10px;
+          .bottomUpperTop {
+            width: 35%;
           }
-        }
-      }
-    }
-    .storySection {
-      @include section-spacing;
-      @include directionX;
-      font-size: 32px;
-      text-align: center;
-      justify-content: space-between;
-      .storyWrapper {
-        align-self: center;
-        width: 50%;
-        @include apply-at-sm-md-size {
-          width: 90%;
-          text-align: left;
-          letter-spacing: 0.7px;
-        }
-        .story {
-          @include content-center;
-          width: 90%;
-          @include apply-at-sm-md-size {
-            width: 100%;
-          }
-          .quoteAuthor {
-            margin-top: -4%;
-            color: $color-white;
-            @include apply-at-sm-md-size {
-              text-align: right;
-              margin-top: 2%;
-            }
-          }
-        }
-      }
-      .imageWrapper {
-        width: 50%;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-        @include apply-at-sm-md-size {
-          @include content-center;
-          margin-top: 5%;
-          width: 90%;
-        }
-      }
-      @include apply-at-sm-md-size {
-        @include reverseDirectionY;
-        font-size: 16px;
-      }
-    }
-    .secondStoryContainer {
-      @include section-spacing;
-      @include directionX;
-      font-size: 32px;
-      text-align: center;
-      .imageWrapper {
-        width: 50%;
-        @include apply-at-sm-md-size {
-          @include content-center;
-          margin-top: 5%;
-          width: 90%;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .storyWrapper {
-        align-self: center;
-        width: 50%;
-        @include apply-at-sm-md-size {
-          width: 90%;
-          text-align: right;
-          letter-spacing: 0.7px;
-        }
-        .story {
-          @include content-center;
-          width: 90%;
-          @include apply-at-sm-md-size {
-            width: 100%;
-          }
-          .quoteAuthor {
-            margin-top: -4%;
-            color: $color-white;
-            @include apply-at-sm-md-size {
-              text-align: left;
-              margin-top: 2%;
-            }
-          }
-        }
-      }
-      @include apply-at-sm-md-size {
-        @include directionY;
-        font-size: 16px;
-        text-align: left;
-      }
-    }
-    .paralaxx {
-      border-top: 1px solid $color-gold;
-      .paralaxxWraper {
-        @include parallax;
-        background-image: url("../../static/images/story.png");
-        min-height: 100vh;
-        object-fit: cover;
-        background-repeat: no-repeat;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        @include apply-at-sm-md-size {
-          background-position: center center;
-          background-image: url("../../static/images/story-sm.png");
-        }
-      }
-    }
-    .iosSecondImageSection {
-      border-top: 1px solid $color-gold;
-      border-bottom: 1px solid $color-gold;
-      margin-bottom: 20px;
-      padding: 20px 0 15px;
-      .secondImageIOS {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .summary {
-      @include directionX;
-      @include parallax;
-      background-image: url("../../static/images/story.png");
-      background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      object-fit: cover;
-      border-top: 1px solid $color-gold;
-      border-bottom: 1px solid $color-gold;
-      @include apply-at-sm-md-size {
-        background-position: center center;
-        background-image: url("../../static/images/story-sm.png");
-      }
-      .bg {
-        background-color: $color-black;
-        width: 100%;
-        opacity: 0.8;
-        .summaryWraper {
-          @include directionY;
-          margin-top: 2%;
-          align-items: center;
-          justify-content: center;
-          @include content-center;
-          .title {
-            @include content-center;
-            width: 180px;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            font-size: 30px;
-            border-bottom: 1px solid $color-gold;
-            @include apply-at-sm-md-size {
-              border: none;
-              text-decoration-line: underline;
-              text-underline-offset: 12px;
-              font-size: 16px;
-              height: 100%;
-            }
-          }
-          .summaryAnimation {
-            .summarySection {
-              @include content-center;
-              text-align: center;
-              font-size: 28px;
-              @include apply-at-sm-md-size {
-                font-size: 12px;
-                width: 100%;
-              }
-            }
-          }
-          img {
-            @include directionX;
-            @include content-center;
-            margin-bottom: 5%;
-            @include apply-at-sm-md-size {
-              height: 38px;
-            }
-          }
-        }
-      }
-    }
-    .bridesProfileContainer {
-      @include parallax;
-      @include section-spacing;
-      padding: 3% 0;
-      background-image: url("../../static/images/batik-bg.png");
-      height: 100%;
-      width: 100%;
-      border: none;
-      object-fit: cover;
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-bottom: 22px;
-      margin-top: 45px;
-      border-top: 1px solid $color-gold;
-      border-bottom: 1px solid $color-gold;
-      .wingWrapper {
-        @include content-center;
-        .image {
-          display: flex;
-          margin-left: auto;
-          margin-right: auto;
-          margin-top: 2%;
-          margin-bottom: 3%;
-          @include apply-at-sm-md-size {
-            height: 49px;
-          }
-        }
-      }
-      .profileWrapper {
-        @include directionX;
-        justify-content: space-around;
-        text-align: center;
-        @include apply-at-sm-md-size {
-          @include reverseDirectionY;
-        }
-        .card {
-          .bridesImage {
-            width: 460px;
-            @include apply-at-sm-md-size {
-              width: 172px;
-            }
-          }
-          .profileInfo {
-            .bridess {
-              font-size: 26px;
-              @include apply-at-sm-md-size {
-                font-size: 16px;
-              }
-            }
-            .parents {
-              font-size: 22px;
-              @include apply-at-sm-md-size {
-                @include content-center;
-                font-size: 16px;
-                width: 80%;
-              }
-            }
+          .bottomUpperBottom {
+            width: 70%;
           }
         }
       }
     }
     .event {
-      // @include section-spacing;
-      // @include parallax;
-      background-image: url("../../static/images/event-bg.png");
       height: 100%;
       width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      object-fit: cover;
+      .bgWrapper {
+        background-image: url("../../static/images/event-bg.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        .greeting {
+          // @include apply-at-sm-md-size {
+          @include content-center;
+          width: 95%;
+          // }
+          p {
+            // font-size: 29px;
+            text-align: center;
+            // @include apply-at-sm-md-size {
+            font-size: 15px;
+            line-height: 24px;
+            // }
+          }
+          .subtitle {
+            // @include apply-at-sm-md-size {
+            font-size: 13px;
+            font-weight: normal;
+            // }
+          }
+        }
+        .details {
+          .titleWraper {
+            margin-top: 5%;
+            .title {
+              @include directionX;
+              @include content-center;
+              align-items: center;
+              justify-content: center;
+              // width: 300px;
+              // font-size: 35px;
+              padding-bottom: 14px;
+              border-bottom: 1px solid $color-gold;
+              // @include apply-at-sm-md-size {
+              margin-top: 10%;
+              font-size: 14px;
+              width: 40%;
+              // }
+            }
+          }
+          .calender {
+            @include directionY;
+            @include content-center;
+            align-items: center;
+            // width: 20%;
+            margin-bottom: 3%;
+            // @include apply-at-sm-md-size {
+            margin-top: 8%;
+            font-size: 12px;
+            width: 50%;
+            // }
+            p {
+              width: 220px;
+              text-align: center;
+              // margin-top: 6%;
+              // @include apply-at-sm-md-size {
+              margin-top: 8%;
+              // }
+            }
+            img {
+              @include apply-at-sm-md-size {
+                width: 35px;
+              }
+            }
+          }
+          .btnCalendarWrapper {
+            @include content-center;
+            border: 1px solid #cfb784;
+            padding: 0 10px;
+            width: 120px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 8px;
+          }
+          .timesWraper {
+            @include directionX;
+            // @include content-center;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 3%;
+            .time {
+              @include directionY;
+              align-items: center;
+              border-bottom: 1px solid $color-gold;
+              width: 26%;
+              p {
+                width: 100%;
+                text-align: center;
+              }
+            }
+            .timeMobileWrapper {
+              @include content-center;
+              margin-top: 8%;
+              text-align: center;
+              font-size: 12px;
+
+              img {
+                // @include apply-at-sm-md-size {
+                width: 35px;
+                // }
+              }
+              .separator {
+                // border: 1px solid red;
+                // @include apply-at-sm-md-size {
+                height: 1px;
+                background: $color-gold;
+                margin-top: -10px;
+                margin-bottom: -10px;
+                // }
+              }
+            }
+          }
+        }
+      }
+      .locationWraper {
+        @include directionY;
+        @include content-center;
+        align-items: center;
+        margin-bottom: 2%;
+        // width: 28%;
+        // border-bottom: 1px solid $color-gold;
+        // @include apply-at-sm-md-size {
+        // width: 60%;
+        font-size: 12px;
+        margin-top: 8%;
+        // }
+        p {
+          width: 100%;
+          text-align: center;
+          // @include apply-at-sm-md-size {
+          margin-top: 8%;
+          // }
+        }
+        img {
+          // @include apply-at-sm-md-size {
+          width: 30px;
+          // }
+        }
+      }
+      .btnmap {
+        @include content-center;
+        @include directionX;
+        align-items: center;
+        justify-content: center;
+        // width: 255px;
+        padding: 0px 10px;
+        margin-bottom: 10%;
+        // font-size: 25px;
+        border: 1px solid $color-gold;
+        // border-radius: 20px;
+        cursor: pointer;
+        // @include apply-at-sm-md-size {
+        max-width: 145px;
+        font-size: 12px;
+        height: 30px;
+        border-radius: 10px;
+        // margin-top: 10%;
+        // }
+        .imageWrapper {
+          // width: 20%;
+          @include directionX;
+          align-items: center;
+          justify-content: center;
+          img {
+            // @include apply-at-sm-md-size {
+            width: 20px;
+            // }
+          }
+        }
+        p {
+          color: $color-gold;
+          text-decoration: none;
+          // @include apply-at-sm-md-size {
+          width: 80%;
+          text-align: center;
+          // }
+        }
+      }
       .topEvent {
         @include directionX;
         @include content-center;
@@ -570,277 +490,7 @@
           width: 187px;
         }
       }
-      .greeting {
-        @include apply-at-sm-md-size {
-          @include content-center;
-          width: 95%;
-        }
-        p {
-          font-size: 29px;
-          text-align: center;
-          @include apply-at-sm-md-size {
-            font-size: 15px;
-            line-height: 24px;
-          }
-        }
-        .subtitle {
-          @include apply-at-sm-md-size {
-            font-size: 13px;
-            font-weight: normal;
-          }
-        }
-      }
-      .details {
-        .titleWraper {
-          margin-top: 5%;
-          .title {
-            @include directionX;
-            @include content-center;
-            align-items: center;
-            justify-content: center;
-            width: 300px;
-            font-size: 35px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid $color-gold;
-            @include apply-at-sm-md-size {
-              margin-top: 10%;
-              font-size: 14px;
-              width: 40%;
-            }
-          }
-        }
-        .calender {
-          @include directionY;
-          @include content-center;
-          align-items: center;
-          width: 20%;
-          margin-bottom: 3%;
-          @include apply-at-sm-md-size {
-            margin-top: 8%;
-            font-size: 12px;
-            width: 50%;
-          }
-          p {
-            width: 220px;
-            text-align: center;
-            margin-top: 6%;
-            @include apply-at-sm-md-size {
-              margin-top: 8%;
-            }
-          }
-          img {
-            @include apply-at-sm-md-size {
-              width: 35px;
-            }
-          }
-        }
-        .btnCalendarWrapper {
-          @include content-center;
-          border: 1px solid #cfb784;
-          padding: 0 10px;
-          width: 120px;
-          font-size: 12px;
-          text-align: center;
-          border-radius: 8px;
-        }
-        .timesWraper {
-          @include directionX;
-          @include content-center;
-          width: 100%;
-          justify-content: space-between;
-          margin-bottom: 3%;
-          .time {
-            @include directionY;
-            align-items: center;
-            border-bottom: 1px solid $color-gold;
-            width: 26%;
-            p {
-              width: 100%;
-              text-align: center;
-            }
-          }
-          .timeMobileWrapper {
-            @include content-center;
-            margin-top: 8%;
-            text-align: center;
-            font-size: 12px;
-            img {
-              @include apply-at-sm-md-size {
-                width: 35px;
-              }
-            }
-            .separator {
-              @include apply-at-sm-md-size {
-                height: 1px;
-                background: $color-gold;
-                margin-top: -10px;
-                margin-bottom: -10px;
-              }
-            }
-          }
-        }
-        .locationWraper {
-          @include directionY;
-          @include content-center;
-          align-items: center;
-          margin-bottom: 5%;
-          width: 28%;
-          border-bottom: 1px solid $color-gold;
-          @include apply-at-sm-md-size {
-            width: 60%;
-            font-size: 12px;
-            margin-top: 8%;
-          }
-          p {
-            width: 100%;
-            text-align: center;
-            @include apply-at-sm-md-size {
-              margin-top: 8%;
-            }
-          }
-          img {
-            @include apply-at-sm-md-size {
-              width: 30px;
-            }
-          }
-        }
-        .btnmap {
-          @include content-center;
-          @include directionX;
-          align-items: center;
-          justify-content: center;
-          width: 255px;
-          padding: 0px 10px;
-          margin-bottom: 10%;
-          font-size: 25px;
-          border: 1px solid $color-gold;
-          border-radius: 20px;
-          cursor: pointer;
-          @include apply-at-sm-md-size {
-            max-width: 145px;
-            font-size: 12px;
-            height: 30px;
-            border-radius: 10px;
-            margin-top: 10%;
-          }
-          .imageWrapper {
-            width: 20%;
-            @include directionX;
-            align-items: center;
-            justify-content: center;
-            img {
-              @include apply-at-sm-md-size {
-                width: 20px;
-              }
-            }
-          }
-          p {
-            color: $color-gold;
-            text-decoration: none;
-            @include apply-at-sm-md-size {
-              width: 80%;
-              text-align: center;
-            }
-          }
-        }
-      }
     }
-    .thirdImageSection {
-      border-top: 1px solid $color-gold;
-      .paralaxxWraper {
-        background-image: url("../../static/images/thirdimage.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        object-fit: cover;
-        @include parallax;
-        min-height: 100vh;
-        @include apply-at-sm-md-size {
-          background-position: center;
-          background-image: url("../../static/images/thirdimage-sm.png");
-        }
-      }
-    }
-    .iosThirdImageSeparator {
-      border-top: 1px solid $color-gold;
-      .thirdImage {
-        width: 100%;
-        height: 100vh;
-      }
-    }
-    // .poemSectionContainer {
-    //   border-bottom: 1px solid $color-gold;
-    //   border-top: 1px solid $color-gold;
-    //   font-size: 28px;
-    //   .poemContainer {
-    //     @include directionY;
-    //     align-items: center;
-    //     justify-content: center;
-    //     background-image: url("../../static/images/thirdimage.png");
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    //     object-fit: cover;
-    //     @include parallax;
-    //     @include apply-at-sm-md-size {
-    //       background-position: center;
-    //       background-image: url("../../static/images/thirdimage-sm.png");
-    //     }
-    //     .bg {
-    //       width: 100%;
-    //       background-color: $color-black;
-    //       opacity: 0.82;
-    //       padding: 2% 0;
-    //       @include apply-at-sm-md-size {
-    //         min-height: 680px;
-    //         padding: 0;
-    //       }
-    //       img {
-    //         @include directionX;
-    //         @include content-center;
-    //         height: 100%;
-    //         width: 50%;
-    //         min-height: 900px;
-    //         background-color: $color-black;
-    //         position: relative;
-    //         @include apply-at-sm-md-size {
-    //           min-height: 680px;
-    //           width: 100%;
-    //         }
-    //       }
-    //     }
-    //     .poemWrapper {
-    //       position: absolute;
-    //       z-index: 1;
-    //       padding-left: 15%;
-    //       margin-top: 4%;
-    //       @include apply-at-sm-md-size {
-    //         margin-top: 0;
-    //       }
-    //       p {
-    //         margin-top: -30px;
-    //         @include apply-at-sm-md-size {
-    //           margin: 0;
-    //           font-size: 14px;
-    //         }
-    //       }
-    //       .poemMid {
-    //         width: 66%;
-    //         margin-left: 9%;
-    //         margin-top: 10%;
-    //         margin-bottom: 10%;
-    //         @include apply-at-sm-md-size {
-    //           margin-bottom: 10px;
-    //           margin-top: 10px;
-    //         }
-    //       }
-    //       .author {
-    //         margin-top: 4%;
-    //         text-align: right;
-    //         width: 75%;
-    //         margin-bottom: 5%;
-    //       }
-    //     }
-    //   }
-    // }
     .attendingContainer {
       background-image: url("../../static/images/message-bg.png");
       background-repeat: no-repeat;
@@ -850,54 +500,54 @@
 
       .title {
         @include body;
+        @include content-center;
         margin-top: 5%;
-        margin-left: 15%;
-        font-size: 30px;
-        @include apply-at-sm-md-size {
-          @include content-center;
-          font-size: 16px;
-          text-align: center;
-          text-decoration-line: underline;
-          text-underline-offset: 12px;
-          text-decoration-color: $color-dark-brown;
-          margin-bottom: 5%;
-          width: 90%;
-        }
+        // margin-left: 15%;
+        // font-size: 30px;
+        // @include apply-at-sm-md-size {
+        font-size: 16px;
+        text-align: center;
+        text-decoration-line: underline;
+        text-underline-offset: 12px;
+        text-decoration-color: $color-dark-brown;
+        margin-bottom: 5%;
+        width: 90%;
+        // }
       }
       .attendingWraper {
         width: 90%;
         @include useMulish;
-        @include directionX;
+        // @include directionX;
         @include content-center;
         justify-content: space-between;
         margin-bottom: 5%;
-        @include apply-at-sm-md-size {
-          @include reverseDirectionY;
-        }
+        // @include apply-at-sm-md-size {
+        @include reverseDirectionY;
+        // }
         .formWraper {
           .dropdownSection {
-            width: 500px;
+            // width: 500px;
             @include directionX;
-            justify-content: left;
+            // justify-content: left;
             align-items: center;
             border-bottom: 1px solid $color-gold;
             cursor: pointer;
-            @include apply-at-sm-md-size {
-              width: 100%;
-              justify-content: space-between;
-            }
+            // @include apply-at-sm-md-size {
+            width: 100%;
+            justify-content: space-between;
+            // }
             .formTitle {
               margin-right: 40%;
-              font-size: 24px;
-              @include apply-at-sm-md-size {
-                font-size: 12px;
-              }
+              // font-size: 24px;
+              // @include apply-at-sm-md-size {
+              font-size: 12px;
+              // }
             }
             .icon {
               img {
-                @include apply-at-sm-md-size {
-                  width: 12px;
-                }
+                // @include apply-at-sm-md-size {
+                width: 12px;
+                // }
               }
             }
           }
@@ -908,55 +558,55 @@
               color: $color-gold;
               .inputs {
                 @include directionY;
-                font-size: 24px;
+                // font-size: 24px;
                 p {
-                  @include apply-at-sm-md-size {
-                    font-size: 12px;
-                  }
+                  // @include apply-at-sm-md-size {
+                  font-size: 12px;
+                  // }
                 }
                 input {
                   @include useMulish;
                   color: $color-gold;
                   padding-left: 15px;
-                  width: 230px;
+                  // width: 230px;
                   height: 40px;
                   margin-bottom: 5%;
-                  border-radius: 16px;
+                  // border-radius: 16px;
                   background-color: $color-black;
                   border: 1px solid $color-gold;
-                  @include apply-at-sm-md-size {
-                    width: 95%;
-                    border-radius: 10px;
-                    font-size: 11px;
-                  }
+                  // @include apply-at-sm-md-size {
+                  width: 95%;
+                  border-radius: 10px;
+                  font-size: 11px;
+                  // }
                 }
                 textarea {
                   @include useMulish;
                   color: $color-gold;
-                  height: 90px;
+                  // height: 90px;
                   padding-left: 15px;
                   padding-top: 30px;
-                  border-radius: 16px;
+                  // border-radius: 16px;
                   background-color: $color-black;
                   border: 1px solid $color-gold;
-                  @include apply-at-sm-md-size {
-                    font-size: 11px;
-                    height: 86px;
-                    border-radius: 10px;
-                  }
+                  // @include apply-at-sm-md-size {
+                  font-size: 11px;
+                  height: 86px;
+                  border-radius: 10px;
+                  // }
                 }
                 ::-webkit-input-placeholder {
                   color: $color-gold;
                 }
                 input:focus {
                   outline: none !important;
-                  border-color: $color-blue;
-                  box-shadow: 0 0 8px $color-blue;
+                  border-color: $color-dark-brown;
+                  box-shadow: 0 0 8px $color-dark-brown;
                 }
                 textarea:focus {
                   outline: none !important;
-                  border-color: $color-blue;
-                  box-shadow: 0 0 8px $color-blue;
+                  border-color: $color-dark-brown;
+                  box-shadow: 0 0 8px $color-dark-brown;
                 }
               }
             }
@@ -964,52 +614,53 @@
               @include directionX;
               justify-content: space-between;
               .inputs {
-                @include apply-at-sm-md-size {
-                  @include directionY;
-                  font-size: 12px;
-                  width: 180px;
-                  margin-top: 2%;
-                }
+                // @include apply-at-sm-md-size {
+                @include directionY;
+                font-size: 12px;
+                width: 180px;
+                margin-top: 2%;
+                // }
                 .radioWrapper {
-                  @include directionX;
+                  // @include directionX;
                   width: 100%;
-                  @include apply-at-sm-md-size {
-                    @include directionY;
-                  }
+                  // @include apply-at-sm-md-size {
+                  @include directionY;
+                  // }
                   .radioItem {
-                    @include directionX;
+                    // @include directionX;
                     margin-right: 10px;
-                    @include apply-at-sm-md-size {
-                      @include directionX;
-                      align-items: center;
-                      margin: 2% 0;
-                    }
+                    accent-color: $color-dark-brown;
+                    // @include apply-at-sm-md-size {
+                    @include directionX;
+                    align-items: center;
+                    margin: 2% 0;
+                    // }
                     label {
-                      @include apply-at-sm-md-size {
-                        font-size: 10px;
-                        margin-left: 5%;
-                      }
+                      // @include apply-at-sm-md-size {
+                      font-size: 10px;
+                      margin-left: 5%;
+                      // }
                     }
                   }
                 }
               }
               .btnSend {
                 align-self: flex-end;
-                font-weight: bold;
+                // font-weight: bold;
                 cursor: pointer;
-                padding: 2%;
-                height: 40px;
-                border-radius: 10px;
+                // padding: 2%;
+                // height: 40px;
+                // border-radius: 10px;
                 color: $color-gold;
                 background-color: $color-black;
                 border: 1px solid $color-gold;
-                @include apply-at-sm-md-size {
-                  padding: 0 3%;
-                  height: 32px;
-                  font-size: 12px;
-                  border-radius: 6px;
-                  font-weight: normal;
-                }
+                // @include apply-at-sm-md-size {
+                padding: 0 3%;
+                height: 32px;
+                font-size: 12px;
+                border-radius: 6px;
+                font-weight: normal;
+                // }
               }
             }
           }
@@ -1033,10 +684,10 @@
             font-size: 14px;
           }
           img {
-            width: 269px;
-            @include apply-at-sm-md-size {
-              width: 155px;
-            }
+            // width: 269px;
+            // @include apply-at-sm-md-size {
+            width: 155px;
+            // }
             margin-bottom: 30px;
           }
           .expression {
@@ -1046,83 +697,84 @@
       }
     }
     .messageSectionContainer {
-      // @include section-spacing;
-      // @include parallax;
-      // background-image: url("../../static/images/message-bg.png");
       background-repeat: no-repeat;
       background-size: cover;
-      padding-bottom: 2%;
+      // padding-bottom: 2%;
+      border-top: 1px solid $color-dark-brown;
       .sectionTitle {
         @include content-center;
         text-align: center;
         border-bottom: 1px solid $color-gold;
-        width: 20%;
-        font-size: 29px;
+        // width: 20%;
+        // font-size: 29px;
         margin-bottom: 5%;
-        @include apply-at-sm-md-size {
-          font-size: 14px;
-          width: 40%;
-        }
+        // @include apply-at-sm-md-size {
+        font-size: 14px;
+        width: 40%;
+        // }
       }
       .mainContent {
-        @include directionX;
+        // @include directionX;
         @include content-center;
+        // border: 1px solid red;
         align-items: center;
-        justify-content: space-between;
-        width: 90%;
-        @include apply-at-sm-md-size {
-          @include reverseDirectionY;
-          width: 100%;
-        }
+        // justify-content: space-between;
+        justify-content: center;
+        // width: 90%;
+        // @include apply-at-sm-md-size {
+        @include reverseDirectionY;
+        width: 100%;
+        // }
         .leftSection {
           @include directionY;
+          justify-content: center;
+          padding: 2rem 0;
+          background-image: url("../../static/images/message-icon-bg.png");
+          // background-image: url("../../static/images/closing-bg.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          object-fit: cover;
+
           align-items: center;
+          // width: 100%;
+          // margin-right: 3%;
+          // @include apply-at-sm-md-size {
           width: 100%;
-          margin-right: 3%;
-          p {
-            font-size: 26px;
-            @include apply-at-sm-md-size {
-              font-size: 14px;
-            }
-          }
-          @include apply-at-sm-md-size {
-            width: 100%;
-          }
+          // }
           img {
-            @include apply-at-sm-md-size {
-              width: 155px;
-              margin-top: 10%;
-            }
+            // @include apply-at-sm-md-size {
+            width: 170px;
+            // }
           }
         }
         .rightSection {
-          width: 50%;
-          border: 1px solid $color-gold;
+          // width: 50%;
+          border: 1px solid red;
+
           border-radius: 10px;
-          padding: 2% 3%;
-          @include apply-at-sm-md-size {
-            width: 100%;
-            border: none;
-          }
+          // padding: 2% 3%;
+          // @include apply-at-sm-md-size {
+          width: 100%;
+          border: none;
+          // }
           .imgWrapper {
-            @include apply-at-sm-md-size {
-              width: 100%;
-            }
+            // @include apply-at-sm-md-size {
+            width: 100%;
+            padding-bottom: 20px;
+            // }
             .image {
               @include directionX;
               @include content-center;
-              max-width: 570px;
-              border: 1px solid $color-gold;
-              border-radius: 9px;
-              @include apply-at-sm-md-size {
-                width: 90%;
-              }
+              width: 100%;
             }
           }
           .messageWrapper {
-            margin-top: 4%;
+            // padding-top: 20px;
             height: 360px;
             overflow-y: scroll;
+            // border-top: 1px solid $color-dark-brown;
+            border-bottom: 1px solid $color-dark-brown;
+            padding-bottom: 1rem;
             &::-webkit-scrollbar {
               width: 2px;
             }
@@ -1135,29 +787,29 @@
               align-items: center;
               color: $color-black;
               height: auto;
-              @include apply-at-sm-size {
-                @include content-center;
-                width: 90%;
-              }
+              // @include apply-at-sm-size {
+              @include content-center;
+              width: 90%;
+              // }
               .avatar {
                 @include directionX;
-                width: 5%;
+                // width: 5%;
                 margin: auto;
-                @include apply-at-sm-size {
-                  align-items: center;
-                  height: 25px;
-                  width: 25px;
-                  margin-right: 5px;
-                }
+                // @include apply-at-sm-size {
+                align-items: center;
+                height: 25px;
+                width: 25px;
+                margin-right: 5px;
+                // }
               }
               .messageShape {
                 @include directionX;
                 width: 95%;
                 align-items: center;
-                padding-left: 1.5rem;
-                @include apply-at-sm-size {
-                  padding-left: 1rem;
-                }
+                // padding-left: 1.5rem;
+                // @include apply-at-sm-size {
+                padding-left: 1rem;
+                // }
                 .outerTriangle {
                   width: 0;
                   height: 0;
@@ -1183,25 +835,29 @@
                   border-radius: 6px;
                   text-align: left;
                   padding: 20px;
-                  width: 100%;
+                  // width: 100%;
                   margin-left: -5px;
-                  @include apply-at-sm-size {
-                    width: 80%;
-                  }
+                  @include useForum;
+
+                  // @include apply-at-sm-size {
+                  width: 80%;
+                  // }
                   .name {
-                    font-size: 17px;
-                    margin-bottom: 1.5%;
-                    @include apply-at-sm-size {
-                      margin-bottom: 0.5rem;
-                      font-size: 12px;
-                    }
+                    // font-size: 17px;
+                    // margin-bottom: 1.5%;
+                    // @include apply-at-sm-size {
+                    margin-bottom: 0.5rem;
+                    font-size: 12px;
+                    // }
                   }
                   .message {
-                    @include useMulish;
-                    font-size: 15px;
-                    @include apply-at-sm-size {
-                      font-size: 10px;
-                    }
+                    // @include useMulish;
+                    // @include useForum;
+                    // font-size: 15px;
+                    // @include apply-at-sm-size {
+                    font-size: 14px;
+                    letter-spacing: 0.005em;
+                    // }
                   }
                 }
               }
@@ -1212,192 +868,248 @@
     }
     .giftContainer {
       padding: 2rem 0;
-      // padding-top: 97px;
-      // padding-bottom: 72px;
       background-image: url("../../static/images/giftbg.png");
       background-repeat: no-repeat;
       background-size: cover;
       .giftWraper {
-        width: 60%;
-        @include apply-at-sm-md-size {
-          width: 100%;
-        }
+        // width: 60%;
+        // @include apply-at-sm-md-size {
+        width: 100%;
+        // }
         @include content-center;
         .tittleRibbon {
           .titleGift {
-            width: 30%;
+            // width: 30%;
             @include content-center;
             text-align: center;
-            font-size: 30px;
-            border-bottom: 1px solid $color-gold;
-            @include apply-at-sm-md-size {
-              font-size: 16px;
-              width: 100%;
-              text-decoration-line: underline;
-              text-underline-offset: 12px;
-              border: none;
-            }
+            // font-size: 30px;
+            // border-bottom: 1px solid $color-gold;
+            // @include apply-at-sm-md-size {
+            font-size: 16px;
+            width: 100%;
+            text-decoration-line: underline;
+            text-underline-offset: 12px;
+            border: none;
+            // }
           }
           .ribbon {
             display: flex;
             margin-top: 8%;
             margin-bottom: 8%;
             @include content-center;
-            @include apply-at-sm-md-size {
-              // width: 89px;
-            }
+            // @include apply-at-sm-md-size {
+            // }
           }
         }
         .dropdownSection {
-          width: 30%;
+          // width: 30%;
           @include content-center;
           @include directionX;
           justify-content: center;
-          align-items: center;
+          // align-items: center;
           margin-bottom: 5%;
           cursor: pointer;
-          @include apply-at-sm-md-size {
-            width: 100%;
-            align-items: center;
-          }
+          // @include apply-at-sm-md-size {
+          width: 100%;
+          align-items: center;
+          // }
           .title {
-            font-size: 24px;
+            // font-size: 24px;
             margin-right: 6%;
-            @include apply-at-sm-md-size {
-              font-size: 14px;
-            }
+            // @include apply-at-sm-md-size {
+            font-size: 14px;
+            // }
           }
           .icon {
-            @include apply-at-sm-md-size {
-              margin-top: -5px;
-            }
+            // @include apply-at-sm-md-size {
+            margin-top: -5px;
+            // }
             img {
-              @include apply-at-sm-md-size {
-                width: 10px;
-                height: 6px;
-              }
+              // @include apply-at-sm-md-size {
+              width: 10px;
+              height: 6px;
+              // }
             }
           }
         }
         .giftInfoWraper {
-          // margin-bottom: 10%;
-          // padding-bottom: 5%;
           @include directionY;
           .imageDetail {
+            @include useMerienda;
             @include directionY;
-            .rose {
-              display: flex;
-              @include content-center;
-              width: 204px;
-              margin-bottom: 5%;
-              @include apply-at-sm-md-size {
-                width: 85px;
-              }
-            }
+            // .rose {
+            //   display: flex;
+            //   @include content-center;
+            //   // width: 204px;
+            //   margin-bottom: 5%;
+            //   // @include apply-at-sm-md-size {
+            //   width: 85px;
+            //   // }
+            // }
             .card {
               display: flex;
               @include content-center;
-              // width: 449px;
               margin-bottom: 10%;
-              @include apply-at-sm-md-size {
-                width: 270px;
-                // width: 80%;
+              // @include apply-at-sm-md-size {
+              width: 270px;
+              // }
+            }
+            .copyWraperTop {
+              // position: relative;
+              // @include directionX;
+              // justify-content: center;
+              // align-items: center;
+              // margin-bottom: 5%;
+              // @include content-center;
+              // border: 1px solid blue;
+
+              position: relative;
+              @include directionX;
+              @include content-center;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 5%;
+              width: 90%;
+              .copy {
+                // top: 10px;
+                position: absolute;
+                // width: 115px;
+                cursor: pointer;
+                // @include apply-at-sm-md-size {
+                width: 100px;
+                top: 5px;
+                // }
+              }
+              .notifCopyTop {
+                position: absolute;
+                // right: -110px;
+                text-align: center;
+                top: 0;
+                // @include useForum;
+                // border: 1px solid red;
+                // @include apply-at-sm-md-size {
+                font-size: 12px;
+                left: 210px;
+                // left: 10%;
+                // top: -5px;
+                right: 25px;
+
+                // position: absolute;
+                // // right: -110px;
+                // border: 1px solid yellow;
+                // top: 0;
+                // // @include useForum;
+                // // border: 1px solid red;
+                // // @include apply-at-sm-md-size {
+                // font-size: 12px;
+                // left: 310px;
+                // // left: 10%;
+                // // top: -5px;
+                // right: 25px;
+                // // z-index: 3;
+                // // }
               }
             }
           }
           .infoWrapper {
             margin: 20px 0;
-            padding-bottom: 40px;
+            // padding-bottom: 40px;
             @include useMerienda;
             text-align: center;
-            @include apply-at-sm-md-size {
-              @include content-center;
-              padding-bottom: 35px;
-              width: 90%;
-            }
+            // @include apply-at-sm-md-size {
+            @include content-center;
+            padding-bottom: 35px;
+            width: 90%;
+            // }
             .infoTitle {
-              font-size: 30px;
+              // font-size: 30px;
               display: flex;
               @include content-center;
               justify-content: center;
 
-              @include apply-at-sm-md-size {
-                font-size: 16px;
-                text-align: center;
-              }
+              // @include apply-at-sm-md-size {
+              font-size: 16px;
+              text-align: center;
+              // }
             }
             .infoDetail {
-              font-size: 18px;
+              // font-size: 18px;
               @include content-center;
               text-align: center;
-              @include apply-at-sm-md-size {
-                font-size: 12px;
-              }
+              // @include apply-at-sm-md-size {
+              font-size: 12px;
+              // }
             }
             .copyWraper {
               position: relative;
               @include directionX;
+              @include content-center;
               justify-content: center;
               align-items: center;
               margin-bottom: 5%;
-              @include content-center;
               .copy {
-                top: 10px;
+                // top: 10px;
                 position: absolute;
-                width: 115px;
+                // width: 115px;
                 cursor: pointer;
-                @include apply-at-sm-md-size {
-                  width: 100px;
-                  top: 5px;
-                }
+                // @include apply-at-sm-md-size {
+                width: 100px;
+                top: 5px;
+                // }
               }
               .notifCopy {
                 position: absolute;
-                right: -110px;
+                // right: -110px;
                 top: 0;
-                @include apply-at-sm-md-size {
-                  font-size: 12px;
-                  left: 165px;
-                  top: -5px;
-                  right: 50px;
-                }
-              }
-            }
-          }
-          .copyWraper {
-            position: relative;
-            @include directionX;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 5%;
-            @include content-center;
-            .copy {
-              @include apply-at-sm-md-size {
-                // width: 70px;
-                width: 100px;
-              }
-              position: absolute;
-              width: 115px;
-              cursor: pointer;
-            }
-            .notifCopy {
-              position: absolute;
-              text-align: center;
-              left: 75px;
-              @include apply-at-sm-md-size {
+                // @include useForum;
+                // border: 1px solid red;
+                // @include apply-at-sm-md-size {
                 font-size: 12px;
-                left: 50px;
+                left: 210px;
+                // left: 10%;
+                // top: -5px;
+                right: 25px;
+
+                // }
               }
             }
           }
+          // .copyWraper {
+          //   position: relative;
+          //   @include directionX;
+          //   justify-content: center;
+          //   align-items: center;
+          //   margin-bottom: 5%;
+          //   @include content-center;
+          //   .copy {
+          //     // @include apply-at-sm-md-size {
+          //     width: 100px;
+          //     // }
+          //     position: absolute;
+          //     // width: 115px;
+          //     cursor: pointer;
+          //   }
+          //   .notifCopy {
+          //     position: absolute;
+          //     text-align: center;
+          //     // left: 75px;
+          //     // @include apply-at-sm-md-size {
+          //     font-size: 14px;
+          //     border: 1px solid red;
+
+          //     // left: 70px;
+          //     // border: 1px solid red;
+          //     // }
+          //   }
+          // }
 
           .closingStatement {
             @include useMerienda;
-            font-size: 18px;
+            // font-size: 18px;
             @include content-center;
-            @include apply-at-sm-md-size {
-              font-size: 12px;
-            }
+            // @include apply-at-sm-md-size {
+            font-size: 12px;
+            // }
           }
           .btnConfirmation {
             display: flex;
@@ -1405,16 +1117,16 @@
             justify-content: center;
             align-items: center;
             padding: 0 5%;
-            min-height: 37px;
+            // min-height: 37px;
             border-radius: 10px;
             border: 1px solid $color-gold;
-            font-size: 18px;
+            // font-size: 18px;
             margin-bottom: 1%;
             cursor: pointer;
-            @include apply-at-sm-md-size {
-              font-size: 12px;
-              min-height: 25px;
-            }
+            // @include apply-at-sm-md-size {
+            font-size: 12px;
+            min-height: 25px;
+            // }
           }
         }
         .hideGift {
@@ -1432,54 +1144,102 @@
     .closingSectionContainer {
       @include directionY;
       @include useForum;
-      justify-content: center;
+      // padding-bottom: 20px;
+      padding: 10% 0;
+      // margin-top: -20px;
+      // padding: 20px 0;
+      justify-content: space-between;
+      // border: 1px solid red;
       align-items: center;
-      background-image: url("../../static/images/closing-bg.png");
+      // background-image: url("../../static/images/closing-bg.png");
+      background-image: url("../../static/images/message-icon-bg.png");
+
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
+      // border-top: 1px solid $color-dark-brown;
+      // margin-top: -10px;
+      .leftSection {
+        // border: 1px solid red;
+        margin-bottom: 5%;
+        // @include directionY;
+        // justify-content: center;
+        // padding: 2rem 0;
+        // background-image: url("../../static/images/message-icon-bg.png");
+        // background-image: url("../../static/images/closing-bg.png");
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        // object-fit: cover;
+
+        // align-items: center;
+        // width: 100%;
+        // margin-right: 3%;
+        // @include apply-at-sm-md-size {
+        // width: 100%;
+        // }
+        img {
+          // @include apply-at-sm-md-size {
+          width: 170px;
+          // }
+        }
+      }
       .closingSentenceWrapper {
         @include content-center;
-        font-size: 30px;
+        // font-size: 30px;
+        // width: 100%;
+        // margin-bottom: -25px;
+        // @include apply-at-sm-md-size {
+        font-size: 12px;
         width: 100%;
-        margin-bottom: -25px;
-        @include apply-at-sm-md-size {
-          font-size: 12px;
-          width: 100%;
-          margin-bottom: 0;
-        }
+        margin-bottom: 0;
+        font-weight: lighter;
+        // }
       }
     }
     .footerContainer {
-      @include useMulish;
-      @include directionY;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2%;
+      @include useForum;
+      // @include directionY;
+      // justify-content: center;
+      // justify-content: space-around;
+      // align-items: center;
+      margin-bottom: 1%;
       border-top: 1px solid $color-dark-brown;
-      .colaboration {
-        font-size: 38px;
-        color: $color-dark-brown;
-        @include apply-at-sm-md-size {
+      .footerTitle {
+        gap: 10px;
+        padding: 5% 0 2%;
+        @include directionY;
+        align-items: center;
+        // border: 1px solid red;
+        // border: 1px solid red;
+        // width: 28%;
+        justify-content: space-around;
+        .colaboration {
+          // font-size: 38px;
+          color: $color-dark-brown;
+          // @include apply-at-sm-md-size {
           font-size: 14px;
+          line-height: 12px;
+          // }
         }
-      }
-      .brand {
-        margin-top: -2%;
-        margin-left: -2%;
-        margin-bottom: 2%;
-        @include apply-at-sm-md-size {
-          width: 80px;
+        .brand {
+          // margin-top: -2%;
+          // margin-left: -2%;
+          // margin-bottom: 2%;
+          // @include apply-at-sm-md-size {
+          // width: 80px;
+          // }
+          // border: 1px solid blue;
+          height: 100%;
+          width: 90px;
         }
-      }
-      .contact {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 2%;
-        @include apply-at-sm-md-size {
+        .contact {
+          // width: 30px;
+          // height: 30px;
+          margin-bottom: 2%;
+          // @include apply-at-sm-md-size {
           width: 20px;
           height: 20px;
-          // margin-bottom: 5%;
+          // }
         }
       }
     }

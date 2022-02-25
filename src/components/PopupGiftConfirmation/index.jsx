@@ -62,6 +62,10 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
       overlayStyle={{ backgroundColor: 'transparent' }}
       style={{
         fontFamily: "'Charm', cursive",
+        width: '360px',
+        display: 'flex',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       }}
     >
       <DialogContent
@@ -95,7 +99,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
                 <select name="destination" onChange={selectDestination}>
                   <option value="" disabled>-- Pilih Tujuan --</option>
                   <option value="Hadiah Fisik">Alamat Rumah</option>
-                  <option value="Rekening">Mandiri / 1570005756763 / Ridwan Krisdiansah</option>
+                  <option value="Rekening">Mandiri / 1111111111111 / Adhy Irawan</option>
                 </select>
               </div>
             </div>

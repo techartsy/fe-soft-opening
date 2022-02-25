@@ -2,14 +2,29 @@
 
 .container {
   @include body;
+  @include directionY;
   background-color: $color-black;
   height: 100vh;
   overflow-y: hidden;
+  justify-content: space-between;
   @include apply-at-sm-md-size {
   }
   .wraper {
     @include directionY;
     align-items: center;
+    img {
+      width: 100%;
+    }
+  }
+  .frameTop {
+    img {
+      position: relative;
+      top: 0;
+      width: 100%;
+    }
+  }
+  .frameBottom {
+    height: 150px;
     img {
       width: 100%;
     }
@@ -21,8 +36,8 @@
     margin-top: -74px;
     justify-content: center;
     @include apply-at-sm-md-size {
-      margin-top: -7%;
-      font-size: 16px;
+      margin-top: -10%;
+      font-size: 20px;
     }
     .to {
       margin: -14px 0;
@@ -37,11 +52,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    background-color: $color-gold;
+    background-color: $color-dark-brown;
     color: $color-black;
     cursor: pointer;
     @include apply-at-sm-md-size {
-      font-size: 14px;
+      font-size: 16px;
       min-width: 110px;
       margin-top: 2%;
     }
