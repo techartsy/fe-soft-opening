@@ -1,5 +1,5 @@
 {
-  "name": "invitation-ridwan",
+  "name": "invitatioputra",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,8 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0",
     "immer": "^9.0.6",
     "lodash": "^4.17.21",
     "node-sass": "^6.0.1",

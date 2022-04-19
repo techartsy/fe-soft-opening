@@ -1,10 +1,12 @@
 @import "../../styles/base";
 .container {
   @include body;
-  background-color: $color-black;
+  background-color: $color-dark-green;
   overflow-x: hidden;
   @include apply-at-md-lg-size {
     width: 360px;
+    // height: 700px;
+    // height: 100vh;
     @include content-center;
     overflow-y: scroll;
     &::-webkit-scrollbar {
@@ -24,18 +26,22 @@
       top: 0;
       border: none;
       object-fit: cover;
-      background-repeat: no-repeat;
-      border-bottom: 1px solid $color-gold;
       background-image: url("../../static/images/mainimage-sm.png");
-      height: 240px;
+      height: 255px;
       justify-content: flex-end;
-      @include apply-at-sm-md-size {
+      background-size: 360px 255px;
+      background-position: center top;
+      background-repeat: no-repeat;
+      @include apply-at-sm-size {
         background-size: contain;
+        max-height: 290px;
+        background-position: center top;
       }
       .countdown {
         @include directionX;
         @include content-center;
-        border: 1.93103px solid $color-dark-brown;
+        // border: 1.93103px solid $color-dark-brown;
+        border: 1.93103px solid rgba(255, 255, 255, 0.5);
         border-radius: 16px;
         background: rgba(0, 0, 0, 0.1);
         box-shadow: 0px 28.5491px 28.5491px rgba(0, 0, 0, 0.15);
@@ -45,9 +51,6 @@
         // padding-bottom: 5px;
         justify-content: space-around;
         color: $color-white;
-        margin-bottom: 3%;
-
-        // @include apply-at-sm-md-size {
         padding: 8px;
         width: 55%;
         text-align: center;
@@ -61,11 +64,10 @@
           height: 40px;
           // }
           .countdownTime {
-            // font-size: 35px;
+            @include useChewy;
             text-align: center;
             // @include apply-at-sm-md-size {
             font-size: 15px;
-            @include useForum;
             line-height: 21.16px;
             margin-bottom: 4%;
             // }
@@ -78,46 +80,47 @@
 
             margin: 0;
             font-size: 15px;
-            @include useForum;
+            // @include useForum;
+            @include useChewy;
             line-height: 21.16px;
-            // @include useMerienda;
-            // font-weight: 100;
-            // }
+            .text {
+              margin: 0;
+            }
+
           }
         }
       }
     }
-    .biographyContainer {
-      background-image: url("../../static/images/profile-bg.png");
-      background-size: contain;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      .biofemaleWrapper,
-      .bioMaleWrapper {
+    .firstQuoteContainer {
+      background-color: $color-dark-green;
+      padding-top: 5%;
+      // padding: 0 5%;
+      padding-left: 2%;
+      padding-right: 2%;
+      .topQuote {
+        text-align: center;
+        font-size: 14px;
+      }
+      .bottomQuotesSection {
         @include directionY;
         align-items: center;
-        img {
-          width: 70%;
-        }
-        .contentWrapper {
-          background-image: url("../../static/images/bg-bio.png");
-          background-position: center center;
-          background-repeat: no-repeat;
-          .bioTitle {
-            text-align: center;
-            font-size: 16px;
-          }
-          .bioDesc {
-            @include content-center;
-            border-radius: 23px;
-            text-align: center;
-            font-size: 16px;
-            width: 70%;
-            background: rgba(207, 183, 132, 0.2);
-            padding: 1rem;
-            margin-bottom: 26px;
+        .quoteImg {
+          position: relative;
+          margin-top: -3%;
+          margin-left: 10%;
+          .image {
+            // width: 95%;
           }
         }
+        .bottomQuote {
+          // position: relative;
+          font-size: 14px;
+          margin-top: -16%;
+          z-index: 2;
+          text-align: center;
+          // bottom: 15%;
+        }
+
       }
     }
     .invocationContainer {
@@ -268,13 +271,13 @@
           @include directionY;
           justify-content: space-between;
           .top {
-            width: 100%;
+            width: 105%;
             .imageMidRightTop {
               width: 100%;
             }
           }
           .imageMidRightBottom {
-            width: 100%;
+            width: 105%;
           }
         }
       }
@@ -288,10 +291,10 @@
           margin-bottom: 12px;
           gap: 10px;
           .bottomUpperTop {
-            width: 35%;
+            width: 36%;
           }
           .bottomUpperBottom {
-            width: 70%;
+            width: 64%;
           }
         }
       }
@@ -748,9 +751,6 @@
           }
         }
         .rightSection {
-          // width: 50%;
-          border: 1px solid red;
-
           border-radius: 10px;
           // padding: 2% 3%;
           // @include apply-at-sm-md-size {
