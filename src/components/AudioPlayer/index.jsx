@@ -7,7 +7,7 @@ import classes from './style.module.scss';
 const AudioPlayer = ({ isPlaying, setIsPlaying}) => {
   const [checked, setChecked] = useState(false);
   const [audio] = useState(new Audio(Song));
-  const [voice] = useState(new Audio(Vn));
+  // const [voice] = useState(new Audio(Vn));
 
   useEffect(() => {
     isPlaying ? audio.play() : audio.pause();

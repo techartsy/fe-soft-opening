@@ -2,29 +2,24 @@
 
 .popupWrapper {
   @include body;
-  color: $color-gold;
-  // @include apply-at-md-lg-size {
-  //   overflow-y: hidden;
-  //   overflow-x: hidden;
-  //   &::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // }
+  color: $color-dark-green;
+  background-color: $color-broken-white;
   .closeIcon {
     position: absolute;
     top: 2%;
-    background-color: $color-gold;
+    background-color: $color-dark-green;
     cursor: pointer;
     width: 25px;
     text-align: center;
     border-radius: 50%;
-    color: $color-black;
+    color: $color-light-green;
     opacity: 0.8;
     right: 3%;
   }
 
   .popupTitleWrapper {
-    color: $color-gold;
+    color: $color-dark-green;
+
     font-size: 15px;
     text-align: center;
     text-decoration-line: underline;
@@ -47,7 +42,8 @@
   }
   .form {
     @include directionY;
-    color: $color-gold;
+    color: $color-dark-green;
+
     .separate {
       justify-content: space-between;
       @include directionY;
@@ -55,14 +51,15 @@
         @include directionY;
         input {
           @include body;
-          color: $color-gold;
+          color: $color-broken-white;
+
           height: 25px;
           margin-top: 1%;
           margin-bottom: 2%;
           border-radius: 10px;
           margin-right: 20px;
-          background-color: $color-black;
-          border: 1px solid $color-gold;
+          background-color: $color-dark-green;
+          border: 1px solid $color-dark-green;
           width: 95%;
           font-size: 10px;
           padding-left: 10px;
@@ -76,14 +73,13 @@
       }
       select {
         @include body;
-        background-color: $color-black;
-        color: $color-gold;
+        background-color: $color-dark-green;
+        color: $color-broken-white;
         margin-top: 1%;
         margin-bottom: 2%;
         height: 30px;
         padding: 0 15px;
         border-radius: 10px;
-        border-color: $color-gold;
         width: 99.5%;
         font-size: 10px;
         padding-left: 5px;
@@ -92,17 +88,18 @@
         }
       }
       ::-webkit-input-placeholder {
-        color: $color-gold;
+        color: $color-broken-white;
+
       }
       select:focus {
         outline: none !important;
-        border-color: $color-dark-brown;
-        box-shadow: 0 0 8px $color-dark-brown;
+        border-color: $color-dark-green;
+        box-shadow: 0 0 8px $color-dark-green;
       }
       input:focus {
         outline: none !important;
-        border-color: $color-dark-brown;
-        box-shadow: 0 0 8px $color-dark-brown;
+        border-color: $color-dark-green;
+        box-shadow: 0 0 8px $color-dark-green;
       }
     }
   }
@@ -113,13 +110,14 @@
   }
   input {
     @include body;
-    color: $color-gold;
+    color: $color-broken-white;
     height: 25px;
     margin-top: 1%;
     margin-bottom: 2%;
     border-radius: 10px;
-    background-color: $color-black;
-    border: 1px solid $color-gold;
+    background-color: $color-dark-green;
+
+    border: 1px solid $color-dark-green;
     width: 95%;
     font-size: 10px;
     padding-left: 10px;
@@ -132,14 +130,15 @@
   }
   textarea {
     @include body;
-    color: $color-gold;
+    color: $color-broken-white;
+
     padding-left: 15px;
     padding-top: 30px;
     margin-top: 2%;
     margin-bottom: 2%;
     border-radius: 16px;
-    background-color: $color-black;
-    border: 1px solid $color-gold;
+    background-color: $color-dark-green;
+    border: 1px solid $color-dark-green;
     width: 95%;
     height: 0%;
     font-size: 10px;
@@ -148,17 +147,18 @@
     }
   }
   ::-webkit-input-placeholder {
-    color: $color-gold;
+  color: $color-dark-green;
+
   }
   input:focus {
     outline: none !important;
-    border-color: $color-dark-brown;
-    box-shadow: 0 0 8px $color-dark-brown;
+    border-color: $color-dark-green;
+    box-shadow: 0 0 8px $color-dark-green;
   }
   textarea:focus {
     outline: none !important;
-    border-color: $color-dark-brown;
-    box-shadow: 0 0 8px $color-dark-brown;
+    border-color: $color-dark-green;
+    box-shadow: 0 0 8px $color-dark-green;
   }
   .infoWrapper {
     @include directionX;
@@ -176,9 +176,9 @@
       font-size: 13px;
       width: 75px;
       border-radius: 6px;
-      border: 1px solid $color-gold;
-      background-color: $color-black;
-      color: $color-gold;
+      border: 1px solid $color-dark-green;
+      background-color: $color-dark-green;
+      color: $color-broken-white;
     }
   }
 }

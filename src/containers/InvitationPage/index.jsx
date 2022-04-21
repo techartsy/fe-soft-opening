@@ -26,6 +26,7 @@ import creditcard from '../../static/images/creditcard.svg';
 import numbercopy from '../../static/images/numbercopy.png';
 import logoGold from '../../static/images/logoGold.png';
 import logoSm from '../../static/images/logo-sm.png';
+import logo from '../../static/images/logo.png';
 import calender from '../../static/icons/calender.png';
 import time from '../../static/icons/time.png';
 import Location from '../../static/icons/location.png';
@@ -34,9 +35,17 @@ import dropdown from '../../static/icons/dropdown.png';
 import dropup from '../../static/icons/dropup.png';
 import Mail from '../../static/icons/mail.png';
 import whatsapp from '../../static/icons/whatsapp.png';
+import instagram from '../../static/icons/instagram.png';
+import techartsy from '../../static/icons/techartsy.png';
+import colaboration from '../../static/icons/colaboration.png';
 import invocation from '../../static/images/invocation.png';
+import closingImg from '../../static/images/closing-img.png';
 import frameMale from '../../static/images/frame-male.png';
 import frameFemale from '../../static/images/frame-female.svg';
+import attendingImg from '../../static/images/attending-img.png';
+import thirdQuoteImg from '../../static/images/third-quote-img.png';
+import maleImg from '../../static/images/male.png';
+import FemaleImg from '../../static/images/female.png';
 import gallery1 from '../../static/images/gallery/1.png';
 import gallery2 from '../../static/images/gallery/2.png';
 import gallery3 from '../../static/images/gallery/3.png';
@@ -385,86 +394,41 @@ const InvitationPage = () => {
     );
   };
 
-  const generateInvocation = () => {
+  const generateThirdQuoteSection = () => {
     return (
-      <div className={classes.invocationContainer}>
-        <img src={invocation} alt="invocation" />
+      <div className={classes.thirdQuoteContainer}>
+        <p>“ There is no more lovely, friendly, charming,<br />relationship or company than a good marriage ”
+          - Martin Luther</p>
+        <img src={thirdQuoteImg} alt="Third Quote" />
+        <p>Tidak ada hubungan atau persatuan yang lebih indah, menyenangkan dan membahagiakan dari pada pernikahan yang baik</p>
       </div>
     );
   };
 
-  const generateBrides = () => {
+  const generateMaleBiography = () => {
     return (
-      <div className={classes.bridesContainer}>
-        <Fade duration={4000}>
-          <div className={classes.left}>
-            <div className={classes.desc}>
-              <p className={classes.first}>Adhy Irawan</p>
-              <p className={classes.second}>Putra ketiga dari Bapak Sukim Narman</p>
-              <p className={classes.third}>& Ibu Jumenah</p>
-            </div>
-            <img src={frameMale} alt="brides" />
-          </div>
-        </Fade>
-        <Fade duration={4000}>
-          <div className={classes.right}>
-            <img src={frameFemale} alt="brides" />
-            <div className={classes.desc}>
-              <p className={classes.first}>Yenny Tsara Azizah</p>
-              <p className={classes.second}>Putri pertama dari Bapak Andi Ajiz</p>
-              <p className={classes.third}>& Ibu Hartiyani</p>
-            </div>
-          </div>
-        </Fade>
+      <div className={classes.maleBiography}>
+        <img src={maleImg} alt="Male" />
+        <div>
+          <p className={classes.name}>Putra Nur Setiawan</p>
+          <p className={classes.subName}>Putra ke - 2 dari 2 bersaudara<br/>
+            anak dari<br/>
+            Bapak Hari Prabowo & Ibu Yamah</p>
+        </div>
       </div>
-    );
-  };
+    )
+  }
 
-  const generateGallery = () => {
+  const generateFemaleBiography = () => {
     return (
-      <div className={classes.galleryContainer}>
-        <div className={classes.topContent}>
-          <Fade delay={1000} duration={4000}>
-            <div className={classes.upper}>
-              <img src={gallery1} alt="gallery" className={classes.imageUpperLeft}/>
-              <img src={gallery2} alt="gallery" className={classes.imageUpperRight} />
-            </div>
-          </Fade>
-          <Fade delay={1800} duration={4000}>
-            <div className={classes.lower}>
-              <img src={gallery3} alt="gallery" className={classes.imageLowerLeft} />
-              <img src={gallery4} alt="gallery" className={classes.imageLowerRight} />
-            </div>
-          </Fade>
+      <div className={classes.femaleBiography}>
+        <img src={FemaleImg} alt="Female" />
+        <div>
+          <p className={classes.name}>Dina Novita Herawati</p>
+          <p className={classes.subName}>Putri ke - 2 dari 4 bersaudara<br/>
+            anak dari<br/>
+            Bapak Wawan Erawan & Ibu Siti Mafrihah</p>
         </div>
-        <div className={classes.midContent}>
-          <Fade delay={2800} duration={4000}>
-            <div className={classes.left}>
-              <div className={classes.top}>
-                <img src={gallery5} alt="gallery" className={classes.imageMidLeftTop} />
-              </div>
-              <img src={gallery7} alt="gallery" className={classes.imageMidLeftBottom} />
-            </div>
-          </Fade>
-          <Fade delay={3800} duration={4000}>
-            <div className={classes.right}>
-              <div className={classes.top}>
-                <img src={gallery8} alt="gallery" className={classes.imageMidRightTop} />
-              </div>
-              <img src={gallery9} alt="gallery" className={classes.imageMidRightBottom} />
-            </div>
-          </Fade>
-        </div>
-          <div className={classes.bottomContent}>
-            <div className={classes.upper}>
-              <Fade delay={4800} duration={4000}>
-                <img src={gallery10} alt="gallery" className={classes.bottomUpperTop} />
-              </Fade>
-              <Fade delay={3800} duration={4000}>
-                <img src={gallery11} alt="gallery" className={classes.bottomUpperBottom} />
-              </Fade>
-            </div>
-          </div>
       </div>
     );
   };
@@ -572,7 +536,7 @@ const InvitationPage = () => {
           </div>
           <Fade duration={3000}>
             <div className={classes.expressionSection}>
-              <img src={Icon} alt="Icon" />
+              <img src={attendingImg} alt="Icon" />
             </div>
           </Fade>
         </div>
@@ -626,7 +590,7 @@ const InvitationPage = () => {
       <div className={classes.giftContainer}>
         <div className={classes.giftWraper}>
           <div className={classes.tittleRibbon}>
-            <p className={classes.titleGift}>"Hadiah Pernikahan"</p>
+            <p className={classes.titleGift}>Hadiah Pernikahan</p>
             <img className={classes.ribbon} src={wingribbon} alt="wing" />
           </div>
           <div className={classes.dropdownSection} onClick={showGiftInfo}>
@@ -646,8 +610,8 @@ const InvitationPage = () => {
             <div className={classes.infoWrapper}>
               <p className={classes.infoTitle}>Alamat Pengiriman Hadiah Fisik</p>
               <p className={classes.infoDetail}>
-                Nama : Yenny Tsara Azizah <br />
-                Alamat : JL. Veteran No. 16A. Pancoran,<br />Jakarta Selatan,<br />DKI Jakarta 12760
+                Nama : Dina Novita Herawati <br />
+                Alamat : Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu,<br />Kec. Jalancagak, Kab. Subang, Jawa Barat
               </p>
               <div className={classes.copyWraper}>
                 <img className={classes.copy} src={numbercopy} onClick={copyAddress} alt="copy-text" />
@@ -664,12 +628,20 @@ const InvitationPage = () => {
     );
   };
 
+  const closingSeparator = () => {
+    return (
+      <div className={classes.closingSeparator}>
+        <img src={closingImg} alt="closing" />
+      </div>
+    )
+  }
+
   const closingSection = () => {
     return (
       <div className={classes.closingSectionContainer}>
         <Fade duration={3000}>
           <div className={classes.leftSection}>
-            <img src={Icon} alt="icon" />
+            <img src={logo} alt="icon" className={classes.invitationLogo} />
           </div>
           <div className={classes.closingSentenceWrapper}>
             <p>
@@ -686,9 +658,13 @@ const InvitationPage = () => {
   const footerSection = () => {
     return (
       <div className={classes.footerContainer}>
+        <div className={classes.colaborationWrapper}>
+          <img alt="colaboration" src={colaboration} className={classes.colaborationText} />
+          <img alt="colaboration" src={techartsy} className={classes.logo} />
+        </div>
         <div className={classes.footerTitle} onClick={contactWA}>
-          <img className={classes.brand} alt='techartsyGold' src={width === 'lg' ? logoGold : logoSm} />
           <img className={classes.contact} src={whatsapp} alt="whatsapp" />
+          <img className={classes.contact} src={instagram} alt="instagram" />
         </div>
       </div >
     );
@@ -699,13 +675,14 @@ const InvitationPage = () => {
       <div className={classes.invitationContainer}>
         {generateHeader()}
         {generateFirstQuoteSection()}
-        {generateInvocation()}
-        {generateBrides()}
-        {generateGallery()}
+        {generateThirdQuoteSection()}
+        {generateMaleBiography()}
+        {generateFemaleBiography()}
         {eventDetail()}
         {attendingSection()}
-        {giftSection()}
         {generateMessageSection()}
+        {giftSection()}
+        {closingSeparator()}
         {closingSection()}
         {footerSection()}
         {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}

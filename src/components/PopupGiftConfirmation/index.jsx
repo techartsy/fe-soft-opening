@@ -72,8 +72,8 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
         dividers
         style={{
           overflowY: `${width !== 'lg' ? 'scroll' : 'hidden'}`,
-          backgroundColor: "#000000",
-          border: '1px solid #fbd258',
+          backgroundColor: "#F5F2E7",
+          border: '1px solid #93A38C',
           borderRadius: '6px',
           overflowY: 'hidden',
         }}
@@ -100,7 +100,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
                 <select name="destination" onChange={selectDestination}>
                   <option value="" disabled selected>-- Pilih Tujuan --</option>
                   <option value="Hadiah Fisik">Alamat Rumah</option>
-                  <option value="Rekening">BCA / 3750073262 / Yenny Tsara Azizah</option>
+                  <option value="Rekening">BNI / 1271003800 / Dina Novita Herawati</option>
                 </select>
               </div>
             </div>
