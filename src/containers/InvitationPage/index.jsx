@@ -24,8 +24,6 @@ import MessageImg from '../../static/images/message-img.png';
 import wingribbon from '../../static/images/ribbon.png';
 import creditcard from '../../static/images/creditcard.svg';
 import numbercopy from '../../static/images/numbercopy.png';
-import logoGold from '../../static/images/logoGold.png';
-import logoSm from '../../static/images/logo-sm.png';
 import logo from '../../static/images/logo.png';
 import calender from '../../static/icons/calender.png';
 import time from '../../static/icons/time.png';
@@ -38,26 +36,20 @@ import whatsapp from '../../static/icons/whatsapp.png';
 import instagram from '../../static/icons/instagram.png';
 import techartsy from '../../static/icons/techartsy.png';
 import colaboration from '../../static/icons/colaboration.png';
-import invocation from '../../static/images/invocation.png';
 import closingImg from '../../static/images/closing-img.png';
-import frameMale from '../../static/images/frame-male.png';
-import frameFemale from '../../static/images/frame-female.svg';
 import attendingImg from '../../static/images/attending-img.png';
 import thirdQuoteImg from '../../static/images/third-quote-img.png';
 import maleImg from '../../static/images/male.png';
 import FemaleImg from '../../static/images/female.png';
+import quotesImg from '../../static/images/quotes-img.png';
+import rose from '../../static/images/rose.png';
+import galleryIcon from '../../static/images/gallery/icon.png';
+import galleryRose from '../../static/images/gallery/rose.png';
+import galleryLogo from '../../static/images/gallery/logo.png';
 import gallery1 from '../../static/images/gallery/1.png';
 import gallery2 from '../../static/images/gallery/2.png';
 import gallery3 from '../../static/images/gallery/3.png';
 import gallery4 from '../../static/images/gallery/4.png';
-import gallery5 from '../../static/images/gallery/5.png';
-import gallery7 from '../../static/images/gallery/7.png';
-import gallery8 from '../../static/images/gallery/8.png';
-import gallery9 from '../../static/images/gallery/9.png';
-import gallery10 from '../../static/images/gallery/10.png';
-import gallery11 from '../../static/images/gallery/11.png';
-import quotesImg from '../../static/images/quotes-img.png';
-import Icon from '../../static/images/icon.svg';
 import classes from './style.module.scss';
 
 const InvitationPage = () => {
@@ -394,6 +386,23 @@ const InvitationPage = () => {
     );
   };
 
+  const generateSecondQuoteSection = () => {
+    return (
+      <div className={classes.secondQuoteContainer}>
+        <div className={classes.top}>
+          <p>Dina & Putra</p>
+        </div>
+        <div className={classes.bottom}>
+          <p>“Menikahlah dengan seseorang yang sanggup menerima kekuranganmu, dan Ia pun bersyukur atas kelebihanmu.
+            Bangunlah rumah tangga bersama Ia yang siap untuk berjuang bersama menggapai Ridho-Nya.<br/>
+            Serta yakinlah kamu bahwa surga semakin dekat saat kamu berada bersamanya.”</p>
+          <img src={rose} alt="rose" />
+        </div>
+
+      </div>
+    )
+  }
+
   const generateThirdQuoteSection = () => {
     return (
       <div className={classes.thirdQuoteContainer}>
@@ -432,6 +441,30 @@ const InvitationPage = () => {
       </div>
     );
   };
+
+  const generateGallerySection = () => {
+    return (
+      <div className={classes.galleryContainer}>
+        <div className={classes.iconWrapper}>
+          <img src={galleryIcon} alt="Gallery Icon" />
+        </div>
+        <div className={classes.firstRow}>
+          <div className={classes.left}>
+            <img className={classes.rose} src={galleryRose} alt="Gallery Item" />
+            <img src={gallery1} alt="Gallery Item" className={classes.firstImg} />
+          </div>
+          <img src={gallery2} alt="Gallery Item" className={classes.lastItem} />
+        </div>
+        <div className={classes.secondRow}>
+          <img src={galleryLogo} alt="Gallery Logo" />
+        </div>
+        <div className={classes.thirdRow}>
+          <img src={gallery3} alt="Gallery Item" className={classes.thirdImage}/>
+          <img src={gallery4} alt="Gallery Item" className={classes.fourthImage}/>
+        </div>
+      </div>
+    )
+  }
 
   const eventDetail = () => {
     return (
@@ -675,9 +708,11 @@ const InvitationPage = () => {
       <div className={classes.invitationContainer}>
         {generateHeader()}
         {generateFirstQuoteSection()}
+        {generateSecondQuoteSection()}
         {generateThirdQuoteSection()}
         {generateMaleBiography()}
         {generateFemaleBiography()}
+        {generateGallerySection()}
         {eventDetail()}
         {attendingSection()}
         {generateMessageSection()}

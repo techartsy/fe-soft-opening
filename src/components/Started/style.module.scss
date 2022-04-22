@@ -3,7 +3,8 @@
 .container {
   @include body;
   @include directionY;
-  background-color: $color-black;
+  background-color: $color-broken-white;
+  color: $color-dark-green;
   height: 100vh;
   overflow-y: hidden;
   justify-content: space-between;
@@ -13,7 +14,7 @@
     @include directionY;
     align-items: center;
     img {
-      width: 100%;
+      width: 90%;
     }
   }
   .frameTop {
@@ -52,13 +53,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    background-color: $color-dark-brown;
-    color: $color-black;
+    background-color: $color-dark-green;
+    color: $color-broken-white;
     cursor: pointer;
     @include apply-at-sm-md-size {
       font-size: 16px;
       min-width: 110px;
       margin-top: 2%;
+      letter-spacing: 0.1em;
     }
   }
 }
