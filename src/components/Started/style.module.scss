@@ -34,7 +34,6 @@
     font-size: 20px;
     @include directionY;
     align-items: center;
-    margin-top: -74px;
     justify-content: center;
     @include apply-at-sm-md-size {
       margin-top: -10%;
@@ -56,10 +55,13 @@
     background-color: $color-dark-green;
     color: $color-broken-white;
     cursor: pointer;
-    @include apply-at-sm-md-size {
+    margin-top: 15%;
+    padding: 2%;
+    @include apply-at-sm-size {
       font-size: 16px;
       min-width: 110px;
-      margin-top: 2%;
+      padding: 2%;
+      margin-top: 5%;
       letter-spacing: 0.1em;
     }
   }

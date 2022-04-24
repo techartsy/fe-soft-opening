@@ -43,6 +43,7 @@ import maleImg from '../../static/images/male.png';
 import FemaleImg from '../../static/images/female.png';
 import quotesImg from '../../static/images/quotes-img.png';
 import rose from '../../static/images/rose.png';
+import headerImg from '../../static/images/header.png';
 import galleryIcon from '../../static/images/gallery/icon.png';
 import galleryRose from '../../static/images/gallery/rose.png';
 import galleryLogo from '../../static/images/gallery/logo.png';
@@ -66,8 +67,8 @@ const InvitationPage = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [notif, setNotif] = useState('');
   const [gifNotif, setGiftNotif] = useState('');
-  const wording = '3750073262';
-  const giftAddress = 'JL. Veteran No. 16A. Pancoran, Jakarta Selatan, DKI Jakarta 12760';
+  const wording = '1271003800';
+  const giftAddress = 'Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu, Kec. Jalancagak, Kab. Subang, Jawa Barat';
   const dispatch = useDispatch();
   const location = useLocation();
   let name = location?.search?.split('=')[1];
@@ -95,12 +96,6 @@ const InvitationPage = () => {
   const addEvent = () => {
     console.log('masuk')
     gapi.load('client:auth2', () => {
-      // gapi.client.init({
-      //   apiKey: config.google.apiKey,
-      //   clientId: config.google.clientId,
-      //   discoveryDocs: config.google.discoveryDocs,
-      //   scope: config.google.scopes,
-      // })
       gapi.client.init({
         apiKey: API_KEY,
         clientId: CLIENT_ID,
@@ -126,10 +121,6 @@ const InvitationPage = () => {
           'recurrence': [
             'RRULE:FREQ=DAILY;COUNT=1'
           ],
-          // 'attendees': [
-          //   {'email': 'lpage@example.com'},
-          //   {'email': 'sbrin@example.com'},
-          // ],
           'reminders': {
             'useDefault': false,
             'overrides': [
@@ -319,7 +310,7 @@ const InvitationPage = () => {
   };
 
   const goToMaps = () => {
-    window.open('https://goo.gl/maps/krBpHqyXQH7aaET86', '_blank');
+    window.open('https://goo.gl/maps/qtycMEc5Uhgj8XXA8', '_blank');
   };
 
   const radioAttend = (e) => {
@@ -366,6 +357,21 @@ const InvitationPage = () => {
       </div>
     );
   };
+
+  const generateNewHeader = () => {
+    return (
+      <div className={classes.newHeader}>
+        <div className={classes.backgroundImg}>
+          <img src={headerImg} alt="background" />
+        </div>
+        <Fade delay={2000} duration={2000}>
+          <div className={classes.countdown}>
+            {timerComponents.length && timerComponents}
+          </div>
+        </Fade>
+      </div>
+    )
+  }
 
   const generateFirstQuoteSection = () => {
     return (
@@ -468,26 +474,23 @@ const InvitationPage = () => {
 
   const eventDetail = () => {
     return (
-      <div className={classes.event}>
+      <div className={classes.eventContainer}>
         <div className={classes.bgWrapper}>
           <Fade delay={1000} duration={4000}>
             <div className={classes.greeting}>
-              <p>
-                Assalamu'alaikum Warahmatullahi Wabarakatuh<br />
+              <p className={classes.greetingText}>
+                Assalamu’alaikum Warahmatullahi Wabarakaatuh<br />
               </p>
               <p className={classes.subtitle}>
-                Maha Suci Allah {width !== 'lg' && <br />} yang telah menciptakan makhluk-Nya berpasang-pasangan. <br />
-                Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami
+                Maha Suci Allah yang telah menciptakan<br/> makhluk-Nya berpasang-pasangan.<br />
+                Ya Allah semoga Ridho-Mu tercurah mengiringi<br/>pernikahan kami
               </p>
             </div>
             <div className={classes.details}>
-              <div className={classes.titleWraper}>
-                <p className={classes.title}>AKAD & RESEPSI</p>
-              </div>
               <div className={classes.calender}>
                 <img src={calender} alt='calender' />
                 <p>
-                  SABTU, 12 MARET 2022
+                  SABTU, 14 MEI 2022
                 </p>
               </div>
               <div className={classes.btnCalendarWrapper} onClick={addEvent}>
@@ -495,36 +498,33 @@ const InvitationPage = () => {
               </div>
               <div className={classes.timesWraper}>
                 <div className={classes.timeMobileWrapper}>
+                  <p className={classes.event}>Akad</p>
                   <img src={time} alt='time' />
-                  <p>AKAD</p>
-                  <div className={classes.separator} />
-                  <p>09.00 - 09.40 WIB</p>
+                  <p className={classes.time}>Pukul 09.00 WIB s.d Selesai</p>
                 </div>
                 <div className={classes.timeMobileWrapper}>
+                  <p className={classes.event}>Resepsi</p>
                   <img src={time} alt='time' />
-                  <p>RESEPSI</p>
-                  <div className={classes.separator} />
-                  <p>12.00 - 15.00 WIB</p>
+                  <p className={classes.time}>Pukul 10.00 WIB s.d Selesai</p>
                 </div>
               </div>
             </div>
           </Fade>
-        </div>
-        <Fade delay={1000} duration={4000}>
-          <div className={classes.locationWraper}>
-            <img src={Location} alt='location' />
-            <p>
-              JL. Veteran No. 16A. Pancoran, Kota Jakarta Selatan,
-              DKI Jakarta 12760
-            </p>
-          </div>
-          <div onClick={goToMaps} className={classes.btnmap}>
-            <p>Menuju Lokasi</p>
-            <div className={classes.imageWrapper}>
-              <img src={plane} alt='gotomap' />
+          <Fade delay={1000} duration={4000}>
+            <div className={classes.locationWraper}>
+              <img src={Location} alt='location' />
+              <p>
+                Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu,<br/>Kec. Jalancagak, Kab. Subang, Jawa Barat
+              </p>
             </div>
-          </div>
-        </Fade>
+            <div onClick={goToMaps} className={classes.btnmap}>
+              <p>Menuju Lokasi</p>
+              <div className={classes.imageWrapper}>
+                <img src={plane} alt='gotomap' />
+              </div>
+            </div>
+          </Fade>
+        </div>
       </div>
     );
   };
@@ -706,7 +706,7 @@ const InvitationPage = () => {
   const generateInvitation = () => {
     return (
       <div className={classes.invitationContainer}>
-        {generateHeader()}
+        {generateNewHeader()}
         {generateFirstQuoteSection()}
         {generateSecondQuoteSection()}
         {generateThirdQuoteSection()}

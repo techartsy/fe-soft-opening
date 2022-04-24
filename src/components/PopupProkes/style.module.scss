@@ -6,7 +6,7 @@
   }
   .prokesTitle {
     @include body;
-    color: $color-gold;
+    color: $color-broken-white;
     text-align: center;
     text-decoration-line: underline;
     text-underline-offset: 10px;
@@ -14,14 +14,14 @@
     font-size: 16px;
     margin-bottom: 20%;
     p {
-      color: $color-gold;
+      color: $color-broken-white;
     }
   }
   .prokesTop {
     @include directionX;
     justify-content: space-around;
-    color: $color-gold;
-    font-size: 10px;
+    color: $color-broken-white;
+    font-size: 12px;
     line-height: 16px;
     width: 100%;
     margin-bottom: 1%;
@@ -40,8 +40,8 @@
   .prokesBottom {
     @include directionX;
     justify-content: space-around;
-    color: $color-gold;
-    font-size: 10px;
+    color: $color-broken-white;
+    font-size: 12px;
     line-height: 16px;
     width: 100%;
     text-align: center;
@@ -59,20 +59,21 @@
   .appeal {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: $color-gold;
+    color: $color-broken-white;
     text-align: center;
     line-height: 23.05px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .closePopupBtn {
     @include body;
     @include directionX;
     @include content-center;
+    @include useChewy;
     align-items: center;
     justify-content: center;
-    background-color: $color-black;
-    color: $color-gold;
-    border: 1px solid $color-gold;
+    background-color: $color-broken-white;
+    color: $color-dark-green;
+    border: 1px solid #ADADAD;
     border-radius: 53px;
     max-height: 53px;
     text-align: center;

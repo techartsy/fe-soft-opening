@@ -1,7 +1,7 @@
 @import "../../styles/base";
 .container {
   @include body;
-  background-color: $color-dark-green;
+  background-color: $color-broken-white;
   overflow-x: hidden;
   @include apply-at-md-lg-size {
     width: 360px;
@@ -16,6 +16,53 @@
     }
   }
   .invitationContainer {
+    .newHeader {
+      .backgroundImg {
+        img {
+
+          width: 100%;
+        }
+      }
+      .countdown {
+        @include directionX;
+        @include content-center;
+        border: 1.93103px solid rgba(255, 255, 255, 0.5);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 28.5491px 28.5491px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(30px);
+        width: 30%;
+        justify-content: space-around;
+        color: $color-white;
+        padding: 8px;
+        width: 55%;
+        text-align: center;
+        margin-bottom: 5%;
+        margin-top: -25%;
+        .countdownItem {
+          border-radius: 20px;
+          font-size: 9px;
+          width: 42px;
+          height: 40px;
+          .countdownTime {
+            @include useChewy;
+            text-align: center;
+            font-size: 15px;
+            line-height: 21.16px;
+            margin-bottom: 4%;
+          }
+          .countdownInterval {
+            margin: 0;
+            font-size: 15px;
+            @include useChewy;
+            line-height: 21.16px;
+            .text {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
     .header {
       @include directionY;
       @include parallax;
@@ -136,6 +183,7 @@
       }
     }
     .thirdQuoteContainer {
+      background-color: $color-dark-green;
       padding: 5% 2%;
       text-align: center;
     }
@@ -151,11 +199,11 @@
         @include useDamion;
         color: $color-dark-gray;
         line-height: 20px;
-        font-size: 18px;
+        font-size: 20px;
       }
       .subName {
         @include useAladin;
-        font-size: 10px;
+        font-size: 14px;
         color: $color-dark-green;
       }
     }
@@ -171,11 +219,11 @@
         @include useDamion;
         color: $color-light-green;
         line-height: 20px;
-        font-size: 18px;
+        font-size: 20px;
       }
       .subName {
         @include useAladin;
-        font-size: 10px;
+        font-size: 14px;
         color: $color-broken-white;
       }
     }
@@ -184,6 +232,7 @@
       padding-left: 2%;
       .iconWrapper {
         padding-left: 2%;
+        padding-top: 5%;
         img {
           width: 110px;
         }
@@ -230,17 +279,30 @@
         }
       }
     }
-    .event {
-      height: 100%;
+    .eventContainer {
       width: 100%;
+      background-color: $color-broken-white;
+      background-image: url("../../static/images/event-bg.png");
+      background-position: center;
+      padding: 5% 0;
       .bgWrapper {
-        background-image: url("../../static/images/event-bg.png");
-        background-size: contain;
-        background-position: center;
+        background-image: url("../../static/images/event-detail-bg.png");
+        background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-color: $color-dark-green;
+        width: 95%;
+        border-radius: 42px;
+        padding: 5% 0;
+        @include content-center;
         .greeting {
           @include content-center;
           width: 95%;
+          .greetingText {
+            @include useChewy;
+            text-decoration-line: underline;
+            text-underline-offset: 5px;
+            letter-spacing: 0.03em;
+          }
           p {
             text-align: center;
             font-size: 15px;
@@ -252,26 +314,10 @@
           }
         }
         .details {
-          .titleWraper {
-            margin-top: 5%;
-            .title {
-              @include directionX;
-              @include content-center;
-              align-items: center;
-              justify-content: center;
-              padding-bottom: 14px;
-              border-bottom: 1px solid $color-gold;
-              margin-top: 10%;
-              font-size: 14px;
-              width: 40%;
-            }
-          }
           .calender {
             @include directionY;
             @include content-center;
             align-items: center;
-            margin-bottom: 3%;
-            margin-top: 8%;
             font-size: 12px;
             width: 50%;
             p {
@@ -287,7 +333,7 @@
           }
           .btnCalendarWrapper {
             @include content-center;
-            border: 1px solid #cfb784;
+            border: 2px solid $color-dark-gray;
             padding: 0 10px;
             width: 120px;
             font-size: 12px;
@@ -298,87 +344,66 @@
             @include directionX;
             width: 100%;
             justify-content: space-between;
-            margin-bottom: 3%;
-            .time {
-              @include directionY;
-              align-items: center;
-              border-bottom: 1px solid $color-gold;
-              width: 26%;
-              p {
-                width: 100%;
-                text-align: center;
-              }
-            }
             .timeMobileWrapper {
+              @include directionY;
+              justify-content: space-around;
+              align-items: center;
               @include content-center;
-              margin-top: 8%;
               text-align: center;
-              font-size: 12px;
-
+              font-size: 14px;
+              .event {
+                @include useChewy;
+                letter-spacing: 0.1em;
+              }
               img {
                 width: 35px;
               }
-              .separator {
-                height: 1px;
-                background: $color-gold;
-                margin-top: -10px;
-                margin-bottom: -10px;
+              .time {
+                text-decoration-line: underline;
+                text-underline-offset: 5px;
               }
             }
           }
         }
-      }
-      .locationWraper {
-        @include directionY;
-        @include content-center;
-        align-items: center;
-        margin-bottom: 2%;
-        font-size: 12px;
-        margin-top: 8%;
-        p {
-          width: 100%;
-          text-align: center;
-          margin-top: 8%;
+        .locationWraper {
+          @include directionY;
+          @include content-center;
+          align-items: center;
+          font-size: 12px;
+          p {
+            width: 100%;
+            text-align: center;
+          }
+          img {
+            width: 30px;
+          }
         }
-        img {
-          width: 30px;
-        }
-      }
-      .btnmap {
-        @include content-center;
-        @include directionX;
-        align-items: center;
-        justify-content: center;
-        padding: 0px 10px;
-        margin-bottom: 10%;
-        border: 1px solid $color-gold;
-        cursor: pointer;
-        max-width: 145px;
-        font-size: 12px;
-        height: 30px;
-        border-radius: 10px;
-        .imageWrapper {
+        .btnmap {
+          @include content-center;
           @include directionX;
           align-items: center;
           justify-content: center;
-          img {
-            width: 20px;
+          padding: 0px 10px;
+          border: 2px solid $color-dark-gray;
+          cursor: pointer;
+          max-width: 145px;
+          font-size: 12px;
+          height: 30px;
+          border-radius: 10px;
+          .imageWrapper {
+            @include directionX;
+            align-items: center;
+            justify-content: center;
+            img {
+              width: 20px;
+            }
           }
-        }
-        p {
-          color: $color-gold;
-          text-decoration: none;
-          width: 80%;
-          text-align: center;
-        }
-      }
-      .topEvent {
-        @include directionX;
-        @include content-center;
-        margin-top: 8%;
-        margin-bottom: 5%;
-        @include apply-at-sm-md-size {
-          width: 187px;
+          p {
+            color: $color-broken-white;
+            text-decoration: none;
+            width: 80%;
+            text-align: center;
+          }
         }
       }
     }
@@ -541,6 +566,8 @@
       }
     }
     .messageSectionContainer {
+      background-color: $color-dark-green;
+      padding-top: 2%;
       .sectionTitle {
         @include content-center;
         @include useChewy;
@@ -712,7 +739,6 @@
         .giftInfoWraper {
           @include directionY;
           .imageDetail {
-            @include useMerienda;
             @include directionY;
             .card {
               display: flex;
@@ -802,7 +828,7 @@
             border: 1px solid $color-black;
             margin-bottom: 1%;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
             min-height: 35px;
             width: 88px;
           }
@@ -850,6 +876,7 @@
     }
     .footerContainer {
       @include directionY;
+      background-color: $color-dark-green;
       align-items: center;
       justify-content: space-around;
       padding: 5%;

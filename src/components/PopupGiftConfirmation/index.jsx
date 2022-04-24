@@ -111,7 +111,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
             <div className={classes.infoWrapper}>
               <a
                 rel="noreferrer"
-                href="https://wa.me/6281316543040?text=Hallo%20saya%20mau%20konfirmasi%20pengiriman"
+                href="https://wa.me/6285321771808?text=Hallo%20saya%20mau%20konfirmasi%20pengiriman"
                 target="_blank">
                 <img src={whatsapp} alt="whatsapp" className={classes.whatsapp} />
               </a>
