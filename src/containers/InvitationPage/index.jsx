@@ -17,7 +17,7 @@ import {
 } from '../../store/actions';
 import useWindowDimensions from '../../utils/useWindowDimensions';
 import StartedComponent from '../../components/Started';
-// import AudioComponent from '../../components/AudioPlayer';
+import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import MessageImg from '../../static/images/message-img.png';
@@ -107,15 +107,15 @@ const InvitationPage = () => {
       gapi.auth2.getAuthInstance().signIn()
       .then(() => {
         var event = {
-          'summary': 'Adhy & Yenny Wedding Day',
-          'location': 'JL. Veteran No. 16A. Pancoran, Kota Jakarta Selatan',
+          'summary': 'Putra & Dina Wedding Day',
+          'location': 'Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu, Kec. Jalancagak, Kab. Subang, Jawa Barat',
           'description': 'Wedding Invitation',
           'start': {
-            'dateTime': '2022-03-12T09:00:00',
+            'dateTime': '2022-05-14T09:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'end': {
-            'dateTime': '2022-03-12T15:00:00',
+            'dateTime': '2022-05-14T15:23:00',
             'timeZone': 'Asia/Jakarta',
           },
           'recurrence': [
@@ -310,7 +310,7 @@ const InvitationPage = () => {
   };
 
   const goToMaps = () => {
-    window.open('https://goo.gl/maps/qtycMEc5Uhgj8XXA8', '_blank');
+    window.open('https://goo.gl/maps/m1Evh7XhbbEjGoc96', '_blank');
   };
 
   const radioAttend = (e) => {
@@ -346,17 +346,13 @@ const InvitationPage = () => {
     window.open('https://wa.me/62895706454243?text=Hallo%20saya%20mau%20pesan%20Undangan%20...', '_blank')
   }
 
-  const generateHeader = () => {
-    return (
-      <div className={classes.header}>
-        <Fade delay={2000} duration={2000}>
-          <div className={classes.countdown}>
-            {timerComponents.length && timerComponents}
-          </div>
-        </Fade>
-      </div>
-    );
-  };
+  const contactIG = () => {
+    window.open('https://www.instagram.com/techartsy.indonesia/', '_blank')
+  }
+
+  const contactOfficialWeb = () => {
+    window.open('https://techartsyindonesia.com/', '_blank')
+  }
 
   const generateNewHeader = () => {
     return (
@@ -693,11 +689,11 @@ const InvitationPage = () => {
       <div className={classes.footerContainer}>
         <div className={classes.colaborationWrapper}>
           <img alt="colaboration" src={colaboration} className={classes.colaborationText} />
-          <img alt="colaboration" src={techartsy} className={classes.logo} />
+          <img alt="colaboration" src={techartsy} className={classes.logo} onClick={contactOfficialWeb} />
         </div>
-        <div className={classes.footerTitle} onClick={contactWA}>
-          <img className={classes.contact} src={whatsapp} alt="whatsapp" />
-          <img className={classes.contact} src={instagram} alt="instagram" />
+        <div className={classes.footerTitle}>
+          <img className={classes.contact} onClick={contactWA} src={whatsapp} alt="whatsapp" />
+          <img className={classes.contact} onClick={contactIG} src={instagram} alt="instagram" />
         </div>
       </div >
     );
@@ -720,7 +716,7 @@ const InvitationPage = () => {
         {closingSeparator()}
         {closingSection()}
         {footerSection()}
-        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
+        <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}
