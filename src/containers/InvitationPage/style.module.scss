@@ -19,7 +19,6 @@
     .newHeader {
       .backgroundImg {
         img {
-
           width: 100%;
         }
       }
@@ -197,6 +196,10 @@
         img {
           padding-right: 2%;
           margin-top: -20%;
+          max-width: 150px;
+          @include apply-at-xsm-size {
+            width: 110px;
+          }
         }
       }
       .thirdRow {
@@ -221,7 +224,7 @@
       background-position: center;
       padding: 5% 0;
       .bgWrapper {
-        background-image: url("../../static/images/event-detail-bg.png");
+        background-image: url("https://res.cloudinary.com/dwvzfit8v/image/upload/v1653575105/Invitation%20Assets/WhatsApp_Image_2022-04-03_at_21.48_7_k140iu.png");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-color: $color-dark-green;
@@ -266,14 +269,18 @@
               }
             }
           }
-          .btnCalendarWrapper {
-            @include content-center;
-            border: 2px solid $color-dark-gray;
-            padding: 0 10px;
-            width: 120px;
-            font-size: 12px;
-            text-align: center;
-            border-radius: 8px;
+          .btnCalendarContainer {
+            @include directionX;
+            justify-content: center;
+            margin: 10px 0;
+            .btnCalendarWrapper {
+              border: 2px solid $color-dark-gray;
+              padding: 0 10px;
+              width: 120px;
+              font-size: 12px;
+              text-align: center;
+              border-radius: 8px;
+            }
           }
           .timesWraper {
             @include directionX;
@@ -289,6 +296,9 @@
               .event {
                 @include useChewy;
                 letter-spacing: 0.1em;
+                text-decoration-line: underline;
+                text-underline-offset: 2px;
+                text-decoration-color: $color-broken-white;
               }
               img {
                 width: 35px;
@@ -301,21 +311,50 @@
           }
         }
         .locationWraper {
-          @include directionY;
-          @include content-center;
-          align-items: center;
+          @include directionX;
+          // @include content-center;
+          justify-content: space-between;
+          // align-items: center;
+          // display: grid;
+          // grid-template-columns: 1fr 1fr 1fr;
+          // border: 1px solid red;
           font-size: 12px;
-          p {
-            width: 100%;
-            text-align: center;
+          .sectionLeft {
+            margin-top: -10%;
           }
-          img {
-            width: 30px;
+          .locationInfo {
+            @include directionY;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 3;
+            left: 0;
+            right: 0;
+            // border: 1px solid yellow;
+            text-align: center;
+            position: absolute;
+            .locationTitle {
+              @include useChewy;
+              letter-spacing: 0.1em;
+              text-decoration-line: underline;
+              text-underline-offset: 2px;
+              text-decoration-color: $color-broken-white;
+            }
+            p {
+              width: 100%;
+              text-align: center;
+            }
+            img {
+              width: 30px;
+            }
+          }
+          .sectionRight {
           }
         }
         .btnmap {
           @include content-center;
           @include directionX;
+          margin-top: 15%;
           align-items: center;
           justify-content: center;
           padding: 0px 10px;
@@ -426,6 +465,27 @@
                 textarea:focus {
                   outline: none !important;
                   box-shadow: 0 0 8px $color-dark-green;
+                }
+                .iconContainer {
+                  display: flex;
+                  justify-content: flex-end;
+                  .micWrapper {
+                    @include directionX;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: -10%;
+                    margin-right: 10px;
+                    width: 30px;
+                    height: 30px;
+                    .mic {
+                      color: white; 
+                      position: relative;
+                      width: 18px;
+                      height: 18px;
+                      position: absolute;
+                      z-index: 1000;
+                    }
+                  }
                 }
               }
             }
@@ -782,6 +842,7 @@
       }
     }
     .closingSeparator {
+      margin-top: 15px;
       background-color: $color-dark-green;
       padding-top: 5%;
       img {

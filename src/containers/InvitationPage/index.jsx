@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Fade from 'react-reveal/Fade';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { isIOS } from 'react-device-detect';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+
+import { ImMic } from "react-icons/im";
 
 import {
   getAllGuest,
@@ -15,15 +18,12 @@ import {
   resetConfirmationError,
   resetConfirmationSuccess,
 } from '../../store/actions';
-import useWindowDimensions from '../../utils/useWindowDimensions';
 import StartedComponent from '../../components/Started';
 import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
+import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
 import MessageImg from '../../static/images/message-img.png';
-import wingribbon from '../../static/images/ribbon.png';
-import creditcard from '../../static/images/creditcard.svg';
-import numbercopy from '../../static/images/numbercopy.png';
 import logo from '../../static/images/logo.png';
 import calender from '../../static/icons/calender.png';
 import time from '../../static/icons/time.png';
@@ -42,6 +42,8 @@ import thirdQuoteImg from '../../static/images/third-quote-img.png';
 import maleImg from '../../static/images/male.png';
 import FemaleImg from '../../static/images/female.png';
 import quotesImg from '../../static/images/quotes-img.png';
+import leafLeft from '../../static/images/leaf-left.png';
+import leafRight from '../../static/images/leaf-right.png';
 import rose from '../../static/images/rose.png';
 import headerImg from '../../static/images/header.png';
 import galleryIcon from '../../static/images/gallery/icon.png';
@@ -57,23 +59,17 @@ const InvitationPage = () => {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShow, setIsShow] = useState(false);
-  const [isShowGift, setIsShowGift] = useState(false);
-  const [closeGift, setCloseGift] = useState(true);
   const [guestName, setGuestName] = useState('');
   const [address, setAddress] = useState('');
   const [attend, setAttend] = useState('');
-  const [note, setNote] = useState('');
   const [showPopupProkes, setShowPopupProkes] = useState(false);
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [notif, setNotif] = useState('');
-  const [gifNotif, setGiftNotif] = useState('');
-  const wording = '1271003800';
-  const giftAddress = 'Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu, Kec. Jalancagak, Kab. Subang, Jawa Barat';
+  const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  let [popupCounter, setPopupCounter] = useState(0);
   let name = location?.search?.split('=')[1];
   name = name?.split('+').join(' ');
-  const { width } = useWindowDimensions();
 
   var gapi = window.gapi;
   var CLIENT_ID = '545719587697-3b26seil317l47iehsuqb1l1a7i8r93k.apps.googleusercontent.com';
@@ -85,16 +81,22 @@ const InvitationPage = () => {
   const isError = useSelector(state => state.invitationReducer.isError);
   const confirmationErrorMessage = useSelector(state => state.invitationReducer.confirmationErrorMessage);
   const confirmationSuccess = useSelector(state => state.invitationReducer.confirmationSuccess);
-  const copyText = () => {
-    navigator.clipboard.writeText(wording)
-    setNotif('Copied')
-    setTimeout(() => {
-      setNotif('')
-    }, 3000)
+  const {
+    transcript,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
+  const [note, setNote] = useState('' || transcript);
+
+  const onStartRecognition = () => {
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: 'id'
+    })
   }
 
   const addEvent = () => {
-    console.log('masuk')
     gapi.load('client:auth2', () => {
       gapi.client.init({
         apiKey: API_KEY,
@@ -108,14 +110,14 @@ const InvitationPage = () => {
       .then(() => {
         var event = {
           'summary': 'Putra & Dina Wedding Day',
-          'location': 'Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu, Kec. Jalancagak, Kab. Subang, Jawa Barat',
+          'location': 'Jalan Pondok Cabe 1 RT 04, RW 04, No. 4 Kel. Pondok Cabe Ilir, Kec. Pamulang, Tangerang Selatan',
           'description': 'Wedding Invitation',
           'start': {
-            'dateTime': '2022-05-14T09:00:00',
+            'dateTime': '2022-07-02T10:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'end': {
-            'dateTime': '2022-05-14T15:23:00',
+            'dateTime': '2022-07-02T23:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'recurrence': [
@@ -139,15 +141,6 @@ const InvitationPage = () => {
         })
       })
     })
-  };
-
-
-  const copyAddress = () => {
-    navigator.clipboard.writeText(giftAddress);
-    setGiftNotif('Copied');
-    setTimeout(() => {
-      setGiftNotif('');
-    }, 3000);
   };
 
   const Toast = Swal.mixin({
@@ -221,7 +214,7 @@ const InvitationPage = () => {
     let difference;
     if (isIOS) {
       nextYear = year;
-      let fullDate = "2022-05-14 09:00:00";
+      let fullDate = "2022-07-02 10:00:00";
       let date = new Date(fullDate);
       // In case its IOS, parse the fulldate parts and re-create the date object.
       if(Number.isNaN(date.getMonth())) {
@@ -231,7 +224,7 @@ const InvitationPage = () => {
       difference = +date - +new Date();
     } else {
       nextYear = year;
-      difference = +new Date(`05/14/${nextYear}/09:00`) - +new Date();
+      difference = +new Date(`07/02/${nextYear}/10:00`) - +new Date();
     }
     let timeLeft = {};
     if (difference > 0) {
@@ -294,28 +287,29 @@ const InvitationPage = () => {
   };
 
   const showFormAttending = () => {
+    if (browserSupportsSpeechRecognition) {
+      if (!isShow && popupCounter === 0) {
+        setPopupCounter(popupCounter += 1)
+        setOpenPopupVoiceRecog(!openPopupVoiceRecog);
+      }
+    }
     setIsShow(!isShow)
   };
 
-  const showGiftInfo = () => {
-    if (isShowGift) {
-      setIsShowGift(!isShowGift)
-      setTimeout(() => {
-        setCloseGift(!closeGift)
-      }, 1500);
-    } else {
-      setIsShowGift(!isShowGift)
-      setCloseGift(!closeGift)
-    };
-  };
-
   const goToMaps = () => {
-    window.open('https://goo.gl/maps/m1Evh7XhbbEjGoc96', '_blank');
+    window.open('https://goo.gl/maps/DfBp8FaU16t6YDPMA', '_blank');
   };
 
   const radioAttend = (e) => {
     setAttend(e.target.value);
   };
+
+  const onChangeNote = (text) => {
+    setNote(text);
+    if (note.length === 0) {
+      resetTranscript();
+    }
+  }
 
   const onSubmitRadios = (e) => {
     e.preventDefault();
@@ -324,7 +318,7 @@ const InvitationPage = () => {
       name: guestName,
       address,
       attend,
-      message: note,
+      message: note || transcript,
       pax: attend?.toLowerCase() === 'present' ? '1' : '0',
     }
     dispatch(submitRegistration(payload, Toast.fire({
@@ -336,6 +330,7 @@ const InvitationPage = () => {
     setGuestName('');
     setAddress('');
     setNote('');
+    resetTranscript();
   };
 
   const submitGiftConfirmation = (value) => {
@@ -392,7 +387,7 @@ const InvitationPage = () => {
     return (
       <div className={classes.secondQuoteContainer}>
         <div className={classes.top}>
-          <p>Dina & Putra</p>
+          <p>Putra & Dina</p>
         </div>
         <div className={classes.bottom}>
           <p>“Menikahlah dengan seseorang yang sanggup menerima kekuranganmu, dan Ia pun bersyukur atas kelebihanmu.
@@ -483,20 +478,11 @@ const InvitationPage = () => {
               </p>
             </div>
             <div className={classes.details}>
-              <div className={classes.calender}>
-                <img src={calender} alt='calender' />
-                <p>
-                  SABTU, 14 MEI 2022
-                </p>
-              </div>
-              <div className={classes.btnCalendarWrapper} onClick={addEvent}>
-                <p>Tambahkan ke Kalender</p>
-              </div>
               <div className={classes.timesWraper}>
                 <div className={classes.timeMobileWrapper}>
-                  <p className={classes.event}>Akad</p>
-                  <img src={time} alt='time' />
-                  <p className={classes.time}>Pukul 09.00 WIB s.d Selesai</p>
+                  <p className={classes.event}>Tanggal</p>
+                  <img src={calender} alt='calender' />
+                  <p className={classes.time}>SABTU, 02 JULI 2022</p>
                 </div>
                 <div className={classes.timeMobileWrapper}>
                   <p className={classes.event}>Resepsi</p>
@@ -504,14 +490,28 @@ const InvitationPage = () => {
                   <p className={classes.time}>Pukul 10.00 WIB s.d Selesai</p>
                 </div>
               </div>
+              <div className={classes.btnCalendarContainer}>
+                <div className={classes.btnCalendarWrapper} onClick={addEvent}>
+                  <p>Tambahkan ke Kalender</p>
+                </div>
+              </div>
             </div>
           </Fade>
           <Fade delay={1000} duration={4000}>
             <div className={classes.locationWraper}>
-              <img src={Location} alt='location' />
-              <p>
-                Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu,<br/>Kec. Jalancagak, Kab. Subang, Jawa Barat
-              </p>
+              <div className={classes.sectionLeft}>
+                <img src={leafLeft} alt="leaf" />
+              </div>
+              <div className={classes.locationInfo}>
+                <p className={classes.locationTitle}>Lokasi</p>
+                <img src={Location} alt='location' />
+                <p>
+                Jalan Pondok Cabe 1<br/>RT 04, RW 04, No. 4 Kel. Pondok Cabe Ilir, Kec. Pamulang,<br/>Tangerang Selatan
+                </p>
+              </div>
+              <div className={classes.sectionRight}>
+                <img src={leafRight} alt="leaf" />
+              </div>
             </div>
             <div onClick={goToMaps} className={classes.btnmap}>
               <p>Menuju Lokasi</p>
@@ -542,7 +542,19 @@ const InvitationPage = () => {
                 <div className={classes.inputs}>
                   <input type='text' value={guestName} placeholder='Nama' required onChange={(e) => setGuestName(e.target.value)} />
                   <input type='text' placeholder='Alamat' value={address} required onChange={(e) => setAddress(e.target.value)} />
-                  <textarea type='text' placeholder='Kirim Ucapan & Doa' value={note} onChange={(e) => setNote(e.target.value)} />
+                  <textarea type='text' placeholder='Kirim Ucapan & Doa' value={note || transcript} onChange={(e) => onChangeNote(e.target.value)} />
+                  {browserSupportsSpeechRecognition &&
+                    <div className={classes.iconContainer}>
+                      <div
+                        onTouchStart={onStartRecognition}
+                        onMouseDown={onStartRecognition}
+                        onTouchEnd={SpeechRecognition.stopListening}
+                        onMouseUp={SpeechRecognition.stopListening}
+                        className={classes.micWrapper}
+                      >
+                        <ImMic className={classes.mic} />
+                      </div>
+                    </div>}
                 </div>
               </div>
               <div onChange={radioAttend} className={classes.radiosInput}>
@@ -614,49 +626,6 @@ const InvitationPage = () => {
     );
   };
 
-  const giftSection = () => {
-    return (
-      <div className={classes.giftContainer}>
-        <div className={classes.giftWraper}>
-          <div className={classes.tittleRibbon}>
-            <p className={classes.titleGift}>Hadiah Pernikahan</p>
-            <img className={classes.ribbon} src={wingribbon} alt="wing" />
-          </div>
-          <div className={classes.dropdownSection} onClick={showGiftInfo}>
-            <p className={classes.title}>Kirim Hadiah</p>
-            <div className={classes.icon}>
-              <img src={isShowGift ? dropup : dropdown} alt='dropdown' />
-            </div>
-          </div>
-          <div className={`${classes.giftInfoWraper} ${isShowGift ? classes.showGift : classes.hideGift} ${closeGift ? classes.closeGift : ''}`}>
-            <div className={classes.imageDetail}>
-              <img className={classes.card} src={creditcard} alt="credit-card" />
-              <div className={classes.copyWraperTop}>
-                <img className={classes.copy} src={numbercopy} onClick={copyText} alt="copy-text" />
-                <p className={classes.notifCopyTop}>{notif}</p>
-              </div>
-            </div>
-            <div className={classes.infoWrapper}>
-              <p className={classes.infoTitle}>Alamat Pengiriman Hadiah Fisik</p>
-              <p className={classes.infoDetail}>
-                Nama : Dina Novita Herawati <br />
-                Alamat : Kp. Bunihayu, RT 05, RW 02, Desa Bunihayu,<br />Kec. Jalancagak, Kab. Subang, Jawa Barat
-              </p>
-              <div className={classes.copyWraper}>
-                <img className={classes.copy} src={numbercopy} onClick={copyAddress} alt="copy-text" />
-                <p className={classes.notifCopy}>{gifNotif}</p>
-              </div>
-            </div>
-            <p className={classes.closingStatement}>
-              Silakan konfirmasi kirim hadiah spesial kamu
-            </p>
-            <div className={classes.btnConfirmation} onClick={handleConfirmation}>klik disini</div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const closingSeparator = () => {
     return (
       <div className={classes.closingSeparator}>
@@ -712,7 +681,6 @@ const InvitationPage = () => {
         {eventDetail()}
         {attendingSection()}
         {generateMessageSection()}
-        {giftSection()}
         {closingSeparator()}
         {closingSection()}
         {footerSection()}
@@ -723,6 +691,10 @@ const InvitationPage = () => {
           handleClose={handleConfirmation}
           submitGiftConfirmation={submitGiftConfirmation}
           confirmationSuccess={confirmationSuccess}
+        />
+        <PopupVoiceRecognition
+          open={openPopupVoiceRecog}
+          handleClose={() => setOpenPopupVoiceRecog(!openPopupVoiceRecog)}
         />
       </div>
     );

@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export default (options, requestOptions = {}) => {
+const request = (options, requestOptions = {}) => {
   return axios(options);
 };
+
+export default request;
