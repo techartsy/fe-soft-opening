@@ -1,6 +1,6 @@
-import _ from "lodash";
 import request from "../utils/request";
 const base_URL = "https://be-invitation-ridwan.herokuapp.com/invitation/";
+// const base_URL = "https://be-invitation-gempor.herokuapp.com/invitation/";
 
 const urls = {
   get_all_guest: "guest",

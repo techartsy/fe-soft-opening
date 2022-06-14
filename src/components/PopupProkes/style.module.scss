@@ -1,28 +1,27 @@
 @import "../../styles/base";
 
 .popupWrapper {
+  @include apply-at-md-lg-size {
+    width: 360px;
+  }
   .prokesTitle {
     @include body;
-    color: $color-gold;
-    font-size: 24px;
+    color: $color-broken-white;
     text-align: center;
-    margin-bottom: 8%;
     text-decoration-line: underline;
     text-underline-offset: 10px;
     margin-top: -3%;
-    @include apply-at-sm-md-size {
-      font-size: 16px;
-      margin-bottom: 20%;
-    }
+    font-size: 16px;
+    margin-bottom: 20%;
     p {
-      color: $color-gold;
+      color: $color-broken-white;
     }
   }
   .prokesTop {
     @include directionX;
     justify-content: space-around;
-    color: $color-gold;
-    font-size: 10px;
+    color: $color-broken-white;
+    font-size: 12px;
     line-height: 16px;
     width: 100%;
     margin-bottom: 1%;
@@ -30,78 +29,58 @@
     .iconWrapperPopup {
       @include directionY;
       align-items: center;
-      width: 25%;
-      @include apply-at-sm-md-size {
-        width: 40%;
-      }
+      width: 40%;
       img {
         @include content-center;
-        width: 60px;
-        height: 60px;
-        @include apply-at-sm-md-size {
-          width: 50px;
-          height: 40px;
-        }
+        width: 50px;
+        height: 40px;
       }
     }
   }
   .prokesBottom {
     @include directionX;
     justify-content: space-around;
-    color: $color-gold;
-    font-size: 10px;
+    color: $color-broken-white;
+    font-size: 12px;
     line-height: 16px;
     width: 100%;
     text-align: center;
     .iconWrapperPopup {
       @include directionY;
-      width: 25%;
       align-items: center;
-      @include apply-at-sm-md-size {
-        width: 40%;
-      }
+      width: 40%;
       img {
         @include content-center;
-        width: 60px;
-        height: 60px;
-        @include apply-at-sm-md-size {
-          width: 50px;
-          height: 40px;
-        }
+        width: 50px;
+        height: 40px;
       }
     }
   }
   .appeal {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: $color-gold;
-    font-size: 11px;
+    color: $color-broken-white;
     text-align: center;
     line-height: 23.05px;
-    @include apply-at-sm-md-size {
-      font-size: 10px;
-    }
+    font-size: 12px;
   }
   .closePopupBtn {
     @include body;
     @include directionX;
     @include content-center;
+    @include useChewy;
     align-items: center;
     justify-content: center;
-    background-color: $color-black;
-    color: $color-gold;
-    border: 1px solid $color-gold;
+    background-color: $color-broken-white;
+    color: $color-dark-green;
+    border: 1px solid #ADADAD;
     border-radius: 53px;
-    width: 159px;
     max-height: 53px;
-    font-size: 23px;
     text-align: center;
     cursor: pointer;
     margin-bottom: 4%;
-    @include apply-at-sm-md-size {
-      width: 74px;
-      font-size: 12px;
-      height: 26px;
-    }
+    width: 74px;
+    font-size: 12px;
+    height: 26px;
   }
 }

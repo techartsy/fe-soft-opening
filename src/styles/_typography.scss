@@ -1,12 +1,9 @@
 @font-face {
-  font-family: "Consolas";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../static/fonts/consolas.ttf") format("truetype");
+  font-family: "Aladin", cursive;
 }
 @mixin body {
-  font-family: "Charm", cursive;
-  color: $color-gold;
+  font-family: "Aladin", cursive;
+  color: $color-broken-white;
 }
 @mixin directionX {
   display: flex;
@@ -43,6 +40,21 @@
 }
 @mixin useMulish {
   font-family: "Mulish", sans-serif;
+}
+@mixin useChewy {
+  font-family: "Chewy", cursive;
+}
+@mixin useDamion {
+  font-family: "Damion", cursive;
+}
+@mixin useAladin {
+  font-family: "Aladin", cursive;
+}
+@mixin useForum {
+  font-family: "Forum", cursive;
+}
+@mixin useMerienda {
+  font-family: "Merienda", cursive;
 }
 @mixin section-spacing {
   margin: 22px 0;

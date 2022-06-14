@@ -6,6 +6,7 @@ import Mask from "../../static/icons/mask.png";
 import Distancing from "../../static/icons/distancing.png";
 import Hand from "../../static/icons/hand.png";
 import Temp from "../../static/icons/temperature.png";
+import popupBg from '../../static/images/popup-bg.png';
 import classes from "./style.module.scss";
 
 const styles = (theme) => ({
@@ -30,13 +31,17 @@ const PopupProkes = withStyles(styles)((props) => {
       open={open}
       style={{
         fontFamily: "'Merienda', cursive",
+        overflowY: "hidden",
       }}
     >
       <DialogContent
         dividers
         style={{
+          backgroundColor: '#93A38C',
+          backgroundImage: `url(${popupBg})`,
           overflowY: "hidden",
-          backgroundColor: "#000000",
+          minHeight: '450px',
+          backgroundPosition: 'center',
         }}
       >
         <div className={classes.popupWrapper}>
@@ -60,7 +65,7 @@ const PopupProkes = withStyles(styles)((props) => {
           <div className={classes.prokesBottom}>
             <div className={classes.iconWrapperPopup}>
               <img src={Temp} alt="temperatur" className={classes.iconProkes} />
-              <p>Suhu tubuh normal dibawah 37,5 c</p>
+              <p>Suhu tubuh normal dibawah 37,5 C</p>
             </div>
             <div className={classes.iconWrapperPopup}>
               <img

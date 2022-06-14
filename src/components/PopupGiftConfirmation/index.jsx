@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
-import Rose from '../../static/images/rosegift.png';
+import Ribbon from '../../static/images/ribbon-sm.png';
 import whatsapp from '../../static/icons/whatsapp.png';
 import classes from "./style.module.scss";
 import windowDimension from '../../utils/useWindowDimensions';
@@ -62,15 +62,20 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
       overlayStyle={{ backgroundColor: 'transparent' }}
       style={{
         fontFamily: "'Charm', cursive",
+        width: '360px',
+        display: 'flex',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       }}
     >
       <DialogContent
         dividers
         style={{
           overflowY: `${width !== 'lg' ? 'scroll' : 'hidden'}`,
-          backgroundColor: "#000000",
-          border: '1px solid #fbd258',
-          borderRadius: '6px'
+          backgroundColor: "#F5F2E7",
+          border: '1px solid #93A38C',
+          borderRadius: '6px',
+          overflowY: 'hidden',
         }}
       >
         <div className={classes.popupWrapper}>
@@ -78,7 +83,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
             &#10006;
           </div>
           <div className={classes.popupTitleWrapper} onClose={handleClose}>
-            <img className={classes.headerImg} src={Rose} alt="Rose" />
+            <img className={classes.headerImg} src={Ribbon} alt="Rose" />
             <p>Konfirmasi Hadiah</p>
           </div>
           <div className={classes.subtitle}>
@@ -93,9 +98,9 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
               <div className={classes.column}>
                 <label for="destination">Tujuan Pengiriman</label>
                 <select name="destination" onChange={selectDestination}>
-                  <option value="" disabled>-- Pilih Tujuan --</option>
+                  <option value="" disabled selected>-- Pilih Tujuan --</option>
                   <option value="Hadiah Fisik">Alamat Rumah</option>
-                  <option value="Rekening">Mandiri / 1570005756763 / Ridwan Krisdiansah</option>
+                  <option value="Rekening">BNI / 1271003800 / Dina Novita Herawati</option>
                 </select>
               </div>
             </div>
@@ -106,7 +111,7 @@ const PopupGiftConfirmation = withStyles(styles)((props) => {
             <div className={classes.infoWrapper}>
               <a
                 rel="noreferrer"
-                href="https://wa.me/6285863589565?text=Hallo%20saya%20mau%20konfirmasi%20pengiriman"
+                href="https://wa.me/6285321771808?text=Hallo%20saya%20mau%20konfirmasi%20pengiriman"
                 target="_blank">
                 <img src={whatsapp} alt="whatsapp" className={classes.whatsapp} />
               </a>
