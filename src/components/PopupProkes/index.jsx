@@ -2,15 +2,8 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
-// import Mask from "../../static/icons/mask.png";
-// import Distancing from "../../static/icons/distancing.png";
-// import Hand from "../../static/icons/hand.png";
-// import Temp from "../../static/icons/temperature.png";
-// import popupBg from '../../static/images/popup-bg.png';
 import schedule from '../../static/rundown/rundown';
 import classes from "./style.module.scss";
-
-console.log(schedule, '<<<<<<<<<<<<<<<<<<<<')
 
 const logo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/logos_ko9i4n.webp';
 const title = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662304051/Invitation%20Assets/Mela%27s/rundownPOPUP_u1hqhi.webp';

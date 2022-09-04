@@ -26,33 +26,9 @@ import StartedComponent from '../../components/Started';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
-import MessageImg from '../../static/images/message-img.png';
-// import logo from '../../static/images/logo.png';
-import calender from '../../static/icons/calender.png';
-import time from '../../static/icons/time.png';
-import Location from '../../static/icons/location.png';
-import plane from '../../static/icons/plane.png';
 import dropdown from '../../static/icons/dropdown.png';
 import dropup from '../../static/icons/dropup.png';
 import Mail from '../../static/icons/mail.png';
-import whatsapp from '../../static/icons/whatsapp.png';
-import instagram from '../../static/icons/instagram.png';
-import colaboration from '../../static/icons/colaboration.png';
-import closingImg from '../../static/images/closing-img.png';
-import attendingImg from '../../static/images/attending-img.png';
-import thirdQuoteImg from '../../static/images/third-quote-img.png';
-import maleImg from '../../static/images/male.png';
-import FemaleImg from '../../static/images/female.png';
-import leafLeft from '../../static/images/leaf-left.png';
-import leafRight from '../../static/images/leaf-right.png';
-// import rose from '../../static/images/rose.png';
-import galleryIcon from '../../static/images/gallery/icon.png';
-import galleryRose from '../../static/images/gallery/rose.png';
-import galleryLogo from '../../static/images/gallery/logo.png';
-import gallery1 from '../../static/images/gallery/1.png';
-import gallery2 from '../../static/images/gallery/2.png';
-import gallery3 from '../../static/images/gallery/3.png';
-import gallery4 from '../../static/images/gallery/4.png';
 import classes from './style.module.scss';
 import Mask from '../../static/icons/mask.png';
 import Distancing from '../../static/icons/distancing.png';
@@ -61,9 +37,8 @@ import Temp from '../../static/icons/temperature.png';
 
 const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237018/Invitation%20Assets/Mela%27s/Opening_avtbgv.webp';
 const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241878/Invitation%20Assets/Mela%27s/flowerBG_wdckmm.webp';
-const btnLocation = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/location_ir4ord.webp';
-const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/rundown_cvezff.webp';
-const protocolBG = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/bgFlower2_t2gzmq.webp';
+const btnCalender = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnCalender_kfqylo.webp';
+const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnRundown_ufm73j.webp';
 const footerLogo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1658591749/Asset%20Techartsy%20Indonesia/Logo/Webp%20Format/Techartsy_Gold_qsdzz5.webp';
 const messageLogo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/logo_azw3sx.webp';
 
@@ -89,11 +64,11 @@ const InvitationPage = () => {
   let name = location?.search?.split('=')[1];
   name = name?.split('+').join(' ');
 
-  var gapi = window.gapi;
-  var CLIENT_ID = '545719587697-3b26seil317l47iehsuqb1l1a7i8r93k.apps.googleusercontent.com';
-  var API_KEY = 'AIzaSyAspcebNucyZ-lYgmuHOwyu3CNaqfk9CiY';
-  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-  var SCOPES = "https://www.googleapis.com/auth/calendar.events";
+  let gapi = window.gapi;
+  let CLIENT_ID = '545719587697-3b26seil317l47iehsuqb1l1a7i8r93k.apps.googleusercontent.com';
+  let API_KEY = 'AIzaSyAspcebNucyZ-lYgmuHOwyu3CNaqfk9CiY';
+  let DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+  let SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
   const messages = useSelector(state => state.invitationReducer.messages);
   const isError = useSelector(state => state.invitationReducer.isError);
@@ -126,7 +101,7 @@ const InvitationPage = () => {
       gapi.client.load('calendar', 'v3', () => console.log('opened'));
       gapi.auth2.getAuthInstance().signIn()
       .then(() => {
-        var event = {
+        let event = {
           'summary': 'Soft Opening Melas Dining & Lounge',
           'location': 'Jl. Pakubuwono VI No.77, RW.2, Gunung, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12120',
           'description': 'Soft Opening Invitation',
@@ -150,7 +125,7 @@ const InvitationPage = () => {
           },
         };
 
-        var request = gapi.client.calendar.events.insert({
+        let request = gapi.client.calendar.events.insert({
           'calendarId': 'primary',
           'resource': event,
         })
@@ -201,7 +176,7 @@ const InvitationPage = () => {
       setTimeout(() => {
         dispatch(resetErrorPost());
       }, 1000);
-    };
+    }
   }, [isError])
 
   useEffect(() => {
@@ -218,7 +193,7 @@ const InvitationPage = () => {
       setTimeout(() => {
         dispatch(resetConfirmationError())
       }, 2000);
-    };
+    }
   }, [confirmationErrorMessage])
 
   useEffect(() => {
@@ -273,7 +248,7 @@ const InvitationPage = () => {
         Menit: '00',
         Detik: '00'
       };
-    };
+    }
     return timeLeft;
   };
 
@@ -290,7 +265,7 @@ const InvitationPage = () => {
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval]) {
       return;
-    };
+    }
 
     timerComponents.push(
       <div className={classes.countdownItem}>
@@ -331,10 +306,6 @@ const InvitationPage = () => {
       }
     }
     setIsShow(!isShow)
-  };
-
-  const goToMaps = () => {
-    window.open('https://goo.gl/maps/MoCxeSH8Nk7gAnot8', '_blank');
   };
 
   const radioAttend = (e) => {
@@ -426,7 +397,7 @@ const InvitationPage = () => {
             <img alt="brides" className={classes.image} src={event} />
           </div>
           <div className={classes.buttons}>
-            <img className={classes.btn} src={btnLocation} onClick={goToMaps} alt='btn' />
+            <img className={classes.btn} src={btnCalender} onClick={addEvent} alt='btn' />
             <img className={classes.btn} src={btnRundown} onClick={handleOpenRundown} alt='btn' />
           </div>
         </div>
@@ -495,7 +466,6 @@ const InvitationPage = () => {
       </div>
     )
   }
-
 
   const attendingSection = () => {
     return (

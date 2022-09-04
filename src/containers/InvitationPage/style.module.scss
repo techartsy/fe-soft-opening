@@ -264,7 +264,6 @@
       }
     }
     .attendingContainer {
-      // background-color: $color-broken-white;
       background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662300340/Invitation%20Assets/Mela%27s/pngwing-10_m6ovo7.webp');
       background-position: center;
       background-size: cover;
@@ -417,7 +416,6 @@
                   width: 100%;
                   @include directionY;
                   .radioItem {
-                    // @include useAladin;
                     font-size: 13px;
                     margin-right: 10px;
                     accent-color: $color-light-orange;
@@ -517,7 +515,6 @@
           background-size: cover;
           background-repeat: no-repeat;
           object-fit: cover;
-
           align-items: center;
           width: 100%;
           img {
@@ -598,7 +595,6 @@
                   margin-left: -5px;
                   width: 80%;
                   .name {
-                    // @include useChewy;
                     @include useInika;
                     margin-bottom: 0.5rem;
                     font-size: 10px;
@@ -646,7 +642,7 @@
           justify-content: center;
           margin-bottom: 5%;
           width: 30%;
-          border-bottom: 1px solid #6E706D;
+          border-bottom: 1px solid $color-dark-gray;
           cursor: pointer;
             align-items: center;
             .title {
@@ -818,7 +814,6 @@
         p {
           margin-top: -0.5%;
         }
-        // gap: 1px;
         .logo {
           margin-top: -3%;
           width: 90px;
