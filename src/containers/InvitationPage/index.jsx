@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import _ from 'lodash';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Fade from 'react-reveal/Fade';
@@ -23,7 +23,7 @@ import {
   resetConfirmationSuccess,
 } from '../../store/actions';
 import StartedComponent from '../../components/Started';
-// import AudioComponent from '../../components/AudioPlayer';
+import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
@@ -82,12 +82,23 @@ const InvitationPage = () => {
   } = useSpeechRecognition();
 
   const [note, setNote] = useState('' || transcript);
-
+  const text = useRef('')
+  // const onSpeechResults = (value) => {
+  //   // console.log('masuk func')
+  //   text.current = text.current +' '+ value;
+  //   setNote(text.current);
+  //   // if (!_.isEmpty(note)) {
+  //   //   setNote(`${note} ${transcript}`);
+  //   // }
+  // }
+  
   const onStartRecognition = () => {
     SpeechRecognition.startListening({
       continuous: true,
       language: 'id'
     })
+    // console.log(text);
+    // onSpeechResults(transcript)
   }
 
   const addEvent = () => {
@@ -280,7 +291,6 @@ const InvitationPage = () => {
     );
   });
 
-  
   const handleOpenRundown = () => {
     setOpenRundown(!openRundown)
     setShowPopupProkes(!showPopupProkes);
@@ -315,6 +325,12 @@ const InvitationPage = () => {
 
   const onChangeNote = (text) => {
     setNote(text);
+    resetTranscript();
+    // if (!_.isEmpty(transcript)) {
+    //   setNote(`${note} ${transcript}`)
+    // } else {
+    //   setNote(text)
+    // }
     if (note.length === 0) {
       resetTranscript();
     }
@@ -523,7 +539,7 @@ const InvitationPage = () => {
                     <option value="1">1 Person</option>
                     <option value="2">2 Person</option>
                   </select>
-                  <textarea type='text' placeholder='Message' value={note || transcript} onChange={(e) => onChangeNote(e.target.value)} />
+                  <textarea type='text' placeholder='Message' value={!_.isEmpty(transcript) ? `${note} ${transcript}` : `${note}${transcript}`} onChange={(e) => onChangeNote(e.target.value)} />
                   {browserSupportsSpeechRecognition &&
                     <div className={classes.iconContainer}>
                       <div
@@ -644,7 +660,7 @@ const InvitationPage = () => {
       </div >
     );
   };
-  
+
   const generateInvitation = () => {
     return (
       <div className={classes.invitationContainer}>
@@ -684,7 +700,7 @@ const InvitationPage = () => {
         {generateMessageSection()}
         {googleMaps()}
         {footerSection()}
-        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
+        <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}

@@ -62,7 +62,7 @@ const PopupProkes = withStyles(styles)((props) => {
             </ol>
           </div>
           <div className={classes.closePopupBtn} onClick={handleClose}>
-            <p>Lanjutkan</p>
+            <p>Next</p>
           </div>
         </div>
       </DialogContent>
