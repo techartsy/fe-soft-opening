@@ -4,6 +4,22 @@
   @include apply-at-md-lg-size {
     width: 360px;
   }
+  .ellipse {
+    cursor: pointer;
+    display: flex;
+    float: right;
+    margin-top: 1%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 22px;
+    height: 22px;
+    background-color: $color-broken-white;
+    .closeBTN {
+      color: $color-light-orange;
+      font-weight: bold;
+    }
+  }
   .prokesTitle {
     @include body;
     color: $color-broken-white;
@@ -17,70 +33,39 @@
       color: $color-broken-white;
     }
   }
-  .prokesTop {
-    @include directionX;
-    justify-content: space-around;
-    color: $color-broken-white;
-    font-size: 12px;
-    line-height: 16px;
+  .rundown {
     width: 100%;
-    margin-bottom: 1%;
-    text-align: center;
-    .iconWrapperPopup {
-      @include directionY;
-      align-items: center;
-      width: 40%;
-      img {
-        @include content-center;
-        width: 50px;
-        height: 40px;
-      }
-    }
-  }
-  .prokesBottom {
-    @include directionX;
-    justify-content: space-around;
-    color: $color-broken-white;
-    font-size: 12px;
-    line-height: 16px;
-    width: 100%;
-    text-align: center;
-    .iconWrapperPopup {
-      @include directionY;
-      align-items: center;
-      width: 40%;
-      img {
-        @include content-center;
-        width: 50px;
-        height: 40px;
-      }
-    }
-  }
-  .appeal {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    color: $color-broken-white;
-    text-align: center;
-    line-height: 23.05px;
-    font-size: 12px;
-  }
-  .closePopupBtn {
-    @include body;
-    @include directionX;
+    @include directionY;
     @include content-center;
-    @include useChewy;
-    align-items: center;
-    justify-content: center;
-    background-color: $color-broken-white;
-    color: $color-dark-green;
-    border: 1px solid #ADADAD;
-    border-radius: 53px;
-    max-height: 53px;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 4%;
-    width: 74px;
+    background-color: $color-dark-grayish-violet;
+    border-radius: 5px;
+    margin-top: -15%;
+    color: $color-broken-white;
     font-size: 12px;
-    height: 26px;
+    @include itim;
+    .titleWrapper {
+      @include itim;
+      font-size: 15px;
+      .title {
+        margin-left: 4%;
+      }
+      .border {
+        margin-left: 3%;
+        width: 20%;
+        margin-top: -3%;
+        border-bottom: 2px solid $color-light-orange;
+      }
+    }
+    .subRundown {
+      // margin-top: ;
+      // @include directionY;
+      // border: 1px solid red;
+      // padding-left: - 5%;
+      // margin: 0%;
+      .ulWraper {
+        // border: 1px solid blue;
+        padding-left: 6%;
+      }
+    }
   }
 }
