@@ -13,6 +13,15 @@
 @mixin gabriela {
   font-family: 'Gabriela', serif;
 }
+@mixin useInika {
+  font-family: 'Inika', serif;
+}
+@mixin useInter {
+  font-family: 'Inter', sans-serif;
+}
+@mixin usePoppins {
+  font-family: 'Poppins', sans-serif;
+}
 @mixin body {
   font-family: "Aladin", cursive;
   color: $color-broken-white;
