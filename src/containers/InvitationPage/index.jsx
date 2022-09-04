@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Fade from 'react-reveal/Fade';
+import Flip from 'react-reveal/Flip';
 import Alert from '@material-ui/lab/Alert';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -236,17 +237,17 @@ const InvitationPage = () => {
     let timeLeft = {};
     if (difference > 0) {
       timeLeft = {
-        Hari: Math.floor(difference / (1000 * 60 * 60 * 24)) ? Math.floor(difference / (1000 * 60 * 60 * 24)) : '00',
-        Jam: Math.floor((difference / (1000 * 60 * 60)) % 24) ? Math.floor((difference / (1000 * 60 * 60)) % 24) : '00',
-        Menit: Math.floor((difference / 1000 / 60) % 60) !== 0 ? Math.floor((difference / 1000 / 60) % 60) : '00',
-        Detik: Math.floor((difference / 1000) % 60) !== 0 ? Math.floor((difference / 1000) % 60) : '00'
+        Days: Math.floor(difference / (1000 * 60 * 60 * 24)) ? Math.floor(difference / (1000 * 60 * 60 * 24)) : '00',
+        Hours: Math.floor((difference / (1000 * 60 * 60)) % 24) ? Math.floor((difference / (1000 * 60 * 60)) % 24) : '00',
+        Minutes: Math.floor((difference / 1000 / 60) % 60) !== 0 ? Math.floor((difference / 1000 / 60) % 60) : '00',
+        Seconds: Math.floor((difference / 1000) % 60) !== 0 ? Math.floor((difference / 1000) % 60) : '00'
       };
     } else {
       timeLeft = {
-        Hari: '00',
-        Jam: '00',
-        Menit: '00',
-        Detik: '00'
+        Days: '00',
+        Hours: '00',
+        Minutes: '00',
+        Seconds: '00'
       };
     }
     return timeLeft;
@@ -342,7 +343,6 @@ const InvitationPage = () => {
     dispatch(submitRegistration(
       payload,
       (errMsg) => {
-        console.log(errMsg, '<<< errMsg callback')
         setErrorMessage(errMsg);
         setErrorAlert(true)
       },
@@ -373,9 +373,11 @@ const InvitationPage = () => {
     return (
       <div className={classes.newHeader}>
         <div className={classes.backgroundImg}>
-          <img src={banner} alt="background" />
+          <Fade duration={2500} delay={500}>
+            <img src={banner} alt="background" />
+          </Fade>
           <div className={classes.border} />
-          <Fade delay={2000} duration={2000}>
+          <Fade delay={500} duration={2500}>
             <div className={classes.countdown}>
               {timerComponents.length && timerComponents}
             </div>
@@ -388,17 +390,25 @@ const InvitationPage = () => {
   const generateFirstQuoteSection = () => {
     return (
       <div className={classes.firstQuoteContainer}>
-        <div className={classes.topQuote}>
-          <p>Agenda Soft Opening</p>
-          <div className={classes.border} />
-        </div>
-        <div className={classes.bottomQuotesSection}>
-          <div className={classes.quoteImg}>
-            <img alt="brides" className={classes.image} src={event} />
+        <Fade duration={2500} delay={500}>
+          <div className={classes.topQuote}>
+            <p>Mela's Dining Soft Opening</p>
+            <div className={classes.border} />
           </div>
+        </Fade>
+        <div className={classes.bottomQuotesSection}>
+          <Fade duration={2500} delay={1200}>
+            <div className={classes.quoteImg}>
+              <img alt="brides" className={classes.image} src={event} />
+            </div>
+          </Fade>
           <div className={classes.buttons}>
-            <img className={classes.btn} src={btnCalender} onClick={addEvent} alt='btn' />
-            <img className={classes.btn} src={btnRundown} onClick={handleOpenRundown} alt='btn' />
+            <Flip top duration={2500} delay={1500}>
+              <img className={classes.btn} src={btnCalender} onClick={addEvent} alt='btn' />
+            </Flip>
+            <Flip top duration={2500} delay={1800}>
+              <img className={classes.btn} src={btnRundown} onClick={handleOpenRundown} alt='btn' />
+            </Flip>
           </div>
         </div>
       </div>
@@ -408,41 +418,52 @@ const InvitationPage = () => {
   const covidProtocol = () => {
     return (
       <div className={classes.popupWrapper}>
-        <div className={classes.prokesTitle}>
-          <p>Protokol Kesehatan (Covid - 19)</p>
-        </div>
+        <Fade duration={2500} delay={500}>
+          <div className={classes.prokesTitle}>
+            <p>Covid 19 Protocol</p>
+          </div>
+        </Fade>
         <div className={classes.prokesTop}>
-          <div className={classes.iconWrapperPopup}>
-            <img src={Mask} alt="mask" className={classes.iconProkes} />
-            <p>Tamu undangan wajib mengenakan masker</p>
-          </div>
-          <div className={classes.iconWrapperPopup}>
-            <img
-              src={Hand}
-              alt="washing-hand"
-              className={classes.iconProkes}
-            />
-            <p>Cuci tangan menggunakan sabun atau hand sanitizer</p>
-          </div>
+          <Fade duration={2500} delay={700}>
+            <div className={classes.iconWrapperPopup}>
+              <img src={Mask} alt="mask" className={classes.iconProkes} />
+              <p>Wear your mask properly</p>
+            </div>
+          </Fade>
+          <Fade duration={2500} delay={1200}>
+            <div className={classes.iconWrapperPopup}>
+              <img
+                src={Hand}
+                alt="washing-hand"
+                className={classes.iconProkes}
+              />
+              <p>Wash your hand often with water & soap</p>
+            </div>
+          </Fade>
         </div>
         <div className={classes.prokesBottom}>
-          <div className={classes.iconWrapperPopup}>
-            <img src={Temp} alt="temperatur" className={classes.iconProkes} />
-            <p>Suhu tubuh normal dibawah 37,5 C</p>
-          </div>
-          <div className={classes.iconWrapperPopup}>
-            <img
-              src={Distancing}
-              alt="social-distancing"
-              className={classes.iconProkes}
-            />
-            <p>Menjaga jarak antar sesama minimal 1 meter</p>
-          </div>
+          <Fade duration={2500} delay={1800}>
+            <div className={classes.iconWrapperPopup}>
+              <img src={Temp} alt="temperatur" className={classes.iconProkes} />
+              <p>Make sure your temperature around 37,5 C</p>
+            </div>
+          </Fade>
+          <Fade duration={2500} delay={2400}>
+            <div className={classes.iconWrapperPopup}>
+              <img
+                src={Distancing}
+                alt="social-distancing"
+                className={classes.iconProkes}
+              />
+              <p>Put distance between yourself and other people</p>
+            </div>
+          </Fade>
         </div>
-        <div className={classes.appeal}>
-          <p>Demi mendukung kesehatan bersama alangkah baiknya bagi para tamu undangan
-            wajib mematuhi protokol kesehatan untuk mencegah penularan covid 19</p>
-        </div>
+        <Fade duration={2500} delay={3000}>
+          <div className={classes.appeal}>
+            <p><strong>Mela's Dining</strong> is commited to fighting<br/>the spread of <strong>COVID - 19</strong></p>
+          </div>
+        </Fade>
       </div>
     );
   };
@@ -450,15 +471,19 @@ const InvitationPage = () => {
   const galleries = () => {
     return (
       <div className={classes.galleryWrapper}>
-        <div className={classes.top}>
-          <p>Gallery MELA'S</p>
-          <div className={classes.border} />
-        </div>
+        <Fade duration={2500} delay={500}>
+          <div className={classes.top}>
+            <p>Mela's Galleries</p>
+            <div className={classes.border} />
+          </div>
+        </Fade>
         <div className={classes.bottom}>
           {gallery &&
             gallery.map((item, idx) => {
               return (
-                <img src={item.img} idx={idx} alt='gallery' />
+                <Fade bottom duration={2000} delay={idx <= 3 ? idx*800 : 1000}>
+                  <img src={item.img} idx={idx} alt='gallery' />
+                </Fade>
               )
             })
           }
@@ -470,18 +495,26 @@ const InvitationPage = () => {
   const attendingSection = () => {
     return (
       <div className={classes.attendingContainer}>
-        <div className={classes.titleContainer}>
-          <p className={classes.title}>Reservation</p>
-          <p className={classes.subtitle}>Please confirm your presence</p>
-        </div>
+        <Fade duration={2000} delay={500}>
+          <div className={classes.titleContainer}>
+            <Fade top duration={2000} delay={500}>
+              <p className={classes.title}>Reservation</p>
+            </Fade>
+            <Fade top duration={2000} delay={500}>
+              <p className={classes.subtitle}>Please confirm your presence</p>
+            </Fade>
+          </div>
+        </Fade>
         <div className={classes.attendingWraper}>
           <div className={classes.formWraper}>
-            <div className={classes.dropdownSection} onClick={showFormAttending}>
-              <p className={classes.formTitle}>Confirm Presence</p>
-              <div className={classes.icon}>
-                <img src={isShow ? dropup : dropdown} alt="dropdown" />
+            <Fade bottom duration={2000} delay={500}>
+              <div className={classes.dropdownSection} onClick={showFormAttending}>
+                <p className={classes.formTitle}>Confirm Presence</p>
+                <div className={classes.icon}>
+                  <img src={isShow ? dropup : dropdown} alt="dropdown" />
+                </div>
               </div>
-            </div>
+            </Fade>
             <form className={`${classes.formContainer} ${!isShow ? classes.hide : classes.show}`} onSubmit={onSubmitRadios}>
               <div className={classes.inputForm}>
                 <div className={classes.inputs}>
@@ -523,7 +556,7 @@ const InvitationPage = () => {
               </div>
             </form>
           </div>
-          <Fade duration={3000}>
+          <Fade duration={2500} delay={500}>
             <div className={classes.expressionSection}>
               <img src={messageLogo} alt="Icon" />
             </div>
@@ -537,37 +570,45 @@ const InvitationPage = () => {
     return (
       <div className={classes.messageSectionContainer}>
         <div className={classes.title}>
-          <p className={classes.titleText}>Your Message</p>
+          <Fade left duration={2000} delay={500}>
+            <p className={classes.titleText}>Your Message</p>
+          </Fade>
         </div>
         <div className={classes.sectionTitle}>
-          <p>We would like to express our gratitude</p>
+          <Fade right duration={2000} delay={500}>
+            <p>We would like to express our gratitude</p>
+          </Fade>
         </div>
         <div className={classes.mainContent}>
           <div className={classes.rightSection}>
             <div className={classes.imgWrapper}>
-              <img className={classes.image} src={messageLogo} alt="message" />
+              <Fade duration={2000} delay={1000}>
+                <img className={classes.image} src={messageLogo} alt="message" />
+              </Fade>
             </div>
             <div className={classes.messageWrapper}>
               {messages && messages.map((item, idx) => {
                 return (
-                  <div className={classes.messageItemWrapper} key={idx}>
-                    <div className={classes.avatar}>
-                      <img src={Mail} alt='avatar' />
-                    </div>
-                    <div className={classes.messageShape}>
-                      <div className={classes.outerTriangle}>
-                        <div className={classes.innerTriangle} />
+                  <Fade bottom duration={2000} delay={idx <= 3 ? idx*600 : 800}>
+                    <div className={classes.messageItemWrapper} key={idx}>
+                      <div className={classes.avatar}>
+                        <img src={Mail} alt='avatar' />
                       </div>
-                      <div className={classes.messageBubble}>
-                        <div className={classes.name}>
-                          {item.name}...
+                      <div className={classes.messageShape}>
+                        <div className={classes.outerTriangle}>
+                          <div className={classes.innerTriangle} />
                         </div>
-                        <div className={classes.message}>
-                          {item.message}
+                        <div className={classes.messageBubble}>
+                          <div className={classes.name}>
+                            {item.name}...
+                          </div>
+                          <div className={classes.message}>
+                            {item.message}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Fade>
                 )
               })}
             </div>
@@ -580,8 +621,8 @@ const InvitationPage = () => {
   const googleMaps = () => {
     return (
       <div className={classes.googleMapsContainer}>
-        <Fade duration={3000}>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.2012016063263!2d106.7844201!3d-6.2371902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f12cc0448597%3A0xe6ab93a55b6fc581!2sMel%C3%A1s%20Dining%20%26%20Lounge!5e0!3m2!1sid!2sid!4v1662298205386!5m2!1sid!2sid" width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <Fade left duration={2000} delay={200}>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.2012016063263!2d106.7844201!3d-6.2371902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f12cc0448597%3A0xe6ab93a55b6fc581!2sMel%C3%A1s%20Dining%20%26%20Lounge!5e0!3m2!1sid!2sid!4v1662298205386!5m2!1sid!2sid" width="350" height="300" style={{border:0, borderRadius: '16px'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </Fade>
       </div>
     );
@@ -590,10 +631,16 @@ const InvitationPage = () => {
   const footerSection = () => {
     return (
       <div className={classes.footerContainer}>
-        <div className={classes.colaborationWrapper}>
-          <p><em>In Colaboratation with:</em></p>
-          <img alt="Techartsy Indonesia" src={footerLogo} className={classes.logo} onClick={contactOfficialWeb} />
-        </div>
+        <Fade duration={2000} delay={200}>
+          <div className={classes.colaborationWrapper}>
+            <Fade duration={2000} delay={1000}>
+              <p><em>In Colaboratation with:</em></p>
+            </Fade>
+            <Fade duration={2000} delay={1500}>
+              <img alt="Techartsy Indonesia" src={footerLogo} className={classes.logo} onClick={contactOfficialWeb} />
+            </Fade>
+          </div>
+        </Fade>
       </div >
     );
   };
