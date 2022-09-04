@@ -54,9 +54,7 @@
             text-align: center;
             font-size: 15px;
             line-height: 21.16px;
-            // margin-bottom: -30%;
             .value {
-              
               -webkit-text-stroke: 0.8px $color-light-orange;
             }
           }
@@ -127,6 +125,101 @@
             cursor: pointer;
           }
         }
+      }
+    }
+    .popupWrapper {
+      background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662294187/Invitation%20Assets/Mela%27s/bgFlower2_eiv35a.webp');
+      // margin-left: 0.7%;
+      padding: -5% 2% 6% 2%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      // margin-top: -5%;
+      @include apply-at-md-lg-size {
+        background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662294187/Invitation%20Assets/Mela%27s/bgFlower2_eiv35a.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 360px;
+      }
+      .prokesTitle {
+        @include gabriela;
+        color: $color-light-shade-of-orange;
+        text-align: center;
+        text-decoration-line: underline;
+        text-underline-offset: 10px;
+        margin-top: -3%;
+        font-size: 16px;
+        margin-bottom: 20%;
+        p {
+          padding-top: 5%;
+          -webkit-text-stroke: 0.6px $color-light-orange;
+          color: $color-light-shade-of-orange;
+        }
+      }
+      .prokesTop {
+        @include directionX;
+        justify-content: space-around;
+        color: $color-broken-white;
+        font-size: 12px;
+        line-height: 16px;
+        width: 100%;
+        margin-bottom: 1%;
+        text-align: center;
+        .iconWrapperPopup {
+          @include directionY;
+          align-items: center;
+          width: 40%;
+          img {
+            @include content-center;
+            width: 50px;
+            height: 40px;
+          }
+        }
+      }
+      .prokesBottom {
+        @include directionX;
+        justify-content: space-around;
+        color: $color-broken-white;
+        font-size: 12px;
+        line-height: 16px;
+        width: 100%;
+        text-align: center;
+        .iconWrapperPopup {
+          @include directionY;
+          align-items: center;
+          width: 40%;
+          img {
+            @include content-center;
+            width: 50px;
+            height: 40px;
+          }
+        }
+      }
+      .appeal {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        color: $color-broken-white;
+        text-align: center;
+        line-height: 23.05px;
+        font-size: 12px;
+      }
+      .closePopupBtn {
+        @include body;
+        @include directionX;
+        @include content-center;
+        @include useChewy;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-broken-white;
+        color: $color-dark-green;
+        border: 1px solid #ADADAD;
+        border-radius: 53px;
+        max-height: 53px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 4%;
+        width: 74px;
+        font-size: 12px;
+        height: 26px;
       }
     }
     .secondQuoteContainer {

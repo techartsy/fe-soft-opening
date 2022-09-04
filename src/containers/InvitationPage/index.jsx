@@ -19,7 +19,7 @@ import {
   resetConfirmationSuccess,
 } from '../../store/actions';
 import StartedComponent from '../../components/Started';
-import AudioComponent from '../../components/AudioPlayer';
+// import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
@@ -52,11 +52,16 @@ import gallery2 from '../../static/images/gallery/2.png';
 import gallery3 from '../../static/images/gallery/3.png';
 import gallery4 from '../../static/images/gallery/4.png';
 import classes from './style.module.scss';
+import Mask from '../../static/icons/mask.png';
+import Distancing from '../../static/icons/distancing.png';
+import Hand from '../../static/icons/hand.png';
+import Temp from '../../static/icons/temperature.png';
 
 const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237018/Invitation%20Assets/Mela%27s/Opening_avtbgv.webp';
 const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241878/Invitation%20Assets/Mela%27s/flowerBG_wdckmm.webp';
 const btnLocation = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/location_ir4ord.webp';
 const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/rundown_cvezff.webp';
+const protocolBG = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/bgFlower2_t2gzmq.webp';
 
 const InvitationPage = () => {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
@@ -388,6 +393,51 @@ const InvitationPage = () => {
     );
   };
 
+  const covidProtocol = () => {
+    return (
+      <div className={classes.popupWrapper}>
+        <div className={classes.prokesTitle}>
+          <p>Protokol Kesehatan (Covid - 19)</p>
+        </div>
+        <div className={classes.prokesTop}>
+          <div className={classes.iconWrapperPopup}>
+            <img src={Mask} alt="mask" className={classes.iconProkes} />
+            <p>Tamu undangan wajib mengenakan masker</p>
+          </div>
+          <div className={classes.iconWrapperPopup}>
+            <img
+              src={Hand}
+              alt="washing-hand"
+              className={classes.iconProkes}
+            />
+            <p>Cuci tangan menggunakan sabun atau hand sanitizer</p>
+          </div>
+        </div>
+        <div className={classes.prokesBottom}>
+          <div className={classes.iconWrapperPopup}>
+            <img src={Temp} alt="temperatur" className={classes.iconProkes} />
+            <p>Suhu tubuh normal dibawah 37,5 C</p>
+          </div>
+          <div className={classes.iconWrapperPopup}>
+            <img
+              src={Distancing}
+              alt="social-distancing"
+              className={classes.iconProkes}
+            />
+            <p>Menjaga jarak antar sesama minimal 1 meter</p>
+          </div>
+        </div>
+        <div className={classes.appeal}>
+          <p>Demi mendukung kesehatan bersama alangkah baiknya bagi para tamu undangan
+            wajib mematuhi protokol kesehatan untuk mencegah penularan covid 19</p>
+        </div>
+        <div className={classes.closePopupBtn}>
+          <p>Tutup</p>
+        </div>
+      </div>
+    );
+  };
+
   const generateSecondQuoteSection = () => {
     return (
       <div className={classes.secondQuoteContainer}>
@@ -678,6 +728,7 @@ const InvitationPage = () => {
       <div className={classes.invitationContainer}>
         {generateNewHeader()}
         {generateFirstQuoteSection()}
+        {covidProtocol()}
         {generateSecondQuoteSection()}
         {generateThirdQuoteSection()}
         {generateMaleBiography()}
@@ -689,7 +740,7 @@ const InvitationPage = () => {
         {closingSeparator()}
         {closingSection()}
         {footerSection()}
-        <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}
