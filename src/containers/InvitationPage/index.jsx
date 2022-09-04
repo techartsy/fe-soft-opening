@@ -41,11 +41,9 @@ import attendingImg from '../../static/images/attending-img.png';
 import thirdQuoteImg from '../../static/images/third-quote-img.png';
 import maleImg from '../../static/images/male.png';
 import FemaleImg from '../../static/images/female.png';
-import quotesImg from '../../static/images/quotes-img.png';
 import leafLeft from '../../static/images/leaf-left.png';
 import leafRight from '../../static/images/leaf-right.png';
 import rose from '../../static/images/rose.png';
-import headerImg from '../../static/images/header.png';
 import galleryIcon from '../../static/images/gallery/icon.png';
 import galleryRose from '../../static/images/gallery/rose.png';
 import galleryLogo from '../../static/images/gallery/logo.png';
@@ -54,6 +52,11 @@ import gallery2 from '../../static/images/gallery/2.png';
 import gallery3 from '../../static/images/gallery/3.png';
 import gallery4 from '../../static/images/gallery/4.png';
 import classes from './style.module.scss';
+
+const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237018/Invitation%20Assets/Mela%27s/Opening_avtbgv.webp';
+const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241878/Invitation%20Assets/Mela%27s/flowerBG_wdckmm.webp';
+const btnLocation = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/location_ir4ord.webp';
+const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/rundown_cvezff.webp';
 
 const InvitationPage = () => {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
@@ -263,7 +266,7 @@ const InvitationPage = () => {
     timerComponents.push(
       <div className={classes.countdownItem}>
         <div className={classes.countdownTime}>
-          {timeLeft[interval]}
+          <p className={classes.value}>{timeLeft[interval]}</p>
         </div>
         <div className={classes.countdownInterval}>
           <p className={classes.text}>{interval}{" "}</p>
@@ -297,7 +300,7 @@ const InvitationPage = () => {
   };
 
   const goToMaps = () => {
-    window.open('https://goo.gl/maps/DfBp8FaU16t6YDPMA', '_blank');
+    window.open('https://goo.gl/maps/MoCxeSH8Nk7gAnot8', '_blank');
   };
 
   const radioAttend = (e) => {
@@ -353,13 +356,14 @@ const InvitationPage = () => {
     return (
       <div className={classes.newHeader}>
         <div className={classes.backgroundImg}>
-          <img src={headerImg} alt="background" />
+          <img src={banner} alt="background" />
+          <div className={classes.border} />
+          <Fade delay={2000} duration={2000}>
+            <div className={classes.countdown}>
+              {timerComponents.length && timerComponents}
+            </div>
+          </Fade>
         </div>
-        <Fade delay={2000} duration={2000}>
-          <div className={classes.countdown}>
-            {timerComponents.length && timerComponents}
-          </div>
-        </Fade>
       </div>
     )
   }
@@ -368,15 +372,16 @@ const InvitationPage = () => {
     return (
       <div className={classes.firstQuoteContainer}>
         <div className={classes.topQuote}>
-          <p>“ There is no more lovely, friendly, charming,<br />relationship or company than a good marriage ”
-          - Martin Luther</p>
+          <p>Agenda Soft Opening</p>
+          <div className={classes.border} />
         </div>
         <div className={classes.bottomQuotesSection}>
           <div className={classes.quoteImg}>
-            <img alt="brides" className={classes.image} src={quotesImg} />
+            <img alt="brides" className={classes.image} src={event} />
           </div>
-          <div className={classes.bottomQuote}>
-            <p>Tidak ada hubungan atau persatuan yang lebih indah, menyenangkan dan membahagiakan dari pada pernikahan yang baik</p>
+          <div className={classes.buttons}>
+            <img className={classes.btn} src={btnLocation} onClick={goToMaps} alt='btn' />
+            <img className={classes.btn} src={btnRundown} alt='btn' />
           </div>
         </div>
       </div>

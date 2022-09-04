@@ -1,29 +1,22 @@
 import React from 'react';
-import _ from 'lodash';
-import Logo from '../../static/images/started.png'
-import FrameTop from '../../static/images/frame-top.png'
-import FrameBottom from '../../static/images/frame-bottom.png'
 import classes from './style.module.scss';
+
+const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662233925/Invitation%20Assets/Mela%27s/banner_mv9u19.webp';
+const btn = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662235564/Invitation%20Assets/Mela%27s/btn_ihpama.webp';
 
 const Started = ({ openInvitation, name }) => {
   return (
     <div className={classes.container}>
-      <div className={classes.frameTop}>
-        <img src={FrameTop} alt="Frame" />
-      </div>
       <div className={classes.wraper}>
-        <img src={Logo} alt="frame" />
+        <img src={banner} alt="frame" />
       </div>
-      {!_.isEmpty(name) &&
+      {/* {!_.isEmpty(name) &&
         <div className={classes.toWraper}>
           <p>Teruntuk</p>
           <p className={classes.to}>{name}</p>
         </div>
-      }
-      <div className={classes.btn} onClick={openInvitation}><strong>Buka Undangan</strong></div>
-      <div className={classes.frameBottom}>
-        <img src={FrameBottom} alt="Frame" />
-      </div>
+      } */}
+      <img className={classes.btn} src={btn} onClick={openInvitation} alt='btn' />
     </div>
   );
 }

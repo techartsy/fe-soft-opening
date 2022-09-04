@@ -1,6 +1,12 @@
 @font-face {
   font-family: "Aladin", cursive;
 }
+@font-face {
+  font-family: 'Gabriela', serif;
+}
+@mixin gabriela {
+  font-family: 'Gabriela', serif;
+}
 @mixin body {
   font-family: "Aladin", cursive;
   color: $color-broken-white;

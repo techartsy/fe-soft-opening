@@ -1,7 +1,7 @@
 @import "../../styles/base";
 .container {
   @include body;
-  background-color: $color-broken-white;
+  background-color: $color-dark-black;
   overflow-x: hidden;
   @include apply-at-md-lg-size {
     width: 360px;
@@ -17,38 +17,48 @@
   }
   .invitationContainer {
     .newHeader {
+      @include directionY;
       .backgroundImg {
+        background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237408/Invitation%20Assets/Mela%27s/Background_qnzgmm.webp');
+        background-repeat: no-repeat;
+        background-position: center;
         img {
-          width: 100%;
+          display: flex;
+          width: 90%;
+          @include content-center;
+        }
+        .border {
+          margin-top: 4%;
+          border-top: 2px solid $color-light-orange;
         }
       }
       .countdown {
         @include directionX;
         @include content-center;
-        border: 1.93103px solid rgba(255, 255, 255, 0.5);
-        border-radius: 16px;
-        background: rgba(0, 0, 0, 0.1);
-        box-shadow: 0px 28.5491px 28.5491px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(30px);
-        width: 30%;
+        gap: 18%;
         justify-content: space-around;
-        color: $color-white;
-        padding: 8px;
-        width: 55%;
+        width: 75%;
         text-align: center;
-        margin-bottom: 5%;
-        margin-top: -25%;
+        align-items: center;
+        margin-bottom: 15%;
+        margin-top: 5%;
         .countdownItem {
+          color: $color-light-shade-of-orange;
           border-radius: 20px;
           font-size: 9px;
-          width: 42px;
+          width: 52px;
           height: 40px;
           .countdownTime {
+            color: $color-light-shade-of-orange;
             @include useChewy;
             text-align: center;
             font-size: 15px;
             line-height: 21.16px;
-            margin-bottom: 4%;
+            // margin-bottom: -30%;
+            .value {
+              
+              -webkit-text-stroke: 0.8px $color-light-orange;
+            }
           }
           .countdownInterval {
             margin: 0;
@@ -56,6 +66,7 @@
             @include useChewy;
             line-height: 21.16px;
             .text {
+              -webkit-text-stroke: 0.8px $color-light-orange;
               margin: 0;
             }
           }
@@ -63,31 +74,59 @@
       }
     }
     .firstQuoteContainer {
-      background-color: $color-dark-green;
-      padding-top: 5%;
+      background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237408/Invitation%20Assets/Mela%27s/Background_qnzgmm.webp');
+      background-repeat: no-repeat;
+      background-position: center;
+      border-top: 1px solid $color-light-shade-of-orange;
+      border-bottom: 1px solid $color-light-shade-of-orange;
+      background-color: $color-dark-black;
+      padding-top: 2%;
+      padding-bottom: 2%  ;
+      margin-bottom: 5%;
       padding-left: 2%;
       padding-right: 2%;
       .topQuote {
+        @include gabriela;
         text-align: center;
-        font-size: 14px;
+        font-size: 18px;
+        margin-bottom: 5%;
+        color: $color-light-shade-of-orange;
+        p {
+          -webkit-text-stroke: 0.6px $color-light-orange;
+        }
+        .border {
+          @include content-center;
+          width: 68%;
+          margin-top: -3%;
+          border-bottom: 1px solid $color-light-shade-of-orange;
+        }
       }
       .bottomQuotesSection {
         @include directionY;
+        @include content-center;
+        margin-bottom: 15%;
         align-items: center;
         .quoteImg {
           position: relative;
-          margin-top: -3%;
+          margin-top: -2%;
           margin-left: 10%;
           .image {
+            display: flex;
+            width: 90%;
           }
         }
-        .bottomQuote {
-          font-size: 14px;
-          margin-top: -16%;
+        .buttons {
+          @include directionX;
+          align-items: center;
+          justify-content: center;
+          margin-top: -20%;
           z-index: 2;
-          text-align: center;
+          gap: 2%;
+          .btn {
+            width: 36%;
+            cursor: pointer;
+          }
         }
-
       }
     }
     .secondQuoteContainer {
@@ -317,7 +356,6 @@
           // align-items: center;
           // display: grid;
           // grid-template-columns: 1fr 1fr 1fr;
-          // border: 1px solid red;
           font-size: 12px;
           .sectionLeft {
             margin-top: -10%;
