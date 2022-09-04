@@ -27,38 +27,38 @@ const PopupProkes = withStyles(styles)((props) => {
       open={open}
       hideBackdrop
       style={{
-        fontFamily: "'Merienda', cursive",
+        backgroundColor: 'rgba(147, 163, 140, 0.15)', /*dim the background*/
+        fontFamily: "'Poppins', sans-serif",
         overflowY: "hidden",
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(147, 163, 140, 0.65)', /*dim the background*/
-        // zIndex: 1,
       }}
       PaperProps={{
         style: {
           borderRadius: '20px',
+          border: '2px solid #BB792C'
         },
       }}
     >
       <DialogContent
         dividers
         style={{
-          backgroundColor: '#F5F2E7',
+          backgroundColor: '#343534',
           overflowY: "hidden",
           backgroundPosition: 'center',
         }}
       >
         <div className={classes.popupWrapper}>
           <div className={classes.prokesTitle} onClose={handleClose}>
-            <p>Kirim pesanmu melalui suara :</p>
+            <p>Send your message with voice:</p>
           </div>
           <div className={classes.content}>
             <ol>
-              <li>Tekan dan tahan icon mic ( <ImMic className={classes.iconMic} /> ) yang ada pada sisi bawah kolom pesan</li>
-              <li>Ucapkan pesan yang ingin kamu sampaikan</li>
-              <li>Pesan akan tertulis secara otomatis melalui suara</li>
+              <li>Press and hold Mic icon ( <ImMic className={classes.iconMic} /> ) at the bottom of message column</li>
+              <li>Say the message you want to convey</li>
+              <li>Your message will automatically write by your voice</li>
             </ol>
           </div>
           <div className={classes.closePopupBtn} onClick={handleClose}>

@@ -3,23 +3,23 @@
   @include apply-at-md-lg-size {
     width: 360px;
   }
-  @include useAladin;
-  color: $color-dark-green;
-  font-size: 14px;
+  color: $color-broken-white;
+  font-size: 12px;
   .prokesTitle {
     @include body;
-    color: $color-dark-green;
+    @include usePoppins;
+    color: $color-broken-white;
   }
   .content {
     text-align: left;
     margin-top: -2%;
+    font-size: 12px;
     ol {
       margin: 0;
       padding: 0 0 0 7%;
       li {
         padding-left: 1%;
         .iconMic {
-          // border: 1px solid red;
           width: 10px;
           height: 10px;
         }
@@ -28,17 +28,20 @@
   }
   .closePopupBtn {
     @include body;
+    @include usePoppins;
     @include directionX;
+    border: 1px solid $color-light-orange;
     float: right;
     align-items: center;
     justify-content: center;
-    background-color: $color-dark-green;
+    background-color: $color-dark-black;
     color: $color-broken-white;
-    border-radius: 100px;
+    border-radius: 16px;
     max-height: 53px;
     cursor: pointer;
     margin-top: 5%;
-    width: 74px;
+    width: 84px;
     height: 26px;
+    font-size: 11px;
   }
 }

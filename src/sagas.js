@@ -45,7 +45,6 @@ function* doPostRegistration({ guestData, cbError, cbSuccess }) {
       cbError && cbError(message);
     } else {
       cbError && cbError();
-
     }
   }
 }

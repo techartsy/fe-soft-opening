@@ -148,9 +148,9 @@
         text-align: center;
         text-decoration-line: underline;
         text-underline-offset: 10px;
-        margin-top: -3%;
+        margin-top: -2%;
         font-size: 16px;
-        margin-bottom: 12%;
+        margin-bottom: 15%;
         p {
           padding-top: 5%;
           -webkit-text-stroke: 0.6px $color-light-orange;
@@ -200,11 +200,12 @@
       .appeal {
         @include content-center;
         @include outfit;
+        margin-top: 5%;
         width: 90%;
         color: $color-light-shade-of-orange;
         text-align: center;
         line-height: 23.05px;
-        font-size: 12px;
+        font-size: 13px;
       }
     }
     .galleryWrapper {
