@@ -70,7 +70,7 @@ const InvitationPage = () => {
   const [guestName, setGuestName] = useState('');
   const [address, setAddress] = useState('');
   const [attend, setAttend] = useState('');
-  const [showPopupProkes, setShowPopupProkes] = useState(false);
+  // const [showPopupProkes, setShowPopupProkes] = useState(false);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
   const dispatch = useDispatch();
@@ -280,13 +280,13 @@ const InvitationPage = () => {
     );
   });
 
-  const closePopupProkes = () => {
-    setShowPopupProkes(!showPopupProkes);
-  };
+  // const closePopupProkes = () => {
+  //   setShowPopupProkes(!showPopupProkes);
+  // };
 
   const openInvitation = () => {
     setIsInvitationOpen(!isInvitationOpen);
-    setShowPopupProkes(!showPopupProkes);
+    // setShowPopupProkes(!showPopupProkes);
     setIsPlaying(!isPlaying);
   };
 
@@ -430,9 +430,6 @@ const InvitationPage = () => {
         <div className={classes.appeal}>
           <p>Demi mendukung kesehatan bersama alangkah baiknya bagi para tamu undangan
             wajib mematuhi protokol kesehatan untuk mencegah penularan covid 19</p>
-        </div>
-        <div className={classes.closePopupBtn}>
-          <p>Tutup</p>
         </div>
       </div>
     );
@@ -741,7 +738,7 @@ const InvitationPage = () => {
         {closingSection()}
         {footerSection()}
         {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
-        <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
+        {/* <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} /> */}
         <PopupGiftConfirmation
           open={openConfirmation}
           handleClose={handleConfirmation}

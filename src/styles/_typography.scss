@@ -4,6 +4,12 @@
 @font-face {
   font-family: 'Gabriela', serif;
 }
+@font-face {
+  font-family: 'Outfit', sans-serif;
+}
+@mixin outfit {
+  font-family: 'Outfit', sans-serif;
+}
 @mixin gabriela {
   font-family: 'Gabriela', serif;
 }
