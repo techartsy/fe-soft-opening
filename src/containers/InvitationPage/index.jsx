@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isIOS, isMobile } from 'react-device-detect';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import gallery from '../../static/images/gallery/gallery';
 
 import { ImMic } from "react-icons/im";
 
@@ -44,7 +45,7 @@ import maleImg from '../../static/images/male.png';
 import FemaleImg from '../../static/images/female.png';
 import leafLeft from '../../static/images/leaf-left.png';
 import leafRight from '../../static/images/leaf-right.png';
-import rose from '../../static/images/rose.png';
+// import rose from '../../static/images/rose.png';
 import galleryIcon from '../../static/images/gallery/icon.png';
 import galleryRose from '../../static/images/gallery/rose.png';
 import galleryLogo from '../../static/images/gallery/logo.png';
@@ -77,7 +78,8 @@ const InvitationPage = () => {
   const [errorAlert, setErrorAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successAlert, setSuccessAlert] = useState(false);
-  // const [showPopupProkes, setShowPopupProkes] = useState(false);
+  const [showPopupProkes, setShowPopupProkes] = useState(false);
+  const [openRundown, setOpenRundown] = useState(false);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
   const dispatch = useDispatch();
@@ -302,6 +304,16 @@ const InvitationPage = () => {
     );
   });
 
+  
+  const handleOpenRundown = () => {
+    setOpenRundown(!openRundown)
+    setShowPopupProkes(!showPopupProkes);
+  };
+
+  const closePopupProkes = () => {
+    setShowPopupProkes(!showPopupProkes);
+  };
+
   const openInvitation = () => {
     setIsInvitationOpen(!isInvitationOpen);
     setIsPlaying(!isPlaying);
@@ -415,7 +427,7 @@ const InvitationPage = () => {
           </div>
           <div className={classes.buttons}>
             <img className={classes.btn} src={btnLocation} onClick={goToMaps} alt='btn' />
-            <img className={classes.btn} src={btnRundown} alt='btn' />
+            <img className={classes.btn} src={btnRundown} onClick={handleOpenRundown} alt='btn' />
           </div>
         </div>
       </div>
@@ -464,147 +476,26 @@ const InvitationPage = () => {
     );
   };
 
-  const generateSecondQuoteSection = () => {
+  const galleries = () => {
     return (
-      <div className={classes.secondQuoteContainer}>
+      <div className={classes.galleryWrapper}>
         <div className={classes.top}>
-          <p>Putra & Dina</p>
+          <p>Gallery MELA'S</p>
+          <div className={classes.border} />
         </div>
         <div className={classes.bottom}>
-          <p>“Menikahlah dengan seseorang yang sanggup menerima kekuranganmu, dan Ia pun bersyukur atas kelebihanmu.
-            Bangunlah rumah tangga bersama Ia yang siap untuk berjuang bersama menggapai Ridho-Nya.<br/>
-            Serta yakinlah kamu bahwa surga semakin dekat saat kamu berada bersamanya.”</p>
-          <img src={rose} alt="rose" />
-        </div>
-
-      </div>
-    )
-  }
-
-  const generateThirdQuoteSection = () => {
-    return (
-      <div className={classes.thirdQuoteContainer}>
-        <p>“ There is no more lovely, friendly, charming,<br />relationship or company than a good marriage ”
-          - Martin Luther</p>
-        <img src={thirdQuoteImg} alt="Third Quote" />
-        <p>Tidak ada hubungan atau persatuan yang lebih indah, menyenangkan dan membahagiakan dari pada pernikahan yang baik</p>
-      </div>
-    );
-  };
-
-  const generateMaleBiography = () => {
-    return (
-      <div className={classes.maleBiography}>
-        <img src={maleImg} alt="Male" />
-        <div>
-          <p className={classes.name}>Putra Nur Setiawan</p>
-          <p className={classes.subName}>Putra ke - 2 dari 2 bersaudara<br/>
-            anak dari<br/>
-            Bapak Hari Prabowo & Ibu Yamah</p>
+          {gallery &&
+            gallery.map((item, idx) => {
+              return (
+                <img src={item.img} idx={idx} alt='gallery' />
+              )
+            })
+          }
         </div>
       </div>
     )
   }
 
-  const generateFemaleBiography = () => {
-    return (
-      <div className={classes.femaleBiography}>
-        <img src={FemaleImg} alt="Female" />
-        <div>
-          <p className={classes.name}>Dina Novita Herawati</p>
-          <p className={classes.subName}>Putri ke - 2 dari 4 bersaudara<br/>
-            anak dari<br/>
-            Bapak Wawan Erawan & Ibu Siti Mafrihah</p>
-        </div>
-      </div>
-    );
-  };
-
-  const generateGallerySection = () => {
-    return (
-      <div className={classes.galleryContainer}>
-        <div className={classes.iconWrapper}>
-          <img src={galleryIcon} alt="Gallery Icon" />
-        </div>
-        <div className={classes.firstRow}>
-          <div className={classes.left}>
-            <img className={classes.rose} src={galleryRose} alt="Gallery Item" />
-            <img src={gallery1} alt="Gallery Item" className={classes.firstImg} />
-          </div>
-          <img src={gallery2} alt="Gallery Item" className={classes.lastItem} />
-        </div>
-        <div className={classes.secondRow}>
-          <img src={galleryLogo} alt="Gallery Logo" />
-        </div>
-        <div className={classes.thirdRow}>
-          <img src={gallery3} alt="Gallery Item" className={classes.thirdImage}/>
-          <img src={gallery4} alt="Gallery Item" className={classes.fourthImage}/>
-        </div>
-      </div>
-    )
-  }
-
-  const eventDetail = () => {
-    return (
-      <div className={classes.eventContainer}>
-        <div className={classes.bgWrapper}>
-          <Fade delay={1000} duration={4000}>
-            <div className={classes.greeting}>
-              <p className={classes.greetingText}>
-                Assalamu’alaikum Warahmatullahi Wabarakaatuh<br />
-              </p>
-              <p className={classes.subtitle}>
-                Maha Suci Allah yang telah menciptakan<br/> makhluk-Nya berpasang-pasangan.<br />
-                Ya Allah semoga Ridho-Mu tercurah mengiringi<br/>pernikahan kami
-              </p>
-            </div>
-            <div className={classes.details}>
-              <div className={classes.timesWraper}>
-                <div className={classes.timeMobileWrapper}>
-                  <p className={classes.event}>Tanggal</p>
-                  <img src={calender} alt='calender' />
-                  <p className={classes.time}>SABTU, 02 JULI 2022</p>
-                </div>
-                <div className={classes.timeMobileWrapper}>
-                  <p className={classes.event}>Resepsi</p>
-                  <img src={time} alt='time' />
-                  <p className={classes.time}>Pukul 10.00 WIB s.d Selesai</p>
-                </div>
-              </div>
-              <div className={classes.btnCalendarContainer}>
-                <div className={classes.btnCalendarWrapper} onClick={addEvent}>
-                  <p>Tambahkan ke Kalender</p>
-                </div>
-              </div>
-            </div>
-          </Fade>
-          <Fade delay={1000} duration={4000}>
-            <div className={classes.locationWraper}>
-              <div className={classes.sectionLeft}>
-                <img src={leafLeft} alt="leaf" />
-              </div>
-              <div className={classes.locationInfo}>
-                <p className={classes.locationTitle}>Lokasi</p>
-                <img src={Location} alt='location' />
-                <p>
-                Jalan Pondok Cabe 1<br/>RT 04, RW 04, No. 4 Kel. Pondok Cabe Ilir, Kec. Pamulang,<br/>Tangerang Selatan
-                </p>
-              </div>
-              <div className={classes.sectionRight}>
-                <img src={leafRight} alt="leaf" />
-              </div>
-            </div>
-            <div onClick={goToMaps} className={classes.btnmap}>
-              <p>Menuju Lokasi</p>
-              <div className={classes.imageWrapper}>
-                <img src={plane} alt='gotomap' />
-              </div>
-            </div>
-          </Fade>
-        </div>
-      </div>
-    );
-  };
 
   const attendingSection = () => {
     return (
@@ -771,16 +662,13 @@ const InvitationPage = () => {
         {generateNewHeader()}
         {generateFirstQuoteSection()}
         {covidProtocol()}
-        {generateSecondQuoteSection()}
-        {generateThirdQuoteSection()}
-        {generateMaleBiography()}
-        {generateFemaleBiography()}
-        {generateGallerySection()}
-        {eventDetail()}
+        {galleries()}
         {attendingSection()}
         {generateMessageSection()}
         {googleMaps()}
         {footerSection()}
+        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
+        <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}
           handleClose={handleConfirmation}
