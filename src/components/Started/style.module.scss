@@ -22,6 +22,7 @@
     @include directionY;
     align-items: center;
     img {
+      // border: 1px solid red;
       margin-top: 4%;
       @include apply-at-sm-md-size {
         margin-top: 34%;

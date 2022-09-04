@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Fade from 'react-reveal/Fade';
+import Alert from '@material-ui/lab/Alert';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { isIOS } from 'react-device-detect';
+import { isIOS, isMobile } from 'react-device-detect';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
 import { ImMic } from "react-icons/im";
 
+import useWindowDimensions from '../../utils/useWindowDimensions';
 import {
   getAllGuest,
   submitRegistration,
@@ -24,7 +26,7 @@ import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
 import MessageImg from '../../static/images/message-img.png';
-import logo from '../../static/images/logo.png';
+// import logo from '../../static/images/logo.png';
 import calender from '../../static/icons/calender.png';
 import time from '../../static/icons/time.png';
 import Location from '../../static/icons/location.png';
@@ -34,7 +36,6 @@ import dropup from '../../static/icons/dropup.png';
 import Mail from '../../static/icons/mail.png';
 import whatsapp from '../../static/icons/whatsapp.png';
 import instagram from '../../static/icons/instagram.png';
-import techartsy from '../../static/icons/techartsy.png';
 import colaboration from '../../static/icons/colaboration.png';
 import closingImg from '../../static/images/closing-img.png';
 import attendingImg from '../../static/images/attending-img.png';
@@ -62,6 +63,8 @@ const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241878/Inv
 const btnLocation = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/location_ir4ord.webp';
 const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241110/Invitation%20Assets/Mela%27s/rundown_cvezff.webp';
 const protocolBG = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/bgFlower2_t2gzmq.webp';
+const footerLogo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1658591749/Asset%20Techartsy%20Indonesia/Logo/Webp%20Format/Techartsy_Gold_qsdzz5.webp';
+const messageLogo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662246190/Invitation%20Assets/Mela%27s/logo_azw3sx.webp';
 
 const InvitationPage = () => {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
@@ -69,12 +72,17 @@ const InvitationPage = () => {
   const [isShow, setIsShow] = useState(false);
   const [guestName, setGuestName] = useState('');
   const [address, setAddress] = useState('');
-  const [attend, setAttend] = useState('');
+  const [attend, setAttend] = useState('present');
+  const [pax, setPax] = useState('1');
+  const [errorAlert, setErrorAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successAlert, setSuccessAlert] = useState(false);
   // const [showPopupProkes, setShowPopupProkes] = useState(false);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const { width } = useWindowDimensions();
   let [popupCounter, setPopupCounter] = useState(0);
   let name = location?.search?.split('=')[1];
   name = name?.split('+').join(' ');
@@ -117,15 +125,15 @@ const InvitationPage = () => {
       gapi.auth2.getAuthInstance().signIn()
       .then(() => {
         var event = {
-          'summary': 'Putra & Dina Wedding Day',
-          'location': 'Jalan Pondok Cabe 1 RT 04, RW 04, No. 4 Kel. Pondok Cabe Ilir, Kec. Pamulang, Tangerang Selatan',
-          'description': 'Wedding Invitation',
+          'summary': 'Soft Opening Melas Dining & Lounge',
+          'location': 'Jl. Pakubuwono VI No.77, RW.2, Gunung, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12120',
+          'description': 'Soft Opening Invitation',
           'start': {
-            'dateTime': '2022-07-02T10:00:00',
+            'dateTime': '2022-09-15T12:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'end': {
-            'dateTime': '2022-07-02T23:00:00',
+            'dateTime': '2022-09-15T15:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'recurrence': [
@@ -166,6 +174,20 @@ const InvitationPage = () => {
   useEffect(() => {
     dispatch(getAllGuest())
   }, []);
+
+  useEffect(() => {
+    if (successAlert) {
+      setTimeout(() => {
+        setSuccessAlert(false)
+        resetForm('');
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setErrorAlert(false);
+        setErrorMessage('');
+      }, 3000);
+    }
+  }, [errorAlert, successAlert])
 
   useEffect(() => {
     if (isError) {
@@ -222,7 +244,7 @@ const InvitationPage = () => {
     let difference;
     if (isIOS) {
       nextYear = year;
-      let fullDate = "2022-07-02 10:00:00";
+      let fullDate = "2022-09-15 12:00:00";
       let date = new Date(fullDate);
       // In case its IOS, parse the fulldate parts and re-create the date object.
       if(Number.isNaN(date.getMonth())) {
@@ -232,7 +254,7 @@ const InvitationPage = () => {
       difference = +date - +new Date();
     } else {
       nextYear = year;
-      difference = +new Date(`07/02/${nextYear}/10:00`) - +new Date();
+      difference = +new Date(`09/15/${nextYear}/12:00`) - +new Date();
     }
     let timeLeft = {};
     if (difference > 0) {
@@ -280,13 +302,8 @@ const InvitationPage = () => {
     );
   });
 
-  // const closePopupProkes = () => {
-  //   setShowPopupProkes(!showPopupProkes);
-  // };
-
   const openInvitation = () => {
     setIsInvitationOpen(!isInvitationOpen);
-    // setShowPopupProkes(!showPopupProkes);
     setIsPlaying(!isPlaying);
   };
 
@@ -319,26 +336,38 @@ const InvitationPage = () => {
     }
   }
 
+  const resetForm = () => {
+    setGuestName('');
+    setAddress('');
+    setNote('');
+    setPax('1');
+    setAttend('present');
+    resetTranscript();
+    setErrorMessage('');
+  }
+
   const onSubmitRadios = (e) => {
     e.preventDefault();
 
     const payload = {
       name: guestName,
-      address,
+      address: ' ',
       attend,
       message: note || transcript,
-      pax: attend?.toLowerCase() === 'present' ? '1' : '0',
+      pax: attend?.toLowerCase() === 'present' ? pax : '0',
     }
-    dispatch(submitRegistration(payload, Toast.fire({
-      icon: 'success',
-      title: 'Pesan Terkirim',
-      background: 'black',
-      color: '#fbd258',
-    })));
-    setGuestName('');
-    setAddress('');
-    setNote('');
-    resetTranscript();
+    dispatch(submitRegistration(
+      payload,
+      (errMsg) => {
+        console.log(errMsg, '<<< errMsg callback')
+        setErrorMessage(errMsg);
+        setErrorAlert(true)
+      },
+      () => {
+        setSuccessAlert(true);
+        resetForm();
+      }
+    ));
   };
 
   const submitGiftConfirmation = (value) => {
@@ -580,11 +609,14 @@ const InvitationPage = () => {
   const attendingSection = () => {
     return (
       <div className={classes.attendingContainer}>
-        <p className={classes.title}>"UCAPAN & DOA"</p>
+        <div className={classes.titleContainer}>
+          <p className={classes.title}>Reservation</p>
+          <p className={classes.subtitle}>Please confirm your presence</p>
+        </div>
         <div className={classes.attendingWraper}>
           <div className={classes.formWraper}>
             <div className={classes.dropdownSection} onClick={showFormAttending}>
-              <p className={classes.formTitle}>Konfirmasi Kehadiran</p>
+              <p className={classes.formTitle}>Confirm Presence</p>
               <div className={classes.icon}>
                 <img src={isShow ? dropup : dropdown} alt="dropdown" />
               </div>
@@ -592,9 +624,12 @@ const InvitationPage = () => {
             <form className={`${classes.formContainer} ${!isShow ? classes.hide : classes.show}`} onSubmit={onSubmitRadios}>
               <div className={classes.inputForm}>
                 <div className={classes.inputs}>
-                  <input type='text' value={guestName} placeholder='Nama' required onChange={(e) => setGuestName(e.target.value)} />
-                  <input type='text' placeholder='Alamat' value={address} required onChange={(e) => setAddress(e.target.value)} />
-                  <textarea type='text' placeholder='Kirim Ucapan & Doa' value={note || transcript} onChange={(e) => onChangeNote(e.target.value)} />
+                  <input type='text' value={guestName} placeholder='Name' required onChange={(e) => setGuestName(e.target.value)} />
+                  <select disabled={attend === 'absence'} name="pax" id="pax" value={pax} onChange={(e) => setPax(e.target.value)} >
+                    <option value="1">1 Person</option>
+                    <option value="2">2 Person</option>
+                  </select>
+                  <textarea type='text' placeholder='Message' value={note || transcript} onChange={(e) => onChangeNote(e.target.value)} />
                   {browserSupportsSpeechRecognition &&
                     <div className={classes.iconContainer}>
                       <div
@@ -611,25 +646,25 @@ const InvitationPage = () => {
               </div>
               <div onChange={radioAttend} className={classes.radiosInput}>
                 <div className={classes.inputs}>
-                  <p>Konfirmasi</p>
+                  <p>Confirm</p>
                   <div className={classes.radioWrapper}>
                     <div className={classes.radioItem}>
-                      <input className={classes.radioItem} type='radio' name='attend' value='present' required ></input>
-                      <label for='attend'>Akan Hadir</label>
+                      <input className={classes.radioItem} type='radio' name='attend' checked={attend === 'present'} value='present' required ></input>
+                      <label for='attend'>Yes, I will come</label>
                     </div>
                     <div className={classes.radioItem}>
-                      <input className={classes.radioItem} type='radio' name='attend' value='absence' required></input>
-                      <label for='attend'>Berhalangan Hadir</label>
+                      <input className={classes.radioItem} type='radio' name='attend' checked={attend === 'absence'} value='absence' required></input>
+                      <label for='attend'>Sorry, I can't come</label>
                     </div>
                   </div>
                 </div>
-                <button type='submit' className={classes.btnSend}>Kirim Ucapan</button>
+                <button type='submit' className={classes.btnSend}>Send</button>
               </div>
             </form>
           </div>
           <Fade duration={3000}>
             <div className={classes.expressionSection}>
-              <img src={attendingImg} alt="Icon" />
+              <img src={messageLogo} alt="Icon" />
             </div>
           </Fade>
         </div>
@@ -640,13 +675,16 @@ const InvitationPage = () => {
   const generateMessageSection = () => {
     return (
       <div className={classes.messageSectionContainer}>
+        <div className={classes.title}>
+          <p className={classes.titleText}>Your Message</p>
+        </div>
         <div className={classes.sectionTitle}>
-          <p>Ucapan & Doa kamu</p>
+          <p>We would like to express our gratitude</p>
         </div>
         <div className={classes.mainContent}>
           <div className={classes.rightSection}>
             <div className={classes.imgWrapper}>
-              <img className={classes.image} src={MessageImg} alt="message" />
+              <img className={classes.image} src={messageLogo} alt="message" />
             </div>
             <div className={classes.messageWrapper}>
               {messages && messages.map((item, idx) => {
@@ -678,28 +716,11 @@ const InvitationPage = () => {
     );
   };
 
-  const closingSeparator = () => {
+  const googleMaps = () => {
     return (
-      <div className={classes.closingSeparator}>
-        <img src={closingImg} alt="closing" />
-      </div>
-    )
-  }
-
-  const closingSection = () => {
-    return (
-      <div className={classes.closingSectionContainer}>
+      <div className={classes.googleMapsContainer}>
         <Fade duration={3000}>
-          <div className={classes.leftSection}>
-            <img src={logo} alt="icon" className={classes.invitationLogo} />
-          </div>
-          <div className={classes.closingSentenceWrapper}>
-            <p>
-              Kehadiran & doa Anda<br/> adalah berkah, kehormatan & kebahagiaan bagi kami.<br/>
-              Kami mengatakan dari hati kami yang terdalam, atas perhatian Anda<br/>
-              Terima kasih
-            </p>
-          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.2012016063263!2d106.7844201!3d-6.2371902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f12cc0448597%3A0xe6ab93a55b6fc581!2sMel%C3%A1s%20Dining%20%26%20Lounge!5e0!3m2!1sid!2sid!4v1662298205386!5m2!1sid!2sid" width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </Fade>
       </div>
     );
@@ -709,20 +730,44 @@ const InvitationPage = () => {
     return (
       <div className={classes.footerContainer}>
         <div className={classes.colaborationWrapper}>
-          <img alt="colaboration" src={colaboration} className={classes.colaborationText} />
-          <img alt="colaboration" src={techartsy} className={classes.logo} onClick={contactOfficialWeb} />
-        </div>
-        <div className={classes.footerTitle}>
-          <img className={classes.contact} onClick={contactWA} src={whatsapp} alt="whatsapp" />
-          <img className={classes.contact} onClick={contactIG} src={instagram} alt="instagram" />
+          <p><em>In Colaboratation with:</em></p>
+          <img alt="Techartsy Indonesia" src={footerLogo} className={classes.logo} onClick={contactOfficialWeb} />
         </div>
       </div >
     );
   };
-
+  
   const generateInvitation = () => {
     return (
       <div className={classes.invitationContainer}>
+        {
+          errorAlert &&
+          <Alert
+            severity="error"
+            style={{
+              position: 'fixed',
+              zIndex: 5,
+              marginTop: (isMobile || width === 'sm') ? '7%' : '2%',
+              left: (isMobile || width === 'sm') ? 10 : '35%',
+              right: (isMobile || width === 'sm') && 10,
+              width: (isMobile || width === 'sm') ? '85%' : '30%'}}>
+            {!_.isEmpty(errorMessage) ? errorMessage : 'Oops, something went wrong. Please try again'}
+          </Alert>
+        }
+        {
+          successAlert &&
+          <Alert
+            severity="success"
+            style={{
+              position: 'fixed',
+              zIndex: 5,
+              marginTop: (isMobile || width === 'sm') ? '7%' : '2%',
+              left: (isMobile || width === 'sm') ? 10 : '35%',
+              right: (isMobile || width === 'sm') && 10,
+              width: (isMobile || width === 'sm') ? '85%' : '30%'}}>
+            Thank you for your registration
+          </Alert>
+        }
         {generateNewHeader()}
         {generateFirstQuoteSection()}
         {covidProtocol()}
@@ -734,11 +779,8 @@ const InvitationPage = () => {
         {eventDetail()}
         {attendingSection()}
         {generateMessageSection()}
-        {closingSeparator()}
-        {closingSection()}
+        {googleMaps()}
         {footerSection()}
-        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
-        {/* <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} /> */}
         <PopupGiftConfirmation
           open={openConfirmation}
           handleClose={handleConfirmation}

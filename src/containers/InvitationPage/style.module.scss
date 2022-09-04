@@ -16,6 +16,9 @@
     }
   }
   .invitationContainer {
+    .alert {
+      border: 1px solid yellow;
+    }
     .newHeader {
       @include directionY;
       .backgroundImg {
@@ -498,20 +501,35 @@
       }
     }
     .attendingContainer {
-      background-color: $color-broken-white;
+      // background-color: $color-broken-white;
+      background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662300340/Invitation%20Assets/Mela%27s/pngwing-10_m6ovo7.webp');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       color: $color-dark-green;
-      .title {
-        @include body;
+      .titleContainer {
+        @include directionY;
         @include content-center;
-        padding-top: 5%;
-        color: $color-dark-green;
-        font-size: 16px;
-        text-align: center;
-        text-decoration-line: underline;
-        text-underline-offset: 12px;
-        text-decoration-color: $color-dark-green;
+        @include gabriela;
+        border-bottom: 1px solid $color-light-shade-of-orange;
         margin-bottom: 5%;
-        width: 90%;
+        width: 80%;
+        .title {
+          text-align: center;
+          font-size: 17px;
+          -webkit-text-stroke: 0.6px $color-light-orange;
+          color: $color-light-shade-of-orange;
+          margin-bottom: -6%;
+        }
+        .subtitle {
+          @include body;
+          @include gabriela;
+          @include content-center;
+          padding-top: 5%;
+          font-size: 10px;
+          text-align: center;
+          width: 90%;
+        }
       }
       .attendingWraper {
         width: 90%;
@@ -523,14 +541,15 @@
           .dropdownSection {
             @include directionX;
             align-items: center;
-            border-bottom: 1px solid $color-dark-green;
+            border-bottom: 1px solid $color-light-orange;
             cursor: pointer;
             width: 100%;
             justify-content: space-between;
             .formTitle {
-              @include useDamion;
+              @include usePoppins;
+              color: $color-light-shade-of-orange;
               margin-right: 40%;
-              font-size: 15px;
+              font-size: 10px;
               letter-spacing: 0.1em;
             }
             .icon {
@@ -548,33 +567,49 @@
                 p {
                   font-size: 12px;
                 }
-                input {
-                  @include useAladin;
+                select {
+                  @include usePoppins;
                   color: $color-broken-white;
                   padding-left: 15px;
                   height: 40px;
                   margin-bottom: 5%;
-                  background-color: $color-dark-green;
+                  background-color: $color-light-gray;
+                  width: 100%;
+                  border-radius: 10px;
+                  font-size: 10px;
+                  border: 1px solid $color-light-orange;
+                }
+                input {
+                  @include usePoppins;
+                  color: $color-broken-white;
+                  padding-left: 15px;
+                  height: 40px;
+                  margin-bottom: 5%;
+                  background-color: $color-light-gray;
                   width: 95%;
                   border-radius: 10px;
-                  font-size: 11px;
-                  border: none;
+                  font-size: 10px;
+                  border: 1px solid $color-light-orange;
                 }
                 textarea {
-                  @include useAladin;
+                  @include usePoppins;
                   color: $color-broken-white;
                   padding-left: 15px;
                   padding-top: 30px;
-                  background-color: $color-dark-green;
-                  font-size: 11px;
+                  background-color: $color-light-gray;
+                  font-size: 10px;
                   height: 86px;
                   border-radius: 10px;
-                  border: none;
+                  border: 1px solid $color-light-orange;
                 }
                 ::-webkit-input-placeholder {
                   color: $color-broken-white;
                 }
                 input:focus {
+                  outline: none !important;
+                  box-shadow: 0 0 8px $color-dark-green;
+                }
+                select:focus {
                   outline: none !important;
                   box-shadow: 0 0 8px $color-dark-green;
                 }
@@ -594,7 +629,7 @@
                     width: 30px;
                     height: 30px;
                     .mic {
-                      color: white; 
+                      color: $color-light-orange; 
                       position: relative;
                       width: 18px;
                       height: 18px;
@@ -609,19 +644,20 @@
               @include directionX;
               justify-content: space-between;
               .inputs {
-                @include useDamion;
+                @include usePoppins;
                 @include directionY;
-                font-size: 15px;
+                font-size: 12px;
                 width: 180px;
                 margin-top: 2%;
+                color: $color-light-shade-of-orange;
                 .radioWrapper {
                   width: 100%;
                   @include directionY;
                   .radioItem {
-                    @include useAladin;
+                    // @include useAladin;
                     font-size: 13px;
                     margin-right: 10px;
-                    accent-color: $color-dark-green;
+                    accent-color: $color-light-orange;
                     @include directionX;
                     align-items: center;
                     margin: 2% 0;
@@ -633,15 +669,16 @@
                 }
               }
               .btnSend {
-                @include useAladin;
+                @include usePoppins;
                 align-self: flex-end;
                 cursor: pointer;
+                width: 77px;
                 color: $color-broken-white;
-                background-color: $color-dark-green;
-                  border: none;
+                background-color: $color-light-gray;
+                border: 1px solid $color-light-orange;
                 padding: 0 3%;
                 height: 32px;
-                font-size: 12px;
+                font-size: 11px;
                 border-radius: 6px;
                 font-weight: normal;
               }
@@ -678,16 +715,28 @@
       }
     }
     .messageSectionContainer {
-      background-color: $color-dark-green;
+      background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662298935/Invitation%20Assets/Mela%27s/pngwing-11_tjsido.webp');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
       padding-top: 2%;
+      .title {
+        .titleText {
+          @include gabriela;
+          font-size: 16px;
+          text-align: center;
+          margin-bottom: -10px;
+          -webkit-text-stroke: 0.6px $color-light-orange;
+          color: $color-light-shade-of-orange;
+        }
+      }
       .sectionTitle {
         @include content-center;
-        @include useChewy;
+        @include gabriela;
         text-align: center;
         letter-spacing: 0.1em;
         margin-bottom: 5%;
-        font-size: 14px;
-        width: 40%;
+        font-size: 11px;
         text-decoration-line: underline;
         text-underline-offset: 8px;
       }
@@ -722,7 +771,7 @@
             .image {
               @include directionX;
               @include content-center;
-              width: 95%;
+              width: 55%;
             }
           }
           .messageWrapper {
@@ -763,7 +812,7 @@
                   height: 0;
                   border-top: 23px solid transparent;
                   border-bottom: 23px solid transparent;
-                  border-right: 23px solid $color-dark-green;
+                  border-right: 23px solid $color-light-orange;
                   .innerTriangle {
                     position: relative;
                     top: -20px;
@@ -772,26 +821,28 @@
                     height: 0;
                     border-top: 20px solid transparent;
                     border-bottom: 20px solid transparent;
-                    border-right: 20px solid $color-broken-white;
+                    border-right: 20px solid $color-light-gray;
                   }
                 }
                 .messageBubble {
                   margin: 1rem;
-                  background-color: $color-broken-white;
-                  color: $color-dark-green;
-                  border: 1px solid $color-dark-green;
+                  background-color: $color-light-gray;
+                  color: $color-light-shade-of-orange;
+                  border: 1px solid $color-light-orange;
                   border-radius: 6px;
                   text-align: left;
                   padding: 20px;
                   margin-left: -5px;
                   width: 80%;
                   .name {
-                    @include useChewy;
+                    // @include useChewy;
+                    @include useInika;
                     margin-bottom: 0.5rem;
-                    font-size: 12px;
+                    font-size: 10px;
                   }
                   .message {
-                    font-size: 14px;
+                    @include useInter;
+                    font-size: 12px;
                     letter-spacing: 0.005em;
                   }
                 }
@@ -965,11 +1016,11 @@
         width: 340px;
       }
     }
-    .closingSectionContainer {
+    .googleMapsContainer {
       @include directionY;
       @include useChewy;
       color: $color-dark-green;
-      background-color: $color-broken-white;
+      margin-top: 5%;
       width: 100%;
       justify-content: space-between;
       align-items: center;
@@ -989,39 +1040,25 @@
     }
     .footerContainer {
       @include directionY;
-      background-color: $color-dark-green;
       align-items: center;
-      justify-content: space-around;
-      padding: 5%;
+      padding: 5% 2%;
       .colaborationWrapper {
         @include directionY;
-        gap: 10px;
-        .colaborationText {
-          width: 95px;
-        }
-        .logo {
-          width: 90px;
-        }
-      }
-      .footerTitle {
-        margin-top: 10px;
-        gap: 10px;
-        @include directionX;
+        background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662296534/Invitation%20Assets/Mela%27s/pngwing-12_tllrbv.webp');
+        border: 1px solid $color-light-shade-of-orange;
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
         align-items: center;
-        justify-content: space-around;
-        .colaboration {
-          color: $color-dark-brown;
-          font-size: 14px;
-          line-height: 12px;
+        width: 90%;
+        padding: 2%;
+        p {
+          margin-top: -0.5%;
         }
-        .brand {
-          height: 100%;
+        // gap: 1px;
+        .logo {
+          margin-top: -3%;
           width: 90px;
-        }
-        .contact {
-          margin-bottom: 2%;
-          width: 25px;
-          height: 25px;
         }
       }
     }
