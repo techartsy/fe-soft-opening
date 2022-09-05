@@ -41,6 +41,7 @@ const PopupProkes = withStyles(styles)((props) => {
           overflowY: "hidden",
           overflowX: "hidden",
           minHeight: '450px',
+          paddingBottom: '0px',
           backgroundPosition: 'center',
           borderRadius: '20px',
           border: '2px solid #BB792C'
