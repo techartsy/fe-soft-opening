@@ -51,8 +51,8 @@ const PopupProkes = withStyles(styles)((props) => {
             <p className={classes.closeBTN} onClick={handleClose}>&#10006;</p>
           </div>
           <div className={classes.prokesTitle} onClose={handleClose}>
-            <img src={logo} alt='logo' />
-            <img src={title} alt='title' />
+            <img className={classes.logo} src={logo} alt='logo' />
+            <img className={classes.title} src={title} alt='title' />
           </div>
           <div className={classes.rundown}>
             <div className={classes.titleWrapper}>
@@ -72,6 +72,7 @@ const PopupProkes = withStyles(styles)((props) => {
               }
             </div>
           </div>
+          <p className={classes.date}>Thursday | September | 15 2022</p>
         </div>
       </DialogContent>
     </Dialog>
