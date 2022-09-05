@@ -51,6 +51,7 @@
     color: $color-broken-white;
     font-size: 12px;
     @include itim;
+    margin-bottom: 3%;
     .titleWrapper {
       @include itim;
       font-size: 15px;
@@ -65,29 +66,22 @@
       }
     }
     .subRundown {
-      // height: 20px;
       height: 220px;
       margin-top: 2%;
-      margin-bottom: 2%;
+      margin-bottom: 3%;
       overflow-y: scroll;
       &::-webkit-scrollbar {
         width: 2px;
       }
       &::-webkit-scrollbar-thumb {
-        background: $color-gold;
+        background: $color-dark-gray;
         border-radius: 20px;
       }
-      // @mixin apply-at-sm-md-size {
-
-      // }
       .ulWraper {
         padding-top: 2%;
         padding-left: 6%;
-        // gap: 2px;
         .li {
           margin-top: -5px;
-          // @mixin apply-at-sm-md-size {
-          // }
         }
       }
     }
@@ -98,7 +92,6 @@
     margin-top: 0.8%;
     @mixin apply-at-sm-md-size {
       margin-top: 2%;
-      margin-bottom: 0px;
     }
   }
 }
