@@ -1,0 +1,68 @@
+@import "../../styles/base";
+
+.popupWrapper {
+  @include apply-at-md-lg-size {
+    width: 360px;
+  }
+  .ellipse {
+    cursor: pointer;
+    display: flex;
+    float: right;
+    margin-top: 1%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 22px;
+    height: 22px;
+    background-color: $color-broken-white;
+    .closeBTN {
+      color: $color-light-orange;
+      font-weight: bold;
+    }
+  }
+  .prokesTitle {
+    @include body;
+    @include directionY;
+    align-items: center;
+    width: 100%;
+    color: $color-broken-white;
+    text-align: center;
+    text-decoration-line: underline;
+    text-underline-offset: 10px;
+    margin-top: -3%;
+    font-size: 16px;
+    margin-bottom: 22%;
+    p {
+      color: $color-broken-white;
+    }
+  }
+  .rundown {
+    width: 100%;
+    @include directionY;
+    @include content-center;
+    background-color: $color-dark-grayish-violet;
+    border-radius: 5px;
+    margin-top: -15%;
+    color: $color-broken-white;
+    font-size: 12px;
+    @include itim;
+    .titleWrapper {
+      @include itim;
+      font-size: 15px;
+      .title {
+        margin-left: 4%;
+      }
+      .border {
+        margin-left: 3%;
+        width: 20%;
+        margin-top: -3%;
+        border-bottom: 2px solid $color-light-orange;
+      }
+    }
+    .subRundown {
+      .ulWraper {
+        padding-left: 6%;
+      }
+    }
+  }
+}

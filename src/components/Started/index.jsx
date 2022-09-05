@@ -9,14 +9,8 @@ const Started = ({ openInvitation, name }) => {
     <div className={classes.container}>
       <div className={classes.wraper}>
         <img src={banner} alt="frame" />
+        <img className={classes.btn} src={btn} onClick={openInvitation} alt='btn' />
       </div>
-      {/* {!_.isEmpty(name) &&
-        <div className={classes.toWraper}>
-          <p>Teruntuk</p>
-          <p className={classes.to}>{name}</p>
-        </div>
-      } */}
-      <img className={classes.btn} src={btn} onClick={openInvitation} alt='btn' />
     </div>
   );
 }

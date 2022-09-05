@@ -25,10 +25,12 @@ export const setGuests = (guests) => {
     guests,
   };
 };
-export const submitRegistration = (guestData, callback, errorNotif) => {
+export const submitRegistration = (guestData, cbError, cbSuccess) => {
   return {
     type: POST_REGISTRATION,
     guestData,
+    cbError,
+    cbSuccess
   };
 };
 export const setMessages = (messages) => {

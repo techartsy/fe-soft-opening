@@ -32,14 +32,20 @@ function* doGetAllGuest() {
   }
 }
 
-function* doPostRegistration({ guestData }) {
+function* doPostRegistration({ guestData, cbError, cbSuccess }) {
   try {
     const newData = yield call(postRegistration, guestData);
     if (newData) {
+      cbSuccess && cbSuccess();
       yield put(setNewGuest(newData));
     }
   } catch (error) {
-    yield put(setErrorPost);
+    if (error?.response?.status === 400) {
+      const message = error?.response?.data?.message;
+      cbError && cbError(message);
+    } else {
+      cbError && cbError();
+    }
   }
 }
 

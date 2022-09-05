@@ -5,7 +5,8 @@
   @include directionY;
   background-color: $color-dark-black;
   overflow-y: hidden;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662233711/Invitation%20Assets/Mela%27s/BG_ajbc0q.webp');
   background-repeat: no-repeat;
   background-position: center;
@@ -13,53 +14,32 @@
     @include apply-at-sm-md-size {
       height: 100vh;
       overflow-y: hidden;
-      justify-content: space-between;
-      background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662233711/Invitation%20Assets/Mela%27s/BG_ajbc0q.webp');
       background-repeat: no-repeat;
       background-position: center;
     }
     .wraper {
     @include directionY;
     align-items: center;
+    justify-content: center;
+    height: 80%;
+    @include apply-at-sm-md-size {
+      height: 60%;
+
+    }
     img {
       margin-top: 4%;
       @include apply-at-sm-md-size {
-        margin-top: 34%;
+        margin-top: 10%;
       }
     }
   }
-  // .toWraper {
-  //   font-size: 20px;
-  //   @include directionY;
-  //   align-items: center;
-  //   justify-content: center;
-  //   @include apply-at-sm-md-size {
-  //     margin-top: -10%;
-  //     font-size: 20px;
-  //   }
-  //   .to {
-  //     margin: -14px 0;
-  //   }
-  // }
   .btn {
     width: 230px;
     height: 60px;
     @include content-center;
-    @include directionX;
-    align-items: center;
-    justify-content: center;
-    // border-radius: 6px;
-    // background-color: $color-dark-green;
-    // color: $color-broken-white;
     cursor: pointer;
-    margin-bottom: 15%;
-    // padding: 2%;
     @include apply-at-sm-size {
-      // font-size: 16px;
-      // min-width: 110px;
-      // padding: 2%;
-      margin-bottom: 45%;
-      // letter-spacing: 0.1em;
+      margin-bottom: 25%;
     }
   }
 }

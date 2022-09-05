@@ -1,11 +1,20 @@
-@font-face {
-  font-family: "Aladin", cursive;
-}
-@font-face {
-  font-family: 'Gabriela', serif;
+@mixin outfit {
+  font-family: 'Outfit', sans-serif;
 }
 @mixin gabriela {
   font-family: 'Gabriela', serif;
+}
+@mixin itim {
+  font-family: 'Itim', cursive;
+}
+@mixin useInika {
+  font-family: 'Inika', serif;
+}
+@mixin useInter {
+  font-family: 'Inter', sans-serif;
+}
+@mixin usePoppins {
+  font-family: 'Poppins', sans-serif;
 }
 @mixin body {
   font-family: "Aladin", cursive;
