@@ -713,7 +713,7 @@ const InvitationPage = () => {
         {generateMessageSection()}
         {googleMaps()}
         {footerSection()}
-        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
+        <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}
