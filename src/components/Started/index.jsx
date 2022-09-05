@@ -8,7 +8,7 @@ const Started = ({ openInvitation, name }) => {
   return (
     <div className={classes.container}>
       <div className={classes.wraper}>
-        <img src={banner} alt="frame" />
+        {/* <img src={banner} alt="frame" /> */}
         <img className={classes.btn} src={btn} onClick={openInvitation} alt='btn' />
       </div>
     </div>
