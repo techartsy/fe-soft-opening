@@ -24,7 +24,7 @@ import {
 } from '../../store/actions';
 import StartedComponent from '../../components/Started';
 import AudioComponent from '../../components/AudioPlayer';
-import PopupProkes from '../../components/PopupProkes';
+import PopupProkes from '../../components/PopupRundown';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
 import ImageDetail from '../../components/ImageDetail';
@@ -104,11 +104,8 @@ const InvitationPage = () => {
     // onSpeechResults(transcript)
   }
 
-console.log(selectedImg, 'selectedImg');
-
   const clickedImage = (image) => {
-    console.log('clicked');
-    setSelectedImg(!selectedImg);
+    setSelectedImg(image);
     setOpenDetail(!openDetail);
   };
 
@@ -513,7 +510,7 @@ console.log(selectedImg, 'selectedImg');
           {gallery &&
             gallery.map((item, idx) => {
               return (
-                <Fade bottom duration={2000} delay={idx <= 3 ? idx*800 : 1000}>
+                <Fade duration={2500} delay={500}>
                   <img className={classes.imgGallery} src={item.img} idx={idx} alt='gallery' onClick={() => clickedImage(item)} />
                 </Fade>
               )
@@ -666,7 +663,7 @@ console.log(selectedImg, 'selectedImg');
         <Fade duration={2000} delay={200}>
           <div className={classes.colaborationWrapper}>
             <Fade duration={2000} delay={1000}>
-              <p><em>In Colaboration with:</em></p>
+              <p><em>In Colaboration with</em></p>
             </Fade>
             <Fade duration={2000} delay={1500}>
               <img alt="Techartsy Indonesia" src={footerLogo} className={classes.logo} onClick={contactOfficialWeb} />
@@ -728,10 +725,12 @@ console.log(selectedImg, 'selectedImg');
           open={openPopupVoiceRecog}
           handleClose={() => setOpenPopupVoiceRecog(!openPopupVoiceRecog)}
         />
-        <ImageDetail
-        open={openDetail}
-        selectedImg={selectedImg}
-        handleClose={handleCloseImg} />
+        {
+          openDetail &&
+          <ImageDetail
+          selectedImg={selectedImg}
+          handleClose={handleCloseImg} />
+        }
       </div>
     );
   };

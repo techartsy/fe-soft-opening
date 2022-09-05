@@ -31,6 +31,7 @@ const PopupProkes = withStyles(styles)((props) => {
       style={{
         fontFamily: "'Merienda', cursive",
         overflowY: "hidden",
+        overflowX: "hidden"
       }}
     >
       <DialogContent
@@ -38,6 +39,7 @@ const PopupProkes = withStyles(styles)((props) => {
         style={{
           backgroundColor: '#231F20',
           overflowY: "hidden",
+          overflowX: "hidden",
           minHeight: '450px',
           backgroundPosition: 'center',
           borderRadius: '20px',
