@@ -104,10 +104,7 @@ const InvitationPage = () => {
     // onSpeechResults(transcript)
   }
 
-console.log(selectedImg, 'selectedImg');
-
   const clickedImage = (image) => {
-    console.log('clicked');
     setSelectedImg(!selectedImg);
     setOpenDetail(!openDetail);
   };
@@ -716,7 +713,7 @@ console.log(selectedImg, 'selectedImg');
         {generateMessageSection()}
         {googleMaps()}
         {footerSection()}
-        <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        {/* <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
         <PopupGiftConfirmation
           open={openConfirmation}

@@ -5,8 +5,8 @@ const ImageDetail = (props) => {
 	const { open, selectedImg, handleClose } = props;
   return (
 		<div className={classes.container}>
-			<div className={classes.image}>
-				image
+			<div className={classes.image} open={open}>
+				{selectedImg}
 			</div>
 		</div>
 	);
