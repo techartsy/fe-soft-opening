@@ -27,6 +27,7 @@ import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupProkes';
 import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
+import ImageDetail from '../../components/ImageDetail';
 import dropdown from '../../static/icons/dropdown.png';
 import dropup from '../../static/icons/dropup.png';
 import Mail from '../../static/icons/mail.png';
@@ -58,6 +59,8 @@ const InvitationPage = () => {
   const [openRundown, setOpenRundown] = useState(false);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [openDetail, setOpenDetail] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const { width } = useWindowDimensions();
@@ -82,7 +85,7 @@ const InvitationPage = () => {
   } = useSpeechRecognition();
 
   const [note, setNote] = useState('' || transcript);
-  const text = useRef('')
+  // const text = useRef('')
   // const onSpeechResults = (value) => {
   //   // console.log('masuk func')
   //   text.current = text.current +' '+ value;
@@ -100,6 +103,19 @@ const InvitationPage = () => {
     // console.log(text);
     // onSpeechResults(transcript)
   }
+
+console.log(selectedImg, 'selectedImg');
+
+  const clickedImage = (image) => {
+    console.log('clicked');
+    setSelectedImg(!selectedImg);
+    setOpenDetail(!openDetail);
+  };
+
+  const handleCloseImg = () => {
+    setOpenDetail(!openDetail)
+    setSelectedImg({});
+  };
 
   const addEvent = () => {
     gapi.load('client:auth2', () => {
@@ -498,7 +514,7 @@ const InvitationPage = () => {
             gallery.map((item, idx) => {
               return (
                 <Fade bottom duration={2000} delay={idx <= 3 ? idx*800 : 1000}>
-                  <img src={item.img} idx={idx} alt='gallery' />
+                  <img className={classes.imgGallery} src={item.img} idx={idx} alt='gallery' onClick={() => clickedImage(item)} />
                 </Fade>
               )
             })
@@ -650,7 +666,7 @@ const InvitationPage = () => {
         <Fade duration={2000} delay={200}>
           <div className={classes.colaborationWrapper}>
             <Fade duration={2000} delay={1000}>
-              <p><em>In Colaboratation with:</em></p>
+              <p><em>In Colaboration with:</em></p>
             </Fade>
             <Fade duration={2000} delay={1500}>
               <img alt="Techartsy Indonesia" src={footerLogo} className={classes.logo} onClick={contactOfficialWeb} />
@@ -712,6 +728,10 @@ const InvitationPage = () => {
           open={openPopupVoiceRecog}
           handleClose={() => setOpenPopupVoiceRecog(!openPopupVoiceRecog)}
         />
+        <ImageDetail
+        open={openDetail}
+        selectedImg={selectedImg}
+        handleClose={handleCloseImg} />
       </div>
     );
   };
