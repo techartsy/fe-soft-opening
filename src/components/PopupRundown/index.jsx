@@ -48,7 +48,7 @@ const PopupProkes = withStyles(styles)((props) => {
       >
         <div className={classes.popupWrapper}>
           <div className={classes.ellipse}>
-            <p className={classes.closeBTN} onClick={handleClose}>X</p>
+            <p className={classes.closeBTN} onClick={handleClose}>&#10006;</p>
           </div>
           <div className={classes.prokesTitle} onClose={handleClose}>
             <img src={logo} alt='logo' />

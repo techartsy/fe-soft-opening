@@ -5,7 +5,6 @@ const ImageDetail = ({ selectedImg, handleClose }) => {
   return (
 			<div className={classes.imageDetailContainer}>
         <div className={classes.overlayX} onClick={handleClose}>
-
 					<div className={classes.closeIcon} onClick={handleClose}>
 						&#10006;
 					</div>

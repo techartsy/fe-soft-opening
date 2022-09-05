@@ -22,13 +22,16 @@
   }
   .prokesTitle {
     @include body;
+    @include directionY;
+    align-items: center;
+    width: 100%;
     color: $color-broken-white;
     text-align: center;
     text-decoration-line: underline;
     text-underline-offset: 10px;
     margin-top: -3%;
     font-size: 16px;
-    margin-bottom: 20%;
+    margin-bottom: 22%;
     p {
       color: $color-broken-white;
     }

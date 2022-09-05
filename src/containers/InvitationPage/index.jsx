@@ -339,11 +339,6 @@ const InvitationPage = () => {
   const onChangeNote = (text) => {
     setNote(text);
     resetTranscript();
-    // if (!_.isEmpty(transcript)) {
-    //   setNote(`${note} ${transcript}`)
-    // } else {
-    //   setNote(text)
-    // }
     if (note.length === 0) {
       resetTranscript();
     }
