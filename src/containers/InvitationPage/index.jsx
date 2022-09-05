@@ -37,7 +37,7 @@ import Distancing from '../../static/icons/distancing.png';
 import Hand from '../../static/icons/hand.png';
 import Temp from '../../static/icons/temperature.png';
 
-const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662237018/Invitation%20Assets/Mela%27s/Opening_avtbgv.webp';
+const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662394216/Invitation%20Assets/Mela%27s/banner_niin8s.webp';
 const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662241878/Invitation%20Assets/Mela%27s/flowerBG_wdckmm.webp';
 const btnCalender = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnCalender_kfqylo.webp';
 const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnRundown_ufm73j.webp';

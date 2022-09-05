@@ -24,13 +24,18 @@
     height: 80%;
     @include apply-at-sm-md-size {
       height: 60%;
-
     }
-    img {
-      margin-top: 4%;
+    .banner {
+      width: 80%;
+      margin-top: -12%;
       @include apply-at-sm-md-size {
-        margin-top: 10%;
+        margin-top: 16%;
       }
+    }
+    .instruction {
+      font-size: 11px;
+      color: $color-light-shade-of-orange;
+      @include useInter;
     }
   }
   .btn {
