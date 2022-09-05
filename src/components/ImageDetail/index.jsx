@@ -1,14 +1,19 @@
 import React from 'react';
 import classes from './style.module.scss';
 
-const ImageDetail = (props) => {
-	const { open, selectedImg, handleClose } = props;
+const ImageDetail = ({ selectedImg, handleClose }) => {
   return (
-		<div className={classes.container}>
-			<div className={classes.image}>
-				image
-			</div>
-		</div>
+			<div className={classes.imageDetailContainer}>
+        <div className={classes.overlayX} onClick={handleClose}>
+
+					<div className={classes.closeIcon} onClick={handleClose}>
+						&#10006;
+					</div>
+				</div>
+        <div className={classes.image}>
+          <img src={selectedImg.img} alt="Ikatik" />
+        </div>
+      </div>
 	);
 };
 
