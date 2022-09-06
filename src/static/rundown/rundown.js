@@ -1,11 +1,11 @@
 const schedule = [
   {
     time : '11.00 - 11.30',
-    description : 'Welcoming and Registering guest'
+    description : 'Registration'
   },
   {
     time : '11.30 - 11.40',
-    description : 'Greeting from MC (Praying)'
+    description : 'MC Opening'
   },
   {
     time : '11.40 - 12.00',
@@ -13,43 +13,32 @@ const schedule = [
   },
   {
     time : '12.00 - 12.05',
-    description : 'MC sounding to start lunch'
+    description : 'Lunch'
   },
   {
     time : '12.05 - 12.20',
-    description : 'Serving Appetizer'
+    description : 'Appetizer'
   },
   {
     time : '12.20 - 12.40',
-    description : 'Serving Soup'
+    description : 'Soup'
   },
   {
     time : '12.40 - 13.15',
-    description : 'Serving Main Course'
+    description : 'Main Course'
   },
   {
     time : '13.15 - 13.35',
-    description : 'Serving Dessert'
+    description : 'Dessert'
   },
   {
     time : '13.35 - 14.00',
-    description : 'Serving Coffee/Tea'
+    description : 'Coffee/Tea Time'
   },
   {
     time : '14.00 - 14.30',
-    description : 'Free Event'
+    description : 'Closing'
   },
-
-  // {
-  //   time : '14.00 - 14.30',
-  //   description : 'Free Event'
-  // },{
-  //   time : '14.00 - 14.30',
-  //   description : 'Free Event'
-  // },{
-  //   time : '14.00 - 14.30',
-  //   description : 'Free Event'
-  // },
 ]
 
 export default schedule;
