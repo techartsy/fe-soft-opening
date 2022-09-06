@@ -14,7 +14,6 @@ import {
   setGuests,
   setMessages,
   setNewGuest,
-  setErrorPost,
   setConfirmationError,
   setConfirmationSuccess,
 } from "./store/actions";

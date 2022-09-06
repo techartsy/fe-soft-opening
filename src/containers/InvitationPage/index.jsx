@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Fade from 'react-reveal/Fade';
@@ -7,7 +7,6 @@ import Alert from '@material-ui/lab/Alert';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { isIOS, isMobile } from 'react-device-detect';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import gallery from '../../static/images/gallery/gallery';
 
@@ -17,15 +16,10 @@ import useWindowDimensions from '../../utils/useWindowDimensions';
 import {
   getAllGuest,
   submitRegistration,
-  resetErrorPost,
-  postGiftConfirmation,
-  resetConfirmationError,
-  resetConfirmationSuccess,
 } from '../../store/actions';
 import StartedComponent from '../../components/Started';
 import AudioComponent from '../../components/AudioPlayer';
 import PopupProkes from '../../components/PopupRundown';
-import PopupGiftConfirmation from '../../components/PopupGiftConfirmation';
 import PopupVoiceRecognition from '../../components/PopupVoiceRecog';
 import ImageDetail from '../../components/ImageDetail';
 import dropdown from '../../static/icons/dropdown.png';
@@ -57,7 +51,6 @@ const InvitationPage = () => {
   const [successAlert, setSuccessAlert] = useState(false);
   const [showPopupProkes, setShowPopupProkes] = useState(false);
   const [openRundown, setOpenRundown] = useState(false);
-  const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openPopupVoiceRecog, setOpenPopupVoiceRecog] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [openDetail, setOpenDetail] = useState(false);
@@ -75,9 +68,6 @@ const InvitationPage = () => {
   let SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
   const messages = useSelector(state => state.invitationReducer.messages);
-  const isError = useSelector(state => state.invitationReducer.isError);
-  const confirmationErrorMessage = useSelector(state => state.invitationReducer.confirmationErrorMessage);
-  const confirmationSuccess = useSelector(state => state.invitationReducer.confirmationSuccess);
   const {
     transcript,
     resetTranscript,
@@ -85,23 +75,12 @@ const InvitationPage = () => {
   } = useSpeechRecognition();
 
   const [note, setNote] = useState('' || transcript);
-  // const text = useRef('')
-  // const onSpeechResults = (value) => {
-  //   // console.log('masuk func')
-  //   text.current = text.current +' '+ value;
-  //   setNote(text.current);
-  //   // if (!_.isEmpty(note)) {
-  //   //   setNote(`${note} ${transcript}`);
-  //   // }
-  // }
   
   const onStartRecognition = () => {
     SpeechRecognition.startListening({
       continuous: true,
       language: 'id'
     })
-    // console.log(text);
-    // onSpeechResults(transcript)
   }
 
   const clickedImage = (image) => {
@@ -131,11 +110,11 @@ const InvitationPage = () => {
           'location': 'Jl. Pakubuwono VI No.77, RW.2, Gunung, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12120',
           'description': 'Soft Opening Invitation',
           'start': {
-            'dateTime': '2022-09-15T12:00:00',
+            'dateTime': '2022-09-15T11:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'end': {
-            'dateTime': '2022-09-15T15:00:00',
+            'dateTime': '2022-09-15T14:00:00',
             'timeZone': 'Asia/Jakarta',
           },
           'recurrence': [
@@ -161,18 +140,6 @@ const InvitationPage = () => {
     })
   };
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
-
   useEffect(() => {
     dispatch(getAllGuest())
   }, []);
@@ -191,54 +158,6 @@ const InvitationPage = () => {
     }
   }, [errorAlert, successAlert])
 
-  useEffect(() => {
-    if (isError) {
-      Toast.fire({
-        icon: 'success',
-        title: 'Pesan Terkirim',
-        background: 'black',
-      })
-      setTimeout(() => {
-        dispatch(resetErrorPost());
-      }, 1000);
-    }
-  }, [isError])
-
-  useEffect(() => {
-    if (!_.isEmpty(confirmationErrorMessage)) {
-      Toast.fire({
-        icon: "error",
-        title: `${confirmationErrorMessage}`,
-        background: "black",
-        color: "#fbd258",
-        customClass: {
-          container: 'swal-overlay'
-        }
-      });
-      setTimeout(() => {
-        dispatch(resetConfirmationError())
-      }, 2000);
-    }
-  }, [confirmationErrorMessage])
-
-  useEffect(() => {
-    if (confirmationSuccess) {
-      Toast.fire({
-        icon: "success",
-        title: "Konfirmasi Berhasil",
-        background: "black",
-        textColor: "#fbd258",
-        customClass: {
-          container: 'swal-overlay'
-        }
-      });
-      setTimeout(() => {
-        dispatch(resetConfirmationSuccess())
-      }, 2000);
-      setOpenConfirmation(!openConfirmation);
-    }
-
-  }, [confirmationSuccess])
 
   const calculateTimeLeft = () => {
     let year = new Date().getFullYear();
@@ -246,7 +165,7 @@ const InvitationPage = () => {
     let difference;
     if (isIOS) {
       nextYear = year;
-      let fullDate = "2022-09-15 12:00:00";
+      let fullDate = "2022-09-15 11:00:00";
       let date = new Date(fullDate);
       // In case its IOS, parse the fulldate parts and re-create the date object.
       if(Number.isNaN(date.getMonth())) {
@@ -256,7 +175,7 @@ const InvitationPage = () => {
       difference = +date - +new Date();
     } else {
       nextYear = year;
-      difference = +new Date(`09/15/${nextYear}/12:00`) - +new Date();
+      difference = +new Date(`09/15/${nextYear}/11:00`) - +new Date();
     }
     let timeLeft = {};
     if (difference > 0) {
@@ -318,10 +237,6 @@ const InvitationPage = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleConfirmation = () => {
-    setOpenConfirmation(!openConfirmation);
-  };
-
   const showFormAttending = () => {
     if (browserSupportsSpeechRecognition) {
       if (!isShow && popupCounter === 0) {
@@ -377,18 +292,6 @@ const InvitationPage = () => {
     ));
   };
 
-  const submitGiftConfirmation = (value) => {
-    dispatch(postGiftConfirmation(value));
-  };
-
-  const contactWA = () => {
-    window.open('https://wa.me/62895706454243?text=Hallo%20saya%20mau%20pesan%20Undangan%20...', '_blank')
-  }
-
-  const contactIG = () => {
-    window.open('https://www.instagram.com/techartsy.indonesia/', '_blank')
-  }
-
   const contactOfficialWeb = () => {
     window.open('https://techartsyindonesia.com/', '_blank')
   }
@@ -416,7 +319,7 @@ const InvitationPage = () => {
       <div className={classes.firstQuoteContainer}>
         <Fade duration={2500} delay={500}>
           <div className={classes.topQuote}>
-            <p>Mela's Dining Soft Opening</p>
+            <p>Mela&#769;s Dining Soft Opening</p>
             <div className={classes.border} />
           </div>
         </Fade>
@@ -485,7 +388,7 @@ const InvitationPage = () => {
         </div>
         <Fade duration={2500} delay={3000}>
           <div className={classes.appeal}>
-            <p><strong>Mela's Dining</strong> is commited to fighting<br/>the spread of <strong>COVID - 19</strong></p>
+            <p><strong>Mela&#769;s Dining</strong> is commited to fighting<br/>the spread of <strong>COVID - 19</strong></p>
           </div>
         </Fade>
       </div>
@@ -497,7 +400,7 @@ const InvitationPage = () => {
       <div className={classes.galleryWrapper}>
         <Fade duration={2500} delay={500}>
           <div className={classes.top}>
-            <p>Mela's Galleries</p>
+            <p>Mela&#769;s Galleries</p>
             <div className={classes.border} />
           </div>
         </Fade>
@@ -646,7 +549,7 @@ const InvitationPage = () => {
     return (
       <div className={classes.googleMapsContainer}>
         <Fade left duration={2000} delay={200}>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.2012016063263!2d106.7844201!3d-6.2371902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f12cc0448597%3A0xe6ab93a55b6fc581!2sMel%C3%A1s%20Dining%20%26%20Lounge!5e0!3m2!1sid!2sid!4v1662298205386!5m2!1sid!2sid" width="350" height="300" style={{border:0, borderRadius: '16px'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe title='Maps' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.2012016063263!2d106.7844201!3d-6.2371902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f12cc0448597%3A0xe6ab93a55b6fc581!2sMel%C3%A1s%20Dining%20%26%20Lounge!5e0!3m2!1sid!2sid!4v1662298205386!5m2!1sid!2sid" width="350" height="300" style={{border:0, borderRadius: '16px'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </Fade>
       </div>
     );
@@ -710,12 +613,6 @@ const InvitationPage = () => {
         {footerSection()}
         <AudioComponent isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         <PopupProkes open={showPopupProkes} handleClose={closePopupProkes} />
-        <PopupGiftConfirmation
-          open={openConfirmation}
-          handleClose={handleConfirmation}
-          submitGiftConfirmation={submitGiftConfirmation}
-          confirmationSuccess={confirmationSuccess}
-        />
         <PopupVoiceRecognition
           open={openPopupVoiceRecog}
           handleClose={() => setOpenPopupVoiceRecog(!openPopupVoiceRecog)}

@@ -33,15 +33,19 @@
       }
     }
     .instruction {
-      font-size: 11px;
-      color: $color-light-shade-of-orange;
       @include useInter;
+      font-size: 10px;
+      opacity: 0.9;
+      font-weight: 600;
+      line-height: 15px;
+      color: $color-light-shade-of-orange;
+      filter: blur(0.2px);
     }
   }
   .btn {
+    @include content-center;
     width: 230px;
     height: 60px;
-    @include content-center;
     cursor: pointer;
     @include apply-at-sm-size {
       margin-bottom: 25%;
