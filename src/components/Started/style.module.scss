@@ -7,7 +7,6 @@
   overflow-y: hidden;
   justify-content: center;
   align-items: center;
-  background-image: url('https://res.cloudinary.com/dwvzfit8v/image/upload/v1662233711/Invitation%20Assets/Mela%27s/BG_ajbc0q.webp');
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
@@ -22,15 +21,25 @@
     align-items: center;
     justify-content: center;
     height: 80%;
-    @include apply-at-sm-md-size {
-      height: 60%;
+    .logo {
+      width: 85%;
+      margin-top: 10%;
+    }
+    .textWrapper {
+      text-align: center;
+      font-size: 12px;
+      width: 100%;
+      color: $color-light-shade-of-orange;
+      .name {
+        @include useInter;
+        line-height: 15px;
+      }
+      .invitingText {
+        @include useInter;
+      }
     }
     .banner {
       width: 80%;
-      margin-top: -12%;
-      @include apply-at-sm-md-size {
-        margin-top: 16%;
-      }
     }
     .instruction {
       @include useInter;
