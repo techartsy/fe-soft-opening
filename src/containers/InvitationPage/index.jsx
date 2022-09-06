@@ -32,7 +32,7 @@ import Hand from '../../static/icons/hand.png';
 import Temp from '../../static/icons/temperature.png';
 
 const banner = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662394216/Invitation%20Assets/Mela%27s/banner_niin8s.webp';
-const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662433373/Invitation%20Assets/Mela%27s/event_fdnwsd.webp';
+const event = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662434737/Invitation%20Assets/Mela%27s/event_mfs4un.webp';
 const btnCalender = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnCalender_kfqylo.webp';
 const btnRundown = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1662308297/Invitation%20Assets/Mela%27s/btnRundown_ufm73j.webp';
 const footerLogo = 'https://res.cloudinary.com/dwvzfit8v/image/upload/v1658591749/Asset%20Techartsy%20Indonesia/Logo/Webp%20Format/Techartsy_Gold_qsdzz5.webp';
