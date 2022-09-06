@@ -87,6 +87,7 @@
     }
   }
   .date {
+    @include itim;
     color: $color-light-orange;
     float: right;
     margin-top: 0.8%;
