@@ -9,7 +9,7 @@ const Started = ({ openInvitation, name }) => {
     <div className={classes.container}>
       <div className={classes.wraper}>
         <img className={classes.banner} src={banner} alt="frame" />
-        <p className={classes.instruction}>Click Button Bellow</p>
+        <p className={classes.instruction}>Click Button Below</p>
         <img className={classes.btn} src={btn} onClick={openInvitation} alt='btn' />
       </div>
     </div>
